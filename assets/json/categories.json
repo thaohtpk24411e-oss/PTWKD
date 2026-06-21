@@ -1,0 +1,22 @@
+[
+  {
+    "category_id": 1,
+    "category_name": "Green & ESG Gift Sets",
+    "description": "Curated eco-conscious gift bundles made by certified artisans with sustainable, ethically sourced materials."
+  },
+  {
+    "category_id": 2,
+    "category_name": "Upcycled Home Decor",
+    "description": "Decorative pieces crafted from reclaimed, recycled, or repurposed materials for the conscious home."
+  },
+  {
+    "category_id": 3,
+    "category_name": "Fashion & Accessories",
+    "description": "Handmade apparel, jewelry, bags and accessories celebrating traditional craft and slow fashion."
+  },
+  {
+    "category_id": 4,
+    "category_name": "Zero Waste Lifestyle",
+    "description": "Reusable, plastic-free everyday goods designed to reduce household waste."
+  }
+]

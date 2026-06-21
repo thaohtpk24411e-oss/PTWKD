@@ -1,0 +1,62 @@
+/* Footer component styles. Design tokens come from /assets/css/base.css (:root). */
+
+.site-footer { background: var(--footer-bg); color: var(--footer-text); }
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.6fr;
+  gap: 2.5rem;
+  padding: 64px 32px 48px;
+}
+.footer-logo { color: var(--footer-head); font-size: 1.5rem; }
+.footer-brand p { margin: 1rem 0 1.5rem; font-size: .92rem; max-width: 280px; }
+.socials { display: flex; gap: .8rem; }
+.socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px; height: 36px;
+  border: 1px solid rgba(237, 234, 224, .25);
+  border-radius: 50%;
+  color: var(--footer-head);
+  transition: background .2s, border-color .2s;
+}
+.socials a:hover { background: rgba(237, 234, 224, .12); }
+.footer-col h4, .footer-news h4 {
+  color: var(--footer-head);
+  font-family: var(--sans);
+  font-size: .72rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin: 0 0 1.3rem;
+}
+.footer-col { display: flex; flex-direction: column; gap: .85rem; }
+.footer-col a { font-size: .92rem; transition: color .2s; }
+.footer-col a:hover { color: var(--footer-head); }
+.footer-news p { font-size: .92rem; margin: 0 0 1.2rem; }
+.news-form { display: flex; align-items: center; border-bottom: 1px solid rgba(237, 234, 224, .35); }
+.news-form input {
+  flex: 1;
+  background: none;
+  border: 0;
+  color: var(--footer-head);
+  font: inherit;
+  padding: .6rem 0;
+}
+.news-form input::placeholder { color: rgba(182, 188, 174, .8); }
+.news-form input:focus { outline: none; }
+.news-form button { background: none; border: 0; color: var(--footer-head); cursor: pointer; padding: .4rem; }
+.news-status { font-size: .82rem; min-height: 1.2em; margin: .6rem 0 0; }
+
+.footer-bottom { border-top: 1px solid rgba(237, 234, 224, .15); padding: 1.5rem 0; }
+.footer-bottom p { text-align: center; font-size: .82rem; margin: 0; letter-spacing: .04em; }
+
+/* Responsive */
+@media (max-width: 960px) {
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+  .footer-brand, .footer-news { grid-column: span 2; }
+}
+@media (max-width: 640px) {
+  .footer-inner { grid-template-columns: 1fr; gap: 2rem; padding: 48px 20px 36px; }
+  .footer-brand, .footer-news { grid-column: auto; }
+}

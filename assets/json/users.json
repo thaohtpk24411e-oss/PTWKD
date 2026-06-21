@@ -1,0 +1,402 @@
+[
+  {
+    "user_id": 1,
+    "email": "admin.an@craftgreen.vn",
+    "password_hash": "$2b$12$adm0014aed548b0ad2ad42d36a65",
+    "role": "Admin",
+    "created_at": "2023-06-29 13:52:59",
+    "updated_at": "2025-06-09 16:09:39"
+  },
+  {
+    "user_id": 2,
+    "email": "admin.binh@craftgreen.vn",
+    "password_hash": "$2b$12$adm0029fbb7365290273735adebd",
+    "role": "Admin",
+    "created_at": "2023-07-14 10:09:37",
+    "updated_at": "2025-06-01 07:29:31"
+  },
+  {
+    "user_id": 3,
+    "email": "admin.chi@craftgreen.vn",
+    "password_hash": "$2b$12$adm0034ffde843c5c0942476dafe",
+    "role": "Admin",
+    "created_at": "2023-07-07 03:20:59",
+    "updated_at": "2025-04-23 12:32:35"
+  },
+  {
+    "user_id": 4,
+    "email": "nguyenhuy@craftgreen.vn",
+    "password_hash": "$2b$12$sel004d184cc52503f9c167cc430",
+    "role": "Seller",
+    "created_at": "2023-10-23 06:57:32",
+    "updated_at": "2025-04-12 14:50:47"
+  },
+  {
+    "user_id": 5,
+    "email": "vanphuc@craftgreen.vn",
+    "password_hash": "$2b$12$sel00597a542e4b0198e2c87e43c",
+    "role": "Seller",
+    "created_at": "2023-07-30 18:07:06",
+    "updated_at": "2025-04-10 04:41:26"
+  },
+  {
+    "user_id": 6,
+    "email": "lethihoa@craftgreen.vn",
+    "password_hash": "$2b$12$sel006831bf96dd3b5792c49c239",
+    "role": "Seller",
+    "created_at": "2023-11-21 16:40:35",
+    "updated_at": "2025-05-10 09:28:24"
+  },
+  {
+    "user_id": 7,
+    "email": "tranvanduc@craftgreen.vn",
+    "password_hash": "$2b$12$sel0079412bdf3ddb4d87bd4dc83",
+    "role": "Seller",
+    "created_at": "2023-12-25 15:09:10",
+    "updated_at": "2025-04-19 09:10:46"
+  },
+  {
+    "user_id": 8,
+    "email": "hueheritage@craftgreen.vn",
+    "password_hash": "$2b$12$sel008db001549b0f7dd10ed8172",
+    "role": "Seller",
+    "created_at": "2024-07-29 00:15:23",
+    "updated_at": "2025-04-10 23:27:46"
+  },
+  {
+    "user_id": 9,
+    "email": "thanhha@craftgreen.vn",
+    "password_hash": "$2b$12$sel009987c1d0a09e6109925ce93",
+    "role": "Seller",
+    "created_at": "2023-11-20 21:46:51",
+    "updated_at": "2025-05-09 21:55:08"
+  },
+  {
+    "user_id": 10,
+    "email": "battrang@craftgreen.vn",
+    "password_hash": "$2b$12$sel010a182a27bb70933ab43fe4f",
+    "role": "Seller",
+    "created_at": "2024-04-10 09:35:24",
+    "updated_at": "2025-06-02 00:29:53"
+  },
+  {
+    "user_id": 11,
+    "email": "mekongreed@craftgreen.vn",
+    "password_hash": "$2b$12$sel011ef6b199bde888fc75394a7",
+    "role": "Seller",
+    "created_at": "2024-03-23 20:13:43",
+    "updated_at": "2025-06-01 14:22:16"
+  },
+  {
+    "user_id": 12,
+    "email": "sapaindigo@craftgreen.vn",
+    "password_hash": "$2b$12$sel012bb2e35d4e187b0ea64e520",
+    "role": "Seller",
+    "created_at": "2024-08-19 19:55:37",
+    "updated_at": "2025-06-09 18:34:24"
+  },
+  {
+    "user_id": 13,
+    "email": "hoianlantern@craftgreen.vn",
+    "password_hash": "$2b$12$sel013273cce8678ddb6803c8796",
+    "role": "Seller",
+    "created_at": "2024-01-25 23:05:52",
+    "updated_at": "2025-05-27 11:54:20"
+  },
+  {
+    "user_id": 14,
+    "email": "phuquocshell@craftgreen.vn",
+    "password_hash": "$2b$12$sel0146045dc50a1d8f77d40eb6f",
+    "role": "Seller",
+    "created_at": "2023-12-07 09:26:54",
+    "updated_at": "2025-03-24 04:28:38"
+  },
+  {
+    "user_id": 15,
+    "email": "dongho@craftgreen.vn",
+    "password_hash": "$2b$12$sel015fa8e39a3f609b8da026495",
+    "role": "Seller",
+    "created_at": "2024-05-15 10:44:21",
+    "updated_at": "2025-04-24 21:27:09"
+  },
+  {
+    "user_id": 16,
+    "email": "bambooroots@craftgreen.vn",
+    "password_hash": "$2b$12$sel0169834b824f52d405c307ed6",
+    "role": "Seller",
+    "created_at": "2023-10-18 00:09:47",
+    "updated_at": "2025-05-08 07:04:14"
+  },
+  {
+    "user_id": 17,
+    "email": "saigonreclaim@craftgreen.vn",
+    "password_hash": "$2b$12$sel0171426954e43b9de6ca93618",
+    "role": "Seller",
+    "created_at": "2023-11-03 16:55:15",
+    "updated_at": "2025-03-21 10:01:12"
+  },
+  {
+    "user_id": 18,
+    "email": "dalatsoap@craftgreen.vn",
+    "password_hash": "$2b$12$sel0181d4a66b0c92ad716493983",
+    "role": "Seller",
+    "created_at": "2023-08-21 05:37:18",
+    "updated_at": "2025-04-25 04:03:10"
+  },
+  {
+    "user_id": 19,
+    "email": "hanoisilk@craftgreen.vn",
+    "password_hash": "$2b$12$sel0191c7167e61d15df8bc0cd0f",
+    "role": "Seller",
+    "created_at": "2023-12-29 08:51:44",
+    "updated_at": "2025-06-11 16:28:10"
+  },
+  {
+    "user_id": 20,
+    "email": "quangnamrattan@craftgreen.vn",
+    "password_hash": "$2b$12$sel0207069a8319e08725681e104",
+    "role": "Seller",
+    "created_at": "2024-01-29 17:59:28",
+    "updated_at": "2025-04-20 19:21:12"
+  },
+  {
+    "user_id": 21,
+    "email": "maichaubrocade@craftgreen.vn",
+    "password_hash": "$2b$12$sel02192834b07cef1f8e90715a9",
+    "role": "Seller",
+    "created_at": "2024-05-01 00:19:45",
+    "updated_at": "2025-06-10 00:16:14"
+  },
+  {
+    "user_id": 22,
+    "email": "bentrecoconut@craftgreen.vn",
+    "password_hash": "$2b$12$sel022aad73d1b91ef3956ce3838",
+    "role": "Seller",
+    "created_at": "2024-02-13 09:33:30",
+    "updated_at": "2025-05-24 21:13:59"
+  },
+  {
+    "user_id": 23,
+    "email": "ninhbinh@craftgreen.vn",
+    "password_hash": "$2b$12$sel02337d5e4663a24b4a010f81c",
+    "role": "Seller",
+    "created_at": "2024-05-25 05:00:14",
+    "updated_at": "2025-03-27 14:10:00"
+  },
+  {
+    "user_id": 24,
+    "email": "tayhoglass@craftgreen.vn",
+    "password_hash": "$2b$12$sel024386173fd8e1634f1f1fee3",
+    "role": "Seller",
+    "created_at": "2024-04-04 03:45:52",
+    "updated_at": "2025-06-17 05:11:25"
+  },
+  {
+    "user_id": 25,
+    "email": "canthohyacinth@craftgreen.vn",
+    "password_hash": "$2b$12$sel0259b5165416bd5e31205f5ee",
+    "role": "Seller",
+    "created_at": "2024-06-23 16:59:18",
+    "updated_at": "2025-05-09 19:38:50"
+  },
+  {
+    "user_id": 26,
+    "email": "pham.minh.anh@gmail.com",
+    "password_hash": "$2b$12$buy026595d5e36397efe5caae946",
+    "role": "Buyer",
+    "created_at": "2025-03-29 23:33:13",
+    "updated_at": "2025-05-31 13:38:52"
+  },
+  {
+    "user_id": 27,
+    "email": "le.hoang.nam@gmail.com",
+    "password_hash": "$2b$12$buy02711ca9170b4ac3e9b636d21",
+    "role": "Buyer",
+    "created_at": "2024-10-06 13:10:26",
+    "updated_at": "2025-05-22 02:34:21"
+  },
+  {
+    "user_id": 28,
+    "email": "nguyen.thi.lan@gmail.com",
+    "password_hash": "$2b$12$buy0289e3359dd4ccba13ed55148",
+    "role": "Buyer",
+    "created_at": "2024-04-12 01:14:33",
+    "updated_at": "2025-05-31 16:47:52"
+  },
+  {
+    "user_id": 29,
+    "email": "tran.quoc.bao@gmail.com",
+    "password_hash": "$2b$12$buy02902487bce53eb55921ba0fe",
+    "role": "Buyer",
+    "created_at": "2025-04-04 15:39:55",
+    "updated_at": "2025-05-28 03:03:28"
+  },
+  {
+    "user_id": 30,
+    "email": "vo.thi.hong@gmail.com",
+    "password_hash": "$2b$12$buy0303a6736c21e907910fbc014",
+    "role": "Buyer",
+    "created_at": "2024-10-27 03:58:18",
+    "updated_at": "2025-06-17 07:26:26"
+  },
+  {
+    "user_id": 31,
+    "email": "dang.van.khoa@gmail.com",
+    "password_hash": "$2b$12$buy031beb677a71a2311aece81a4",
+    "role": "Buyer",
+    "created_at": "2024-04-06 15:17:15",
+    "updated_at": "2025-05-27 18:14:02"
+  },
+  {
+    "user_id": 32,
+    "email": "bui.thi.mai@gmail.com",
+    "password_hash": "$2b$12$buy032ea0d7b94c8e50111cd35cb",
+    "role": "Buyer",
+    "created_at": "2024-04-20 08:53:33",
+    "updated_at": "2025-06-08 05:30:50"
+  },
+  {
+    "user_id": 33,
+    "email": "hoang.gia.han@gmail.com",
+    "password_hash": "$2b$12$buy033ea5734711f60879d070f18",
+    "role": "Buyer",
+    "created_at": "2024-11-06 09:56:36",
+    "updated_at": "2025-05-28 00:15:39"
+  },
+  {
+    "user_id": 34,
+    "email": "do.minh.tuan@gmail.com",
+    "password_hash": "$2b$12$buy03491a2377121504c19f54777",
+    "role": "Buyer",
+    "created_at": "2024-11-07 12:28:15",
+    "updated_at": "2025-05-29 06:14:04"
+  },
+  {
+    "user_id": 35,
+    "email": "ngo.thi.thu@gmail.com",
+    "password_hash": "$2b$12$buy0357ab48950b47158a6efc236",
+    "role": "Buyer",
+    "created_at": "2025-02-22 17:37:34",
+    "updated_at": "2025-06-16 01:48:33"
+  },
+  {
+    "user_id": 36,
+    "email": "emily.carter@gmail.com",
+    "password_hash": "$2b$12$buy03673d8c1eea684c1f340e7d0",
+    "role": "Buyer",
+    "created_at": "2024-09-15 20:07:01",
+    "updated_at": "2025-06-11 10:06:54"
+  },
+  {
+    "user_id": 37,
+    "email": "james.wilson@gmail.com",
+    "password_hash": "$2b$12$buy037339e94e345a318e63f4345",
+    "role": "Buyer",
+    "created_at": "2024-06-17 19:01:13",
+    "updated_at": "2025-05-29 20:27:45"
+  },
+  {
+    "user_id": 38,
+    "email": "sophia.tran@gmail.com",
+    "password_hash": "$2b$12$buy03884e135be5cc29287e7165f",
+    "role": "Buyer",
+    "created_at": "2025-03-23 06:56:55",
+    "updated_at": "2025-06-16 18:52:31"
+  },
+  {
+    "user_id": 39,
+    "email": "liam.nguyen@gmail.com",
+    "password_hash": "$2b$12$buy0396d44072b0ebf5e04f4139f",
+    "role": "Buyer",
+    "created_at": "2024-07-12 15:56:25",
+    "updated_at": "2025-05-29 21:41:55"
+  },
+  {
+    "user_id": 40,
+    "email": "olivia.pham@gmail.com",
+    "password_hash": "$2b$12$buy0404154baa9bd20f952358473",
+    "role": "Buyer",
+    "created_at": "2024-12-28 22:48:32",
+    "updated_at": "2025-05-27 10:30:34"
+  },
+  {
+    "user_id": 41,
+    "email": "lucas.vo@gmail.com",
+    "password_hash": "$2b$12$buy041d1df9f84ae997bd49af96d",
+    "role": "Buyer",
+    "created_at": "2024-03-22 03:49:19",
+    "updated_at": "2025-06-12 02:39:02"
+  },
+  {
+    "user_id": 42,
+    "email": "mia.dang@gmail.com",
+    "password_hash": "$2b$12$buy042d7fc8a7ccec4aa6dfca525",
+    "role": "Buyer",
+    "created_at": "2024-09-19 07:40:44",
+    "updated_at": "2025-05-25 10:49:07"
+  },
+  {
+    "user_id": 43,
+    "email": "noah.le@gmail.com",
+    "password_hash": "$2b$12$buy0432b29a67219a10418bb3be4",
+    "role": "Buyer",
+    "created_at": "2024-08-13 12:09:38",
+    "updated_at": "2025-06-06 02:14:59"
+  },
+  {
+    "user_id": 44,
+    "email": "isabella.bui@gmail.com",
+    "password_hash": "$2b$12$buy044213b57465d1df10b04fc8b",
+    "role": "Buyer",
+    "created_at": "2024-03-21 20:53:32",
+    "updated_at": "2025-06-16 08:16:34"
+  },
+  {
+    "user_id": 45,
+    "email": "ethan.hoang@gmail.com",
+    "password_hash": "$2b$12$buy045b56232fbf467593f3d4db7",
+    "role": "Buyer",
+    "created_at": "2024-11-13 19:49:02",
+    "updated_at": "2025-05-25 13:51:28"
+  },
+  {
+    "user_id": 46,
+    "email": "charlotte.do@gmail.com",
+    "password_hash": "$2b$12$buy0463679734a87ec5efa730c4a",
+    "role": "Buyer",
+    "created_at": "2024-05-03 04:41:09",
+    "updated_at": "2025-06-12 10:18:12"
+  },
+  {
+    "user_id": 47,
+    "email": "benjamin.ngo@gmail.com",
+    "password_hash": "$2b$12$buy0470ff563bac34e411e6b0e41",
+    "role": "Buyer",
+    "created_at": "2024-06-13 12:46:15",
+    "updated_at": "2025-06-17 15:58:17"
+  },
+  {
+    "user_id": 48,
+    "email": "amelia.vu@gmail.com",
+    "password_hash": "$2b$12$buy04803aedcefa5c05276b7aa87",
+    "role": "Buyer",
+    "created_at": "2024-07-30 08:22:13",
+    "updated_at": "2025-05-31 09:16:32"
+  },
+  {
+    "user_id": 49,
+    "email": "henry.phan@gmail.com",
+    "password_hash": "$2b$12$buy04950baf6378b7d320effc2b2",
+    "role": "Buyer",
+    "created_at": "2024-02-12 11:16:47",
+    "updated_at": "2025-06-07 00:30:01"
+  },
+  {
+    "user_id": 50,
+    "email": "grace.ly@gmail.com",
+    "password_hash": "$2b$12$buy0507dcd364c61661834374cb1",
+    "role": "Buyer",
+    "created_at": "2024-12-16 13:59:58",
+    "updated_at": "2025-05-31 21:57:18"
+  }
+]

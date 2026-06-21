@@ -1,0 +1,527 @@
+/* ============================================================
+   cart.css — Cart page styles for ReViet
+   Depends on: base.css (tokens, reset, .container)
+   ============================================================ */
+
+/* ── Page wrapper ── */
+.cart-page {
+  padding: 60px 0 100px;
+  background: var(--bg-soft);
+  min-height: 80vh;
+}
+
+/* ── Two-column grid layout ── */
+.cart-layout {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* ── Cart Heading ── */
+.cart-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.cart-title {
+  font-family: var(--serif);
+  font-size: 2.5rem;
+  color: var(--ink);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.cart-count-label {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* ── Cart Items List ── */
+.cart-items-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cart-item {
+  display: flex;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+
+/* ── Thumbnail ── */
+.cart-thumb {
+  display: block;
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ── Item Info ── */
+.cart-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.cart-item-name {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  color: var(--ink);
+  margin: 0 0 4px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cart-item-meta {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+
+/* ── Qty Row ── */
+.cart-qty-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.qty-ctrl {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.qty-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: var(--ink);
+  line-height: 1;
+  transition: background 0.2s ease;
+  padding: 0;
+}
+
+.qty-btn:hover {
+  background: var(--bg-soft);
+}
+
+.qty-val {
+  display: inline-block;
+  width: 36px;
+  text-align: center;
+  font-weight: 500;
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
+.cart-item-price {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* ── Remove Button ── */
+.cart-remove {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-family: var(--sans);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 0;
+  align-self: flex-start;
+  transition: color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.cart-remove:hover {
+  color: #c0392b;
+}
+
+/* ── Section Headings ── */
+.cart-main h2 {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  color: var(--ink);
+  font-weight: 600;
+  margin-top: 2.5rem;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.edit-pencil-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  padding: 4px;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.2s ease;
+}
+
+.edit-pencil-btn:hover {
+  color: var(--ink);
+}
+
+/* ── Delivery Form ── */
+.delivery-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-field.full {
+  grid-column: 1 / -1;
+}
+
+.form-field label {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+  font-family: var(--sans);
+}
+
+.form-field input {
+  border: none;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  padding: 8px 0;
+  width: 100%;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.form-field input::placeholder {
+  color: var(--muted);
+}
+
+.form-field input:focus {
+  border-bottom-color: var(--ink);
+}
+
+/* ── Shipping Options ── */
+.ship-options {
+  display: flex;
+  gap: 1rem;
+}
+
+.ship-card {
+  flex: 1;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.ship-card.selected {
+  border-color: var(--ink);
+  background: #fff;
+}
+
+.ship-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.ship-card-body {
+  flex: 1;
+}
+
+.ship-name {
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  color: var(--ink);
+  font-weight: 500;
+  margin: 0 0 3px;
+}
+
+.ship-desc {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.ship-price {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+/* ── Payment Card ── */
+.payment-card {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.visa-badge {
+  background: #1a1f71;
+  color: #fff;
+  font-size: 0.7rem;
+  font-family: var(--sans);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 3px 6px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.payment-card-info {
+  flex: 1;
+}
+
+.payment-number {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  color: var(--ink);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  margin: 0 0 2px;
+}
+
+.payment-expiry {
+  font-size: 0.75rem;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.payment-secure-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 20px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  margin-top: 12px;
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-family: var(--sans);
+}
+
+/* ── Order Summary Sidebar ── */
+.order-summary {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  padding: 28px;
+  position: sticky;
+  top: 96px;
+}
+
+.summary-title {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  color: var(--ink);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.9rem;
+  color: var(--body);
+  font-family: var(--sans);
+}
+
+.summary-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.summary-total-label {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  color: var(--ink);
+}
+
+.summary-total-price {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  color: var(--ink);
+}
+
+/* ── Checkout Button ── */
+.checkout-btn {
+  width: 100%;
+  background: var(--ink);
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 1.5rem 0 0.5rem;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.checkout-btn:hover {
+  background: var(--sage-dark);
+}
+
+.checkout-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ── Terms Note ── */
+.terms-note {
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-family: var(--sans);
+  line-height: 1.6;
+}
+
+/* ── Guarantee Box ── */
+.guarantee-box {
+  background: var(--bg-soft);
+  border-radius: 10px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  margin-top: 1rem;
+}
+
+.guarantee-title {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  margin-top: 0;
+  font-weight: 700;
+  font-family: var(--sans);
+}
+
+.guarantee-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 0.8rem;
+  font-size: 0.82rem;
+  color: var(--body);
+  font-family: var(--sans);
+  line-height: 1.5;
+}
+
+.guarantee-item:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Gradient placeholder classes (thumbnail fallback) ── */
+.grad-0 { background-image: linear-gradient(160deg, #cab690, #a98a63); }
+.grad-1 { background-image: linear-gradient(160deg, #aab394, #828d6c); }
+.grad-2 { background-image: linear-gradient(160deg, #c7b6a2, #9d8268); }
+.grad-3 { background-image: linear-gradient(160deg, #aab3bd, #828d9b); }
+.grad-4 { background-image: linear-gradient(160deg, #cac2b4, #a69b89); }
+.grad-5 { background-image: linear-gradient(160deg, #bfae9a, #968163); }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .cart-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .order-summary {
+    position: static;
+  }
+
+  .ship-options {
+    flex-direction: column;
+  }
+
+  .delivery-form {
+    grid-template-columns: 1fr;
+  }
+
+  .form-field.full {
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .cart-page {
+    padding: 40px 0 80px;
+  }
+
+  .cart-title {
+    font-size: 2rem;
+  }
+
+  .cart-thumb {
+    width: 72px;
+    height: 72px;
+  }
+}

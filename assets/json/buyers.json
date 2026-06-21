@@ -1,0 +1,177 @@
+[
+  {
+    "buyer_id": 26,
+    "full_name": "Pham Minh Anh",
+    "phone_number": "+84923574883",
+    "shipping_address": "80 Le Loi St., District 5, Nha Trang, Vietnam",
+    "billing_address": "80 Le Loi St., District 5, Nha Trang, Vietnam"
+  },
+  {
+    "buyer_id": 27,
+    "full_name": "Le Hoang Nam",
+    "phone_number": "+84915066382",
+    "shipping_address": "277 Ly Thuong Kiet St., District 12, Can Tho, Vietnam",
+    "billing_address": "277 Ly Thuong Kiet St., District 12, Can Tho, Vietnam"
+  },
+  {
+    "buyer_id": 28,
+    "full_name": "Nguyen Thi Lan",
+    "phone_number": "+84930703455",
+    "shipping_address": "317 Nguyen Hue St., District 10, Hue, Vietnam",
+    "billing_address": "317 Nguyen Hue St., District 10, Hue, Vietnam"
+  },
+  {
+    "buyer_id": 29,
+    "full_name": "Tran Quoc Bao",
+    "phone_number": "+84968743530",
+    "shipping_address": "320 Ly Thuong Kiet St., District 3, Hai Phong, Vietnam",
+    "billing_address": "320 Ly Thuong Kiet St., District 3, Hai Phong, Vietnam"
+  },
+  {
+    "buyer_id": 30,
+    "full_name": "Vo Thi Hong",
+    "phone_number": "+84969619341",
+    "shipping_address": "187 Pham Ngu Lao St., District 12, Hanoi, Vietnam",
+    "billing_address": "187 Pham Ngu Lao St., District 12, Hanoi, Vietnam"
+  },
+  {
+    "buyer_id": 31,
+    "full_name": "Dang Van Khoa",
+    "phone_number": "+84951536077",
+    "shipping_address": "230 Nguyen Hue St., District 9, Hanoi, Vietnam",
+    "billing_address": "241 Ly Thuong Kiet St., District 4, Da Nang, Vietnam"
+  },
+  {
+    "buyer_id": 32,
+    "full_name": "Bui Thi Mai",
+    "phone_number": "+84947818761",
+    "shipping_address": "348 Dong Khoi St., District 8, Hue, Vietnam",
+    "billing_address": "348 Dong Khoi St., District 8, Hue, Vietnam"
+  },
+  {
+    "buyer_id": 33,
+    "full_name": "Hoang Gia Han",
+    "phone_number": "+84936802975",
+    "shipping_address": "258 Dong Khoi St., District 7, Hanoi, Vietnam",
+    "billing_address": "71 Ly Thuong Kiet St., District 5, Ho Chi Minh City, Vietnam"
+  },
+  {
+    "buyer_id": 34,
+    "full_name": "Do Minh Tuan",
+    "phone_number": "+84923769360",
+    "shipping_address": "329 Hai Ba Trung St., District 6, Can Tho, Vietnam",
+    "billing_address": "329 Hai Ba Trung St., District 6, Can Tho, Vietnam"
+  },
+  {
+    "buyer_id": 35,
+    "full_name": "Ngo Thi Thu",
+    "phone_number": "+84921257528",
+    "shipping_address": "265 Ly Thuong Kiet St., District 2, Da Nang, Vietnam",
+    "billing_address": "265 Ly Thuong Kiet St., District 2, Da Nang, Vietnam"
+  },
+  {
+    "buyer_id": 36,
+    "full_name": "Emily Carter",
+    "phone_number": "+84968716573",
+    "shipping_address": "140 Hai Ba Trung St., District 9, Hanoi, Vietnam",
+    "billing_address": "140 Hai Ba Trung St., District 9, Hanoi, Vietnam"
+  },
+  {
+    "buyer_id": 37,
+    "full_name": "James Wilson",
+    "phone_number": "+84913579612",
+    "shipping_address": "114 Ly Thuong Kiet St., District 8, Da Nang, Vietnam",
+    "billing_address": "114 Ly Thuong Kiet St., District 8, Da Nang, Vietnam"
+  },
+  {
+    "buyer_id": 38,
+    "full_name": "Sophia Tran",
+    "phone_number": "+84961830338",
+    "shipping_address": "203 Dong Khoi St., District 6, Hanoi, Vietnam",
+    "billing_address": "192 Nguyen Hue St., District 1, Da Nang, Vietnam"
+  },
+  {
+    "buyer_id": 39,
+    "full_name": "Liam Nguyen",
+    "phone_number": "+84955001909",
+    "shipping_address": "51 Ly Thuong Kiet St., District 12, Hai Phong, Vietnam",
+    "billing_address": "51 Ly Thuong Kiet St., District 12, Hai Phong, Vietnam"
+  },
+  {
+    "buyer_id": 40,
+    "full_name": "Olivia Pham",
+    "phone_number": "+84973411827",
+    "shipping_address": "71 Le Loi St., District 5, Nha Trang, Vietnam",
+    "billing_address": "71 Le Loi St., District 5, Nha Trang, Vietnam"
+  },
+  {
+    "buyer_id": 41,
+    "full_name": "Lucas Vo",
+    "phone_number": "+84970210270",
+    "shipping_address": "72 Ly Thuong Kiet St., District 12, Hue, Vietnam",
+    "billing_address": "72 Ly Thuong Kiet St., District 12, Hue, Vietnam"
+  },
+  {
+    "buyer_id": 42,
+    "full_name": "Mia Dang",
+    "phone_number": "+84930068183",
+    "shipping_address": "41 Le Loi St., District 5, Hanoi, Vietnam",
+    "billing_address": "41 Le Loi St., District 5, Hanoi, Vietnam"
+  },
+  {
+    "buyer_id": 43,
+    "full_name": "Noah Le",
+    "phone_number": "+84948668339",
+    "shipping_address": "312 Dong Khoi St., District 7, Ho Chi Minh City, Vietnam",
+    "billing_address": "312 Dong Khoi St., District 7, Ho Chi Minh City, Vietnam"
+  },
+  {
+    "buyer_id": 44,
+    "full_name": "Isabella Bui",
+    "phone_number": "+84995758649",
+    "shipping_address": "63 Le Loi St., District 4, Hue, Vietnam",
+    "billing_address": "63 Le Loi St., District 4, Hue, Vietnam"
+  },
+  {
+    "buyer_id": 45,
+    "full_name": "Ethan Hoang",
+    "phone_number": "+84977085942",
+    "shipping_address": "235 Le Loi St., District 2, Nha Trang, Vietnam",
+    "billing_address": "235 Le Loi St., District 2, Nha Trang, Vietnam"
+  },
+  {
+    "buyer_id": 46,
+    "full_name": "Charlotte Do",
+    "phone_number": "+84942472386",
+    "shipping_address": "9 Pham Ngu Lao St., District 9, Can Tho, Vietnam",
+    "billing_address": "9 Pham Ngu Lao St., District 9, Can Tho, Vietnam"
+  },
+  {
+    "buyer_id": 47,
+    "full_name": "Benjamin Ngo",
+    "phone_number": "+84957354167",
+    "shipping_address": "150 Hai Ba Trung St., District 1, Can Tho, Vietnam",
+    "billing_address": "150 Hai Ba Trung St., District 1, Can Tho, Vietnam"
+  },
+  {
+    "buyer_id": 48,
+    "full_name": "Amelia Vu",
+    "phone_number": "+84921490910",
+    "shipping_address": "214 Nguyen Hue St., District 11, Hai Phong, Vietnam",
+    "billing_address": "214 Nguyen Hue St., District 11, Hai Phong, Vietnam"
+  },
+  {
+    "buyer_id": 49,
+    "full_name": "Henry Phan",
+    "phone_number": "+84978092370",
+    "shipping_address": "185 Le Loi St., District 9, Can Tho, Vietnam",
+    "billing_address": "185 Le Loi St., District 9, Can Tho, Vietnam"
+  },
+  {
+    "buyer_id": 50,
+    "full_name": "Grace Ly",
+    "phone_number": "+84973100462",
+    "shipping_address": "260 Dong Khoi St., District 1, Hue, Vietnam",
+    "billing_address": "260 Dong Khoi St., District 1, Hue, Vietnam"
+  }
+]
