@@ -1,0 +1,209 @@
+[
+  {
+    "review_id": 1,
+    "order_item_id": 1,
+    "buyer_id": 38,
+    "rating": 5,
+    "review_text": "A meaningful, eco-friendly gift. Loved it.",
+    "seller_reply_text": "Grateful for your review, hope to serve you again soon.",
+    "created_at": "2025-05-09 07:30:57"
+  },
+  {
+    "review_id": 2,
+    "order_item_id": 2,
+    "buyer_id": 46,
+    "rating": 5,
+    "review_text": "Gorgeous and unique. The detailing is stunning.",
+    "seller_reply_text": "Thank you so much for your kind words and support!",
+    "created_at": "2025-05-24 19:02:40"
+  },
+  {
+    "review_id": 3,
+    "order_item_id": 3,
+    "buyer_id": 46,
+    "rating": 4,
+    "review_text": "Lovely piece, arrived well packaged. Will buy again.",
+    "seller_reply_text": "We truly appreciate your feedback — happy crafting!",
+    "created_at": "2025-06-05 18:00:56"
+  },
+  {
+    "review_id": 4,
+    "order_item_id": 4,
+    "buyer_id": 36,
+    "rating": 4,
+    "review_text": "Solid quality for the price. Happy customer.",
+    "seller_reply_text": "Grateful for your review, hope to serve you again soon.",
+    "created_at": "2025-04-27 19:36:15"
+  },
+  {
+    "review_id": 5,
+    "order_item_id": 5,
+    "buyer_id": 36,
+    "rating": 4,
+    "review_text": "Exactly as described. Wonderful artisan work.",
+    "seller_reply_text": "We truly appreciate your feedback — happy crafting!",
+    "created_at": "2025-04-22 12:46:30"
+  },
+  {
+    "review_id": 6,
+    "order_item_id": 6,
+    "buyer_id": 36,
+    "rating": 4,
+    "review_text": "Good product but shipping took a little long.",
+    "seller_reply_text": "Thank you so much for your kind words and support!",
+    "created_at": "2025-06-07 18:15:42"
+  },
+  {
+    "review_id": 7,
+    "order_item_id": 16,
+    "buyer_id": 43,
+    "rating": 3,
+    "review_text": "Good product but shipping took a little long.",
+    "seller_reply_text": null,
+    "created_at": "2025-06-13 16:10:17"
+  },
+  {
+    "review_id": 8,
+    "order_item_id": 17,
+    "buyer_id": 41,
+    "rating": 5,
+    "review_text": "Great quality and truly sustainable. Highly recommend.",
+    "seller_reply_text": "Thank you so much for your kind words and support!",
+    "created_at": "2025-03-19 14:57:46"
+  },
+  {
+    "review_id": 9,
+    "order_item_id": 18,
+    "buyer_id": 41,
+    "rating": 5,
+    "review_text": "A meaningful, eco-friendly gift. Loved it.",
+    "seller_reply_text": null,
+    "created_at": "2025-06-12 13:07:11"
+  },
+  {
+    "review_id": 10,
+    "order_item_id": 19,
+    "buyer_id": 49,
+    "rating": 5,
+    "review_text": "Great quality and truly sustainable. Highly recommend.",
+    "seller_reply_text": "Thank you so much for your kind words and support!",
+    "created_at": "2025-04-28 07:32:10"
+  },
+  {
+    "review_id": 11,
+    "order_item_id": 28,
+    "buyer_id": 50,
+    "rating": 4,
+    "review_text": "The colours are even richer in person.",
+    "seller_reply_text": "We truly appreciate your feedback — happy crafting!",
+    "created_at": "2025-06-06 07:10:40"
+  },
+  {
+    "review_id": 12,
+    "order_item_id": 29,
+    "buyer_id": 50,
+    "rating": 5,
+    "review_text": "Great quality and truly sustainable. Highly recommend.",
+    "seller_reply_text": "Thank you so much for your kind words and support!",
+    "created_at": "2025-06-17 21:45:17"
+  },
+  {
+    "review_id": 13,
+    "order_item_id": 30,
+    "buyer_id": 50,
+    "rating": 5,
+    "review_text": "Great quality and truly sustainable. Highly recommend.",
+    "seller_reply_text": "We truly appreciate your feedback — happy crafting!",
+    "created_at": "2025-03-05 09:24:55"
+  },
+  {
+    "review_id": 14,
+    "order_item_id": 31,
+    "buyer_id": 35,
+    "rating": 5,
+    "review_text": "Lovely piece, arrived well packaged. Will buy again.",
+    "seller_reply_text": null,
+    "created_at": "2025-04-04 14:34:36"
+  },
+  {
+    "review_id": 15,
+    "order_item_id": 32,
+    "buyer_id": 35,
+    "rating": 5,
+    "review_text": "Absolutely beautiful craftsmanship, exceeded my expectations!",
+    "seller_reply_text": "Thank you so much for your kind words and support!",
+    "created_at": "2025-05-24 00:28:50"
+  },
+  {
+    "review_id": 16,
+    "order_item_id": 33,
+    "buyer_id": 34,
+    "rating": 4,
+    "review_text": "Great quality and truly sustainable. Highly recommend.",
+    "seller_reply_text": "Thank you so much for your kind words and support!",
+    "created_at": "2025-02-23 11:55:44"
+  },
+  {
+    "review_id": 17,
+    "order_item_id": 34,
+    "buyer_id": 34,
+    "rating": 5,
+    "review_text": "Absolutely beautiful craftsmanship, exceeded my expectations!",
+    "seller_reply_text": null,
+    "created_at": "2025-06-12 17:53:02"
+  },
+  {
+    "review_id": 18,
+    "order_item_id": 44,
+    "buyer_id": 29,
+    "rating": 4,
+    "review_text": "A meaningful, eco-friendly gift. Loved it.",
+    "seller_reply_text": null,
+    "created_at": "2025-04-16 22:55:36"
+  },
+  {
+    "review_id": 19,
+    "order_item_id": 45,
+    "buyer_id": 29,
+    "rating": 4,
+    "review_text": "A meaningful, eco-friendly gift. Loved it.",
+    "seller_reply_text": "We truly appreciate your feedback — happy crafting!",
+    "created_at": "2025-05-04 16:10:57"
+  },
+  {
+    "review_id": 20,
+    "order_item_id": 46,
+    "buyer_id": 46,
+    "rating": 5,
+    "review_text": "Good product but shipping took a little long.",
+    "seller_reply_text": "Grateful for your review, hope to serve you again soon.",
+    "created_at": "2025-04-22 18:35:19"
+  },
+  {
+    "review_id": 21,
+    "order_item_id": 47,
+    "buyer_id": 46,
+    "rating": 5,
+    "review_text": "Perfect addition to my home. Five stars!",
+    "seller_reply_text": null,
+    "created_at": "2025-04-01 15:03:05"
+  },
+  {
+    "review_id": 22,
+    "order_item_id": 48,
+    "buyer_id": 46,
+    "rating": 3,
+    "review_text": "Good product but shipping took a little long.",
+    "seller_reply_text": null,
+    "created_at": "2025-04-27 03:57:01"
+  },
+  {
+    "review_id": 23,
+    "order_item_id": 49,
+    "buyer_id": 37,
+    "rating": 4,
+    "review_text": "Absolutely beautiful craftsmanship, exceeded my expectations!",
+    "seller_reply_text": "Thank you so much for your kind words and support!",
+    "created_at": "2025-05-14 10:03:18"
+  }
+]

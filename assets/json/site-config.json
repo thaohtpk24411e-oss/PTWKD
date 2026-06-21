@@ -1,0 +1,12 @@
+{
+  "brand": "ReViet",
+  "tagline": "Crafted by Nature, Made by Heart",
+  "description": "Preserving heritage through mindful consumption and artisan partnerships across Vietnam.",
+  "nav": ["Shop", "Artisans", "About", "Become a Seller"],
+  "stats": [
+    { "value": "45+", "label": "Heritage Villages" },
+    { "value": "200+", "label": "Master Artisans" },
+    { "value": "Pure", "label": "Natural Materials" }
+  ],
+  "copyright": "© 2026 Viet Craft Heritage. Crafted with intention."
+}

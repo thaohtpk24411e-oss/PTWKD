@@ -1,0 +1,362 @@
+[
+  {
+    "notification_id": 40,
+    "buyer_id": 50,
+    "type": "order_delivered",
+    "title": "Order Delivered",
+    "message": "Your order #VC-0028 has been delivered successfully.",
+    "is_read": false,
+    "created_at": "2025-06-18 14:33:10"
+  },
+  {
+    "notification_id": 39,
+    "buyer_id": 49,
+    "type": "shipment_update",
+    "title": "Shipment Update",
+    "message": "Your order #VC-0027 is out for delivery today.",
+    "is_read": false,
+    "created_at": "2025-06-15 09:12:45"
+  },
+  {
+    "notification_id": 38,
+    "buyer_id": 48,
+    "type": "voucher_new",
+    "title": "New Voucher Available",
+    "message": "Use code BUNDLE40 to get 40% off on bundle orders. Limited time only!",
+    "is_read": false,
+    "created_at": "2025-06-12 10:00:00"
+  },
+  {
+    "notification_id": 37,
+    "buyer_id": 47,
+    "type": "order_shipped",
+    "title": "Order Shipped",
+    "message": "Your order #VC-0026 has been shipped and is on its way.",
+    "is_read": true,
+    "created_at": "2025-06-10 08:55:22"
+  },
+  {
+    "notification_id": 36,
+    "buyer_id": 46,
+    "type": "order_confirmed",
+    "title": "Order Confirmed",
+    "message": "Your order #VC-0025 has been confirmed. We will notify you when it ships.",
+    "is_read": false,
+    "created_at": "2025-06-07 16:40:01"
+  },
+  {
+    "notification_id": 35,
+    "buyer_id": 45,
+    "type": "voucher_new",
+    "title": "New Voucher Available",
+    "message": "Exclusive offer: use code SILK22 for 22% off silk products. Valid this month.",
+    "is_read": true,
+    "created_at": "2025-06-05 11:30:00"
+  },
+  {
+    "notification_id": 34,
+    "buyer_id": 44,
+    "type": "order_delivered",
+    "title": "Order Delivered",
+    "message": "Your order #VC-0024 has been delivered successfully.",
+    "is_read": false,
+    "created_at": "2025-06-02 13:18:47"
+  },
+  {
+    "notification_id": 33,
+    "buyer_id": 43,
+    "type": "shipment_update",
+    "title": "Shipment Update",
+    "message": "Your order #VC-0023 has cleared customs and is en route.",
+    "is_read": true,
+    "created_at": "2025-05-28 15:05:33"
+  },
+  {
+    "notification_id": 32,
+    "buyer_id": 42,
+    "type": "order_shipped",
+    "title": "Order Shipped",
+    "message": "Your order #VC-0022 has been shipped. Tracking number: VN882310.",
+    "is_read": false,
+    "created_at": "2025-05-25 10:22:14"
+  },
+  {
+    "notification_id": 31,
+    "buyer_id": 41,
+    "type": "order_confirmed",
+    "title": "Order Confirmed",
+    "message": "Your order #VC-0021 has been confirmed and is being prepared.",
+    "is_read": true,
+    "created_at": "2025-05-22 09:00:00"
+  },
+  {
+    "notification_id": 30,
+    "buyer_id": 40,
+    "type": "voucher_new",
+    "title": "New Voucher Available",
+    "message": "Loyal customer reward: use code LOYAL8 for 8% off your next order.",
+    "is_read": false,
+    "created_at": "2025-05-18 12:00:00"
+  },
+  {
+    "notification_id": 29,
+    "buyer_id": 39,
+    "type": "order_delivered",
+    "title": "Order Delivered",
+    "message": "Your order #VC-0020 has been delivered. We hope you enjoy your purchase!",
+    "is_read": true,
+    "created_at": "2025-05-15 17:45:09"
+  },
+  {
+    "notification_id": 28,
+    "buyer_id": 38,
+    "type": "order_confirmed",
+    "title": "Order Confirmed",
+    "message": "Your order #VC-0001 has been confirmed. We will notify you when it ships.",
+    "is_read": true,
+    "created_at": "2025-05-12 11:26:03"
+  },
+  {
+    "notification_id": 27,
+    "buyer_id": 37,
+    "type": "shipment_update",
+    "title": "Shipment Update",
+    "message": "Your order #VC-0019 is being processed at the regional hub.",
+    "is_read": false,
+    "created_at": "2025-05-10 14:10:55"
+  },
+  {
+    "notification_id": 26,
+    "buyer_id": 36,
+    "type": "voucher_new",
+    "title": "New Voucher Available",
+    "message": "Celebrate spring! Use code GREEN10 for 10% off all eco-friendly products.",
+    "is_read": true,
+    "created_at": "2025-05-05 08:00:00"
+  },
+  {
+    "notification_id": 25,
+    "buyer_id": 35,
+    "type": "order_shipped",
+    "title": "Order Shipped",
+    "message": "Your order #VC-0018 has been shipped. Expected delivery in 7-10 days.",
+    "is_read": false,
+    "created_at": "2025-04-28 11:45:30"
+  },
+  {
+    "notification_id": 24,
+    "buyer_id": 34,
+    "type": "order_delivered",
+    "title": "Order Delivered",
+    "message": "Your order #VC-0017 has been delivered successfully.",
+    "is_read": true,
+    "created_at": "2025-04-22 16:00:00"
+  },
+  {
+    "notification_id": 23,
+    "buyer_id": 33,
+    "type": "order_confirmed",
+    "title": "Order Confirmed",
+    "message": "Your order #VC-0016 has been confirmed. Thank you for shopping with ReViet!",
+    "is_read": false,
+    "created_at": "2025-04-18 09:30:44"
+  },
+  {
+    "notification_id": 22,
+    "buyer_id": 32,
+    "type": "shipment_update",
+    "title": "Shipment Update",
+    "message": "Your order #VC-0015 has been picked up by the courier.",
+    "is_read": true,
+    "created_at": "2025-04-14 13:55:20"
+  },
+  {
+    "notification_id": 21,
+    "buyer_id": 31,
+    "type": "voucher_new",
+    "title": "New Voucher Available",
+    "message": "Tet special offer! Use code TET2025 for exclusive discounts on traditional crafts.",
+    "is_read": false,
+    "created_at": "2025-04-10 10:00:00"
+  },
+  {
+    "notification_id": 20,
+    "buyer_id": 30,
+    "type": "order_shipped",
+    "title": "Order Shipped",
+    "message": "Your order #VC-0014 has been shipped and is heading your way.",
+    "is_read": true,
+    "created_at": "2025-04-06 15:20:11"
+  },
+  {
+    "notification_id": 19,
+    "buyer_id": 50,
+    "type": "order_confirmed",
+    "title": "Order Confirmed",
+    "message": "Your order #VC-0013 has been confirmed. Estimated dispatch in 1-2 business days.",
+    "is_read": false,
+    "created_at": "2025-04-02 08:45:00"
+  },
+  {
+    "notification_id": 18,
+    "buyer_id": 29,
+    "type": "order_delivered",
+    "title": "Order Delivered",
+    "message": "Your order #VC-0012 has been delivered. Enjoy your handcrafted goods!",
+    "is_read": true,
+    "created_at": "2025-03-28 18:00:00"
+  },
+  {
+    "notification_id": 17,
+    "buyer_id": 28,
+    "type": "shipment_update",
+    "title": "Shipment Update",
+    "message": "Your order #VC-0011 has arrived at the local sorting facility.",
+    "is_read": false,
+    "created_at": "2025-03-24 12:30:07"
+  },
+  {
+    "notification_id": 16,
+    "buyer_id": 27,
+    "type": "voucher_new",
+    "title": "New Voucher Available",
+    "message": "Members-only deal: use code LOYAL8 to save 8% on your next purchase.",
+    "is_read": true,
+    "created_at": "2025-03-20 09:15:00"
+  },
+  {
+    "notification_id": 15,
+    "buyer_id": 26,
+    "type": "order_shipped",
+    "title": "Order Shipped",
+    "message": "Your order #VC-0010 has been shipped. Track your package for updates.",
+    "is_read": false,
+    "created_at": "2025-03-16 14:40:33"
+  },
+  {
+    "notification_id": 14,
+    "buyer_id": 38,
+    "type": "order_delivered",
+    "title": "Order Delivered",
+    "message": "Your order #VC-0001 has been delivered successfully.",
+    "is_read": false,
+    "created_at": "2025-03-12 11:26:03"
+  },
+  {
+    "notification_id": 13,
+    "buyer_id": 45,
+    "type": "order_confirmed",
+    "title": "Order Confirmed",
+    "message": "Your order #VC-0009 has been confirmed and is being prepared by the artisan.",
+    "is_read": true,
+    "created_at": "2025-03-08 10:05:19"
+  },
+  {
+    "notification_id": 12,
+    "buyer_id": 44,
+    "type": "shipment_update",
+    "title": "Shipment Update",
+    "message": "Your order #VC-0008 is in transit and will arrive soon.",
+    "is_read": false,
+    "created_at": "2025-03-04 16:50:00"
+  },
+  {
+    "notification_id": 11,
+    "buyer_id": 43,
+    "type": "voucher_new",
+    "title": "New Voucher Available",
+    "message": "New season, new savings! Use code BUNDLE40 for 40% off bundle purchases.",
+    "is_read": true,
+    "created_at": "2025-02-28 09:00:00"
+  },
+  {
+    "notification_id": 10,
+    "buyer_id": 42,
+    "type": "order_delivered",
+    "title": "Order Delivered",
+    "message": "Your order #VC-0007 has been delivered. We hope you love it!",
+    "is_read": false,
+    "created_at": "2025-02-22 13:25:42"
+  },
+  {
+    "notification_id": 9,
+    "buyer_id": 41,
+    "type": "order_shipped",
+    "title": "Order Shipped",
+    "message": "Your order #VC-0006 has been shipped. Delivery expected in 7-10 business days.",
+    "is_read": true,
+    "created_at": "2025-02-16 11:10:00"
+  },
+  {
+    "notification_id": 8,
+    "buyer_id": 40,
+    "type": "order_confirmed",
+    "title": "Order Confirmed",
+    "message": "Your order #VC-0005 has been confirmed. Our artisans are preparing your items.",
+    "is_read": false,
+    "created_at": "2025-02-10 15:00:00"
+  },
+  {
+    "notification_id": 7,
+    "buyer_id": 39,
+    "type": "voucher_new",
+    "title": "New Voucher Available",
+    "message": "Happy Tet! Use code TET2025 for a special festival discount on all orders.",
+    "is_read": true,
+    "created_at": "2025-02-05 08:30:00"
+  },
+  {
+    "notification_id": 6,
+    "buyer_id": 37,
+    "type": "order_shipped",
+    "title": "Order Shipped",
+    "message": "Your order #VC-0004 has been shipped. Estimated arrival: 7-10 business days.",
+    "is_read": false,
+    "created_at": "2025-01-28 14:00:00"
+  },
+  {
+    "notification_id": 5,
+    "buyer_id": 36,
+    "type": "shipment_update",
+    "title": "Shipment Update",
+    "message": "Your order #VC-0003 has been picked up and is now with the carrier.",
+    "is_read": true,
+    "created_at": "2025-01-22 10:45:30"
+  },
+  {
+    "notification_id": 4,
+    "buyer_id": 35,
+    "type": "voucher_new",
+    "title": "New Voucher Available",
+    "message": "Discover Vietnamese silk! Use code SILK22 for 22% off all silk products.",
+    "is_read": false,
+    "created_at": "2025-01-18 09:00:00"
+  },
+  {
+    "notification_id": 3,
+    "buyer_id": 34,
+    "type": "order_delivered",
+    "title": "Order Delivered",
+    "message": "Your order #VC-0002 has been delivered. Thank you for choosing ReViet!",
+    "is_read": true,
+    "created_at": "2025-01-14 17:30:00"
+  },
+  {
+    "notification_id": 2,
+    "buyer_id": 33,
+    "type": "order_confirmed",
+    "title": "Order Confirmed",
+    "message": "Your order #VC-0030 has been confirmed. Estimated dispatch within 2 business days.",
+    "is_read": false,
+    "created_at": "2025-01-08 11:00:00"
+  },
+  {
+    "notification_id": 1,
+    "buyer_id": 26,
+    "type": "voucher_new",
+    "title": "New Voucher Available",
+    "message": "Welcome to 2025! Use code GREEN10 for 10% off your first order of the year.",
+    "is_read": true,
+    "created_at": "2025-01-01 08:00:00"
+  }
+]

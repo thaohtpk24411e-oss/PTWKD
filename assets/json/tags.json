@@ -1,0 +1,112 @@
+[
+  {
+    "tag_id": 1,
+    "tag_name": "Sustainable Badge",
+    "tag_type": "Sustainability"
+  },
+  {
+    "tag_id": 2,
+    "tag_name": "Eco-Friendly",
+    "tag_type": "Sustainability"
+  },
+  {
+    "tag_id": 3,
+    "tag_name": "Recycled Materials",
+    "tag_type": "Sustainability"
+  },
+  {
+    "tag_id": 4,
+    "tag_name": "Zero Waste",
+    "tag_type": "Sustainability"
+  },
+  {
+    "tag_id": 5,
+    "tag_name": "Biodegradable",
+    "tag_type": "Sustainability"
+  },
+  {
+    "tag_id": 6,
+    "tag_name": "Plastic-Free",
+    "tag_type": "Sustainability"
+  },
+  {
+    "tag_id": 7,
+    "tag_name": "Upcycled",
+    "tag_type": "Sustainability"
+  },
+  {
+    "tag_id": 8,
+    "tag_name": "Carbon Neutral",
+    "tag_type": "Sustainability"
+  },
+  {
+    "tag_id": 9,
+    "tag_name": "Hanoi Origin",
+    "tag_type": "Regional_Origin"
+  },
+  {
+    "tag_id": 10,
+    "tag_name": "Hue Origin",
+    "tag_type": "Regional_Origin"
+  },
+  {
+    "tag_id": 11,
+    "tag_name": "Hoi An Origin",
+    "tag_type": "Regional_Origin"
+  },
+  {
+    "tag_id": 12,
+    "tag_name": "Mekong Delta Origin",
+    "tag_type": "Regional_Origin"
+  },
+  {
+    "tag_id": 13,
+    "tag_name": "Sa Pa Highlands",
+    "tag_type": "Regional_Origin"
+  },
+  {
+    "tag_id": 14,
+    "tag_name": "Bat Trang Village",
+    "tag_type": "Regional_Origin"
+  },
+  {
+    "tag_id": 15,
+    "tag_name": "Central Vietnam",
+    "tag_type": "Regional_Origin"
+  },
+  {
+    "tag_id": 16,
+    "tag_name": "Fair Trade Certified",
+    "tag_type": "Certification"
+  },
+  {
+    "tag_id": 17,
+    "tag_name": "OCOP Certified",
+    "tag_type": "Certification"
+  },
+  {
+    "tag_id": 18,
+    "tag_name": "Organic Certified",
+    "tag_type": "Certification"
+  },
+  {
+    "tag_id": 19,
+    "tag_name": "FSC Wood",
+    "tag_type": "Certification"
+  },
+  {
+    "tag_id": 20,
+    "tag_name": "Handmade Guarantee",
+    "tag_type": "Certification"
+  },
+  {
+    "tag_id": 21,
+    "tag_name": "GOTS Textile",
+    "tag_type": "Certification"
+  },
+  {
+    "tag_id": 22,
+    "tag_name": "Artisan Verified",
+    "tag_type": "Certification"
+  }
+]

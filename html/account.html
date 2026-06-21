@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Account — ReViet</title>
+  <link rel="icon" href="/assets/icons/favicon.ico" sizes="any" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/account.css" />
+</head>
+<body>
+  <div data-include="/components/header/header"></div>
+
+  <main class="account-page">
+    <div class="container account-layout">
+
+      <!-- ── Sidebar ── -->
+      <aside class="acct-sidebar">
+        <nav class="acct-nav">
+          <button class="acct-nav-item active" data-view="profile">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></svg>
+            My Profile
+          </button>
+          <button class="acct-nav-item" data-view="orders">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 7h14l-1.5 9H6.5L5 7z"/><path d="M3 4h2l2 3M9 4h12"/><circle cx="9" cy="20" r="1"/><circle cx="17" cy="20" r="1"/></svg>
+            Order Tracking
+          </button>
+          <button class="acct-nav-item" data-view="voucher">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="7" width="22" height="13" rx="2"/><path d="M1 12h4m14 0h4"/></svg>
+            Voucher Vault
+          </button>
+          <button class="acct-nav-item" data-view="favourites">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            Favourites
+          </button>
+        </nav>
+
+        <div class="acct-sidebar-footer">
+          <button id="sidebar-logout">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            Log Out
+          </button>
+        </div>
+      </aside>
+
+      <!-- ── Main content ── -->
+      <div class="acct-main">
+
+        <!-- Profile card: always visible across all views -->
+        <div class="acct-profile-card" id="acct-profile">
+          <p class="acct-loading">Loading…</p>
+        </div>
+
+        <!-- VIEW: My Profile -->
+        <section class="acct-view active" id="view-profile">
+          <!-- Profile information card — JS toggles read/edit mode -->
+          <div class="acct-card" id="profile-info-card">
+            <p class="acct-loading">Loading…</p>
+          </div>
+          <!-- Recent orders (compact) -->
+          <div class="acct-card">
+            <div class="acct-card-head">
+              <h2>Recent Orders</h2>
+              <button class="acct-link" id="go-to-orders">View All</button>
+            </div>
+            <div id="acct-recent-orders"><p class="acct-empty">Loading…</p></div>
+          </div>
+        </section>
+
+        <!-- VIEW: Order Tracking -->
+        <section class="acct-view" id="view-orders">
+          <!-- Horizontal filter tabs — single source of truth for filtering -->
+          <div class="order-tabs">
+            <button class="order-tab active" data-filter="All">All</button>
+            <button class="order-tab" data-filter="Pending">Pending Payment</button>
+            <button class="order-tab" data-filter="Shipped">Shipping</button>
+            <button class="order-tab" data-filter="Confirmed">
+              To Receive <span class="order-tab-badge" id="tab-badge-confirmed"></span>
+            </button>
+            <button class="order-tab" data-filter="Delivered">Completed</button>
+            <button class="order-tab" data-filter="Cancelled">Cancelled</button>
+          </div>
+          <div id="acct-orders-list"><p class="acct-empty">Loading…</p></div>
+        </section>
+
+        <!-- VIEW: Voucher Vault -->
+        <section class="acct-view" id="view-voucher">
+          <div class="voucher-tabs">
+            <button class="voucher-tab active" data-vfilter="All">All</button>
+            <button class="voucher-tab" data-vfilter="platform">Platform Voucher</button>
+            <button class="voucher-tab" data-vfilter="artist">Artist Voucher</button>
+          </div>
+          <div id="voucher-grid" class="voucher-grid">
+            <p class="acct-empty">Loading…</p>
+          </div>
+        </section>
+
+        <!-- VIEW: Favourites -->
+        <section class="acct-view" id="view-favourites">
+          <div id="fav-grid" class="fav-grid">
+            <p class="acct-empty">Loading…</p>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <div data-include="/components/footer/footer"></div>
+  <script src="/assets/js/include.js"></script>
+  <script src="/assets/js/account.js"></script>
+</body>
+</html>
