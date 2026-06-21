@@ -160,17 +160,14 @@
             '</span>' +
           '</div>' +
         '</div>' +
-        '<button class="acct-profile-btn" id="top-edit-profile-btn">Edit Profile</button>';
+        '<button class="acct-profile-btn" id="top-view-profile-btn">View Profile</button>';
 
-      /* Top-card edit button → switch to profile view + scroll to edit form */
-      var topEditBtn = document.getElementById("top-edit-profile-btn");
-      if (topEditBtn) {
-        topEditBtn.addEventListener("click", function () {
-          document.querySelector('[data-view="profile"]').click();
-          setTimeout(function () {
-            var editBtn = document.getElementById("edit-profile-btn");
-            if (editBtn) editBtn.click();
-          }, 50);
+      /* Top-card button → switch to My Profile tab (read mode) */
+      var topViewBtn = document.getElementById("top-view-profile-btn");
+      if (topViewBtn) {
+        topViewBtn.addEventListener("click", function () {
+          var profileTab = document.querySelector('[data-view="profile"]');
+          if (profileTab) profileTab.click();
         });
       }
     }
