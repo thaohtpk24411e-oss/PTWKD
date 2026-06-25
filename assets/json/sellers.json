@@ -1,6 +1,6 @@
 [
   {
-    "seller_id": 4,
+    "seller_id": 1,
     "shop_name": "Master Nguyen Huy Studio",
     "shop_banner": "https://cdn.craftgreen.vn/banners/nguyenhuy.jpg",
     "shop_bio": "Master Nguyen Huy — handcrafted goods made sustainably in Vietnam.",
@@ -12,7 +12,7 @@
     "payout_cycle": "Biweekly"
   },
   {
-    "seller_id": 5,
+    "seller_id": 2,
     "shop_name": "Van Phuc Collective",
     "shop_banner": "https://cdn.craftgreen.vn/banners/vanphuc.jpg",
     "shop_bio": "Van Phuc Collective — handcrafted goods made sustainably in Vietnam.",
@@ -24,7 +24,7 @@
     "payout_cycle": "Weekly"
   },
   {
-    "seller_id": 6,
+    "seller_id": 3,
     "shop_name": "Le Thi Hoa Atelier",
     "shop_banner": "https://cdn.craftgreen.vn/banners/lethihoa.jpg",
     "shop_bio": "Artisan Le Thi Hoa — handcrafted goods made sustainably in Vietnam.",
@@ -36,7 +36,7 @@
     "payout_cycle": "Weekly"
   },
   {
-    "seller_id": 7,
+    "seller_id": 4,
     "shop_name": "Tran Van Duc Woodcraft",
     "shop_banner": "https://cdn.craftgreen.vn/banners/tranvanduc.jpg",
     "shop_bio": "Craftsman Tran Van Duc — handcrafted goods made sustainably in Vietnam.",
@@ -48,7 +48,7 @@
     "payout_cycle": "Biweekly"
   },
   {
-    "seller_id": 8,
+    "seller_id": 5,
     "shop_name": "Hue Heritage Studio",
     "shop_banner": "https://cdn.craftgreen.vn/banners/hueheritage.jpg",
     "shop_bio": "Hue Heritage Studio — handcrafted goods made sustainably in Vietnam.",
@@ -60,7 +60,7 @@
     "payout_cycle": "Weekly"
   },
   {
-    "seller_id": 9,
+    "seller_id": 6,
     "shop_name": "Thanh Ha Village Forge",
     "shop_banner": "https://cdn.craftgreen.vn/banners/thanhha.jpg",
     "shop_bio": "Thanh Ha Village — handcrafted goods made sustainably in Vietnam.",
@@ -72,7 +72,7 @@
     "payout_cycle": "Weekly"
   },
   {
-    "seller_id": 10,
+    "seller_id": 7,
     "shop_name": "Bat Trang Ceramics House",
     "shop_banner": "https://cdn.craftgreen.vn/banners/battrang.jpg",
     "shop_bio": "Bat Trang Ceramics House — handcrafted goods made sustainably in Vietnam.",
@@ -84,7 +84,7 @@
     "payout_cycle": "Biweekly"
   },
   {
-    "seller_id": 11,
+    "seller_id": 8,
     "shop_name": "Mekong Reed Weavers",
     "shop_banner": "https://cdn.craftgreen.vn/banners/mekongreed.jpg",
     "shop_bio": "Mekong Reed Weavers — handcrafted goods made sustainably in Vietnam.",
@@ -96,7 +96,7 @@
     "payout_cycle": "Weekly"
   },
   {
-    "seller_id": 12,
+    "seller_id": 9,
     "shop_name": "Sa Pa Indigo Co-op",
     "shop_banner": "https://cdn.craftgreen.vn/banners/sapaindigo.jpg",
     "shop_bio": "Sa Pa Indigo Co-op — handcrafted goods made sustainably in Vietnam.",
@@ -108,7 +108,7 @@
     "payout_cycle": "Biweekly"
   },
   {
-    "seller_id": 13,
+    "seller_id": 10,
     "shop_name": "Hoi An Lantern Works",
     "shop_banner": "https://cdn.craftgreen.vn/banners/hoianlantern.jpg",
     "shop_bio": "Hoi An Lantern Works — handcrafted goods made sustainably in Vietnam.",
@@ -120,7 +120,7 @@
     "payout_cycle": "Weekly"
   },
   {
-    "seller_id": 14,
+    "seller_id": 11,
     "shop_name": "Phu Quoc Shell Atelier",
     "shop_banner": "https://cdn.craftgreen.vn/banners/phuquocshell.jpg",
     "shop_bio": "Phu Quoc Shell Atelier — handcrafted goods made sustainably in Vietnam.",
@@ -132,7 +132,7 @@
     "payout_cycle": "Biweekly"
   },
   {
-    "seller_id": 15,
+    "seller_id": 12,
     "shop_name": "Dong Ho Folk Art",
     "shop_banner": "https://cdn.craftgreen.vn/banners/dongho.jpg",
     "shop_bio": "Dong Ho Folk Art — handcrafted goods made sustainably in Vietnam.",
@@ -144,7 +144,7 @@
     "payout_cycle": "Weekly"
   },
   {
-    "seller_id": 16,
+    "seller_id": 13,
     "shop_name": "Bamboo Roots Vietnam",
     "shop_banner": "https://cdn.craftgreen.vn/banners/bambooroots.jpg",
     "shop_bio": "Bamboo Roots Vietnam — handcrafted goods made sustainably in Vietnam.",
@@ -156,7 +156,7 @@
     "payout_cycle": "Weekly"
   },
   {
-    "seller_id": 17,
+    "seller_id": 14,
     "shop_name": "Saigon Reclaim Studio",
     "shop_banner": "https://cdn.craftgreen.vn/banners/saigonreclaim.jpg",
     "shop_bio": "Saigon Reclaim Studio — handcrafted goods made sustainably in Vietnam.",
@@ -168,7 +168,7 @@
     "payout_cycle": "Biweekly"
   },
   {
-    "seller_id": 18,
+    "seller_id": 15,
     "shop_name": "Da Lat Botanical Soap",
     "shop_banner": "https://cdn.craftgreen.vn/banners/dalatsoap.jpg",
     "shop_bio": "Da Lat Botanical Soap — handcrafted goods made sustainably in Vietnam.",
@@ -180,7 +180,7 @@
     "payout_cycle": "Weekly"
   },
   {
-    "seller_id": 19,
+    "seller_id": 16,
     "shop_name": "Hanoi Silk Threads",
     "shop_banner": "https://cdn.craftgreen.vn/banners/hanoisilk.jpg",
     "shop_bio": "Hanoi Silk Threads — handcrafted goods made sustainably in Vietnam.",
@@ -192,7 +192,7 @@
     "payout_cycle": "Biweekly"
   },
   {
-    "seller_id": 20,
+    "seller_id": 17,
     "shop_name": "Quang Nam Rattan Co.",
     "shop_banner": "https://cdn.craftgreen.vn/banners/quangnamrattan.jpg",
     "shop_bio": "Quang Nam Rattan Co. — handcrafted goods made sustainably in Vietnam.",
@@ -204,7 +204,7 @@
     "payout_cycle": "Weekly"
   },
   {
-    "seller_id": 21,
+    "seller_id": 18,
     "shop_name": "Mai Chau Brocade House",
     "shop_banner": "https://cdn.craftgreen.vn/banners/maichaubrocade.jpg",
     "shop_bio": "Mai Chau Brocade House — handcrafted goods made sustainably in Vietnam.",
@@ -216,7 +216,7 @@
     "payout_cycle": "Biweekly"
   },
   {
-    "seller_id": 22,
+    "seller_id": 19,
     "shop_name": "Ben Tre Coconut Craft",
     "shop_banner": "https://cdn.craftgreen.vn/banners/bentrecoconut.jpg",
     "shop_bio": "Ben Tre Coconut Craft — handcrafted goods made sustainably in Vietnam.",
@@ -228,7 +228,7 @@
     "payout_cycle": "Biweekly"
   },
   {
-    "seller_id": 23,
+    "seller_id": 20,
     "shop_name": "Ninh Binh Pottery Barn",
     "shop_banner": "https://cdn.craftgreen.vn/banners/ninhbinh.jpg",
     "shop_bio": "Ninh Binh Pottery Barn — handcrafted goods made sustainably in Vietnam.",
@@ -238,29 +238,5 @@
     "social_links": "{\"instagram\": \"@ninhbinh\", \"facebook\": \"fb.com/ninhbinh\"}",
     "payout_bank_account": "VCB-6928-119116",
     "payout_cycle": "Biweekly"
-  },
-  {
-    "seller_id": 24,
-    "shop_name": "Tay Ho Recycled Glass",
-    "shop_banner": "https://cdn.craftgreen.vn/banners/tayhoglass.jpg",
-    "shop_bio": "Tay Ho Recycled Glass — handcrafted goods made sustainably in Vietnam.",
-    "craft_story": "We rescue discarded materials and give them a second life as functional art.",
-    "id_verification_status": "Suspended",
-    "verification_portfolio_url": "https://cdn.craftgreen.vn/portfolios/tayhoglass.pdf",
-    "social_links": "{\"instagram\": \"@tayhoglass\", \"facebook\": \"fb.com/tayhoglass\"}",
-    "payout_bank_account": "VCB-3953-324597",
-    "payout_cycle": "Biweekly"
-  },
-  {
-    "seller_id": 25,
-    "shop_name": "Can Tho Water Hyacinth",
-    "shop_banner": "https://cdn.craftgreen.vn/banners/canthohyacinth.jpg",
-    "shop_bio": "Can Tho Water Hyacinth — handcrafted goods made sustainably in Vietnam.",
-    "craft_story": "Every piece tells the story of our village and its centuries-old craft tradition.",
-    "id_verification_status": "Approved",
-    "verification_portfolio_url": "https://cdn.craftgreen.vn/portfolios/canthohyacinth.pdf",
-    "social_links": "{\"instagram\": \"@canthohyacinth\", \"facebook\": \"fb.com/canthohyacinth\"}",
-    "payout_bank_account": "VCB-4145-337547",
-    "payout_cycle": "Weekly"
   }
 ]

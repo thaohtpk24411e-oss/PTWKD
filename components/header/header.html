@@ -1,8 +1,13 @@
 <!-- Shared header component (markup only). Styles: header.css · Behavior: header.js -->
 <header class="site-header">
   <div class="container header-inner">
-    <a class="logo" href="/html/home_page.html">ReViet</a>
 
+    <!-- Logo -->
+    <a class="logo" href="/html/home_page.html">
+      <img src="/assets/images/RV-logo-text.svg" alt="ReViet" height="36" />
+    </a>
+
+    <!-- Main nav -->
     <nav class="main-nav" id="main-nav">
       <a href="/html/product_page.html">Shop</a>
       <a href="#">Artisans</a>
@@ -11,15 +16,25 @@
     </nav>
 
     <div class="header-actions">
-      <!-- Search -->
+
+      <!-- Search inline -->
+      <div class="header-search-inline">
+        <div class="search-input-wrap">
+          <img class="search-icon-inline" src="/assets/images/search.svg" alt="" aria-hidden="true" height="16" />
+          <input type="search" id="search-input" placeholder="Search product..." aria-label="Search" autocomplete="off" />
+          <div class="search-results" id="search-results" hidden></div>
+        </div>
+      </div>
+
+      <!-- Search toggle (mobile only) -->
       <button class="icon-btn" id="search-toggle" aria-label="Search">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+        <img src="/assets/images/search.svg" alt="" aria-hidden="true" height="20" />
       </button>
 
       <!-- Notification bell -->
       <div class="hdr-drop-wrap" id="notif-wrap">
         <button class="icon-btn" id="notif-toggle" aria-label="Notifications">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <img src="/assets/images/bell.svg" alt="" aria-hidden="true" height="20" />
           <span class="hdr-badge" id="notif-badge" hidden></span>
         </button>
         <div class="hdr-dropdown notif-dropdown" id="notif-dropdown" hidden>
@@ -36,10 +51,10 @@
         </div>
       </div>
 
-      <!-- Cart with preview dropdown -->
+      <!-- Cart -->
       <div class="hdr-drop-wrap" id="cart-wrap">
         <button class="icon-btn" id="cart-toggle" aria-label="Cart">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+          <img src="/assets/images/shopping-cart.svg" alt="" aria-hidden="true" height="20" />
           <span class="hdr-badge" id="cart-badge" hidden></span>
         </button>
         <div class="hdr-dropdown cart-dropdown" id="cart-dropdown" hidden>
@@ -56,23 +71,27 @@
       <!-- Account -->
       <div class="account-wrap" id="account-wrap">
         <a class="icon-btn" href="/html/login.html" id="account-link" aria-label="Account">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></svg>
+          <img src="/assets/images/user.svg" alt="" aria-hidden="true" height="20" />
         </a>
       </div>
 
-      <!-- Hamburger -->
+      <!-- Hamburger (mobile only) -->
       <button class="icon-btn nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6">
+          <line x1="4" y1="7" x2="20" y2="7"/>
+          <line x1="4" y1="12" x2="20" y2="12"/>
+          <line x1="4" y1="17" x2="20" y2="17"/>
+        </svg>
       </button>
     </div>
   </div>
 
-  <!-- Search bar with results dropdown -->
+  <!-- Mobile search bar (toggle trên mobile) -->
   <div class="header-search" id="header-search" hidden>
     <div class="container">
       <div class="search-input-wrap">
-        <input type="search" id="search-input" placeholder="Search for artisan goods…" aria-label="Search" autocomplete="off" />
-        <div class="search-results" id="search-results" hidden></div>
+        <img class="search-icon-inline" src="/assets/images/search.svg" alt="" aria-hidden="true" height="16" />
+        <input type="search" id="search-input-mobile" placeholder="Search for artisan goods…" aria-label="Search" autocomplete="off" />
       </div>
     </div>
   </div>

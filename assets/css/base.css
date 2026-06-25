@@ -126,9 +126,9 @@ img { max-width: 100%; display: block; }
 .collection-label { position: relative; z-index: 1; }
 .collection-label h3 { color: #fff; font-size: 1.7rem; margin-bottom: .4rem; }
 .collection-label .link-underline { color: #f1efe8; opacity: .92; }
-.m-home      { background-image: url("../images/collection-home.jpg"),      linear-gradient(160deg, #c2a988, #9c7f5e); }
-.m-fashion   { background-image: url("../images/collection-fashion.jpg"),   linear-gradient(160deg, #c8bfa3, #b1a584); }
-.m-lifestyle { background-image: url("../images/collection-lifestyle.jpg"), linear-gradient(160deg, #95a07f, #6f7a5d); }
+.m-home      { background-image: url("../images/Products/42_2.jpg"),      linear-gradient(160deg, #c2a988, #9c7f5e); }
+.m-fashion   { background-image: url("../images/Products/47_1.jpg"),   linear-gradient(160deg, #c8bfa3, #b1a584); }
+.m-lifestyle { background-image: url("../images/Products/45_3.jpg"), linear-gradient(160deg, #95a07f, #6f7a5d); }
 
 /* MAKER'S STORY ---------------------------------------------- */
 .maker { padding: 90px 0; background: var(--bg-soft); }
@@ -175,10 +175,10 @@ img { max-width: 100%; display: block; }
   font-size: .62rem; letter-spacing: .14em; text-transform: uppercase;
   background: rgba(247, 245, 239, .92); color: var(--ink); padding: .35rem .6rem;
 }
-.p-1 { background-image: url("../images/product-tea-set.jpg"),     linear-gradient(160deg, #cdbfa9, #ad9a7d); }
-.p-2 { background-image: url("../images/product-scarf.jpg"),       linear-gradient(160deg, #a9b0bb, #828b9a); }
-.p-3 { background-image: url("../images/product-lantern.jpg"),     linear-gradient(160deg, #b6c2ac, #8fa183); }
-.p-4 { background-image: url("../images/product-dining-set.jpg"),  linear-gradient(160deg, #c7c0b4, #a59c8c); }
+.p-1 { background-image: url("../images/Products/1_1.jpg"),     linear-gradient(160deg, #cdbfa9, #ad9a7d); }
+.p-2 { background-image: url("../images/Products/2_1.jpg"),       linear-gradient(160deg, #a9b0bb, #828b9a); }
+.p-3 { background-image: url("../images/Products/3_1.jpg"),     linear-gradient(160deg, #b6c2ac, #8fa183); }
+.p-4 { background-image: url("../images/Products/4_1.jpg"),  linear-gradient(160deg, #c7c0b4, #a59c8c); }
 
 /* Responsive (section layout; header/footer have their own) ---- */
 @media (max-width: 960px) {
