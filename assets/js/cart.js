@@ -7,7 +7,10 @@
   function getCart() {
     try { return JSON.parse(localStorage.getItem("rv_cart") || "[]"); } catch(e) { return []; }
   }
-  function saveCart(items) { localStorage.setItem("rv_cart", JSON.stringify(items)); }
+  function saveCart(items) {
+    localStorage.setItem("rv_cart", JSON.stringify(items));
+    window.dispatchEvent(new Event("rv:cart-updated"));
+  }
 
   var TAX_RATE = 0.06;
   var SHIP_EXPRESS = 25;
@@ -188,6 +191,7 @@
         // In a real app: submit to backend. Here: clear cart and show confirmation.
         setTimeout(function() {
           localStorage.removeItem("rv_cart");
+          window.dispatchEvent(new Event("rv:cart-updated"));
           window.location.href = "account.html";
         }, 1500);
       });

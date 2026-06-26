@@ -634,6 +634,7 @@
           }
           if (!found) cart.push({ product_id: pid, quantity: 1, added_at: Date.now() });
           localStorage.setItem("rv_cart", JSON.stringify(cart));
+          window.dispatchEvent(new Event("rv:cart-updated"));
           btn.textContent = "Added ✓";
           setTimeout(function () { btn.textContent = "Add to Cart"; }, 1500);
         });

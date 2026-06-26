@@ -38,21 +38,53 @@
     accountLink.setAttribute("aria-label", "My Account");
   }
 
-  /* ── Cart badge from localStorage ── */
-  function refreshCartBadge() {
-    var cart = [];
-    try { cart = JSON.parse(localStorage.getItem("rv_cart") || "[]"); } catch (e) {}
+  /* ── Header badge helpers ── */
+  function getCartItems() {
+    try { return JSON.parse(localStorage.getItem("rv_cart") || "[]"); } catch (e) { return []; }
+  }
+
+  function getCartCount() {
+    var cart = getCartItems();
+    var count = 0;
+    for (var i = 0; i < cart.length; i++) {
+      count += Number(cart[i].quantity || 0);
+    }
+    return count;
+  }
+
+  function updateCartBadge() {
     var badge = document.getElementById("cart-badge");
     if (!badge) return;
-    if (cart.length > 0) {
-      badge.textContent = cart.length;
+    var count = getCartCount();
+    if (count > 0) {
+      badge.textContent = count > 99 ? "99+" : String(count);
       badge.classList.add("count");
       badge.hidden = false;
     } else {
+      badge.textContent = "";
+      badge.classList.remove("count");
       badge.hidden = true;
     }
   }
-  refreshCartBadge();
+
+  function refreshCartBadge() {
+    updateCartBadge();
+  }
+
+  function updateHeaderBadges() {
+    updateCartBadge();
+    updateNotificationBadge();
+  }
+
+  window.addEventListener("rv:cart-updated", updateHeaderBadges);
+  window.addEventListener("rv:notifications-updated", updateHeaderBadges);
+  window.addEventListener("storage", function (event) {
+    if (event.key === "rv_cart" || event.key === "rv_session") {
+      updateHeaderBadges();
+    }
+  });
+
+  setTimeout(updateHeaderBadges, 0);
 
   /* ── Dropdown toggle helper ── */
   function toggleDropdown(dropId) {
@@ -143,17 +175,23 @@
     list.innerHTML = html;
   }
 
-  function updateNotifBadge() {
+  function updateNotificationBadge() {
     var unread = notifAll.filter(function (n) { return !n.is_read; }).length;
     var badge = document.getElementById("notif-badge");
     if (!badge) return;
     if (unread > 0) {
-      badge.textContent = unread;
+      badge.textContent = unread > 99 ? "99+" : String(unread);
       badge.classList.add("count");
       badge.hidden = false;
     } else {
+      badge.textContent = "";
+      badge.classList.remove("count");
       badge.hidden = true;
     }
+  }
+
+  function updateNotifBadge() {
+    updateNotificationBadge();
   }
 
   function updateSeeMore() {
@@ -162,7 +200,10 @@
   }
 
   function loadNotifications() {
-    if (notifLoaded) return;
+    if (notifLoaded) {
+      updateNotificationBadge();
+      return;
+    }
     notifLoaded = true;
     var list = document.getElementById("notif-list");
     if (list) list.innerHTML = '<p style="padding:16px 18px;color:var(--muted);font-size:.82rem">Loading…</p>';
@@ -173,6 +214,7 @@
         '<a href="login.html" style="color:var(--ink)">Log in</a> to see notifications.</p>';
       var sm = document.getElementById("notif-see-more");
       if (sm) sm.style.display = "none";
+      updateNotificationBadge();
       return;
     }
 
@@ -184,13 +226,15 @@
         var first = notifAll.slice(0, NOTIF_PAGE_SIZE);
         notifShown = first.length;
         renderNotifBatch(first, false);
-        updateNotifBadge();
+        updateHeaderBadges();
+        window.dispatchEvent(new Event("rv:notifications-updated"));
         updateSeeMore();
       })
       .catch(function () {
         notifLoaded = false;
         var l = document.getElementById("notif-list");
         if (l) l.innerHTML = '<p style="padding:16px 18px;color:var(--muted);font-size:.82rem">Could not load notifications.</p>';
+        updateNotificationBadge();
       });
   }
 
@@ -217,11 +261,14 @@
   if (markAllBtn) {
     markAllBtn.addEventListener("click", function () {
       for (var i = 0; i < notifAll.length; i++) notifAll[i].is_read = true;
-      updateNotifBadge();
+      updateHeaderBadges();
+      window.dispatchEvent(new Event("rv:notifications-updated"));
       var shown = notifAll.slice(0, notifShown);
       renderNotifBatch(shown, false);
     });
   }
+
+  loadNotifications();
 
   /* ═══════════════════════════════════════════════
      CART PREVIEW

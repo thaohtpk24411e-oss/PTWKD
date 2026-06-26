@@ -159,6 +159,7 @@
       }
       if (!found) cart.push({ product_id: p.product_id, quantity: 1, added_at: Date.now() });
       localStorage.setItem("rv_cart", JSON.stringify(cart));
+      window.dispatchEvent(new Event("rv:cart-updated"));
       add.textContent = "Added to Cart ✓";
       add.disabled = true;
       setTimeout(function () { add.textContent = "Add to Cart"; add.disabled = false; }, 1800);
