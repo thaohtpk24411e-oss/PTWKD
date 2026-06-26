@@ -36,6 +36,40 @@
   if (accountLink && session && session.user_id) {
     accountLink.setAttribute("href", "account.html");
     accountLink.setAttribute("aria-label", "My Account");
+
+    /* Build initials avatar */
+    function setAvatarInitials(fullName) {
+      var parts = (fullName || "").trim().split(/\s+/);
+      var initials = parts.length >= 2
+        ? (parts[0][0] + parts[parts.length - 1][0]).toUpperCase()
+        : (parts[0] || "?")[0].toUpperCase();
+      var img = accountLink.querySelector("img");
+      if (img) img.style.display = "none";
+      var existing = accountLink.querySelector(".hdr-avatar");
+      if (existing) { existing.textContent = initials; return; }
+      var av = document.createElement("span");
+      av.className = "hdr-avatar";
+      av.textContent = initials;
+      accountLink.appendChild(av);
+    }
+
+    /* Check localStorage override first (set by account.js edit profile) */
+    var overrideName = localStorage.getItem("rv_profile_full_name");
+    if (overrideName) {
+      setAvatarInitials(overrideName);
+    } else {
+      fetch("../assets/json/buyers.json")
+        .then(function(r) { return r.json(); })
+        .then(function(buyers) {
+          for (var i = 0; i < buyers.length; i++) {
+            if (buyers[i].buyer_id === session.user_id) {
+              setAvatarInitials(buyers[i].full_name);
+              break;
+            }
+          }
+        })
+        .catch(function() {});
+    }
   }
 
   /* ── Header badge helpers ── */

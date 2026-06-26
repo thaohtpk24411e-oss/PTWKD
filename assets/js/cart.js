@@ -15,11 +15,12 @@
   var TAX_RATE = 0.06;
   var SHIP_EXPRESS = 25;
   var selectedShipping = "standard"; // or "express"
+  var selectedPayment = "card"; // or "cash"
 
   // Load products + photos, then render
-  Promise.all([getJSON("products.json"), getJSON("product_photos.json"), getJSON("buyers.json"), getJSON("sellers.json")])
+  Promise.all([getJSON("products.json"), getJSON("product_photos.json"), getJSON("buyers.json"), getJSON("sellers.json"), getJSON("promotions.json")])
   .then(function(res) {
-    var products = res[0], photos = res[1], buyers = res[2], sellers = res[3];
+    var products = res[0], photos = res[1], buyers = res[2], sellers = res[3], promotions = res[4];
 
     // Build maps
     var productMap = {};
@@ -33,6 +34,34 @@
 
     var sellerMap = {};
     for (var s = 0; s < sellers.length; s++) sellerMap[sellers[s].seller_id] = sellers[s];
+
+    /* Promotions: keyed by uppercased promo_code */
+    var promoMap = {};
+    for (var pr = 0; pr < promotions.length; pr++) {
+      promoMap[promotions[pr].promo_code.toUpperCase()] = promotions[pr];
+    }
+
+    /* Voucher state */
+    var VND_TO_USD = 1 / 25000;
+    var appliedPlatformVoucher = null;
+    var appliedShopVouchers    = {}; // seller_id → voucher object
+
+    function calcDiscount(voucher, baseAmount) {
+      if (!voucher) return 0;
+      var disc = voucher.discount_type === "Percentage"
+        ? baseAmount * (voucher.discount_value / 100)
+        : voucher.discount_value * VND_TO_USD;
+      return Math.min(disc, baseAmount); // never exceed base
+    }
+
+    function isExpired(voucher) {
+      return new Date() > new Date(voucher.end_date.replace(" ", "T"));
+    }
+
+    function formatDiscount(voucher) {
+      if (voucher.discount_type === "Percentage") return voucher.discount_value + "% off";
+      return "$" + (voucher.discount_value * VND_TO_USD).toFixed(2) + " off";
+    }
 
     // Pre-fill delivery form from session + buyers
     var session = null;
@@ -152,13 +181,56 @@
 
     function updateSummary(subtotal) {
       var shipping = selectedShipping === "express" ? SHIP_EXPRESS : 0;
-      var tax = subtotal * TAX_RATE;
-      var total = subtotal + shipping + tax;
+
+      /* ── Calculate discount rows ── */
+      var cart = getCart();
+      var totalDiscount = 0;
+      var discountRowsHTML = "";
+
+      /* Shop vouchers: apply per-seller subtotal */
+      Object.keys(appliedShopVouchers).forEach(function(sid) {
+        var v = appliedShopVouchers[sid];
+        var sellerSubtotal = 0;
+        for (var i = 0; i < cart.length; i++) {
+          var p = productMap[cart[i].product_id];
+          if (p && String(p.seller_id) === String(sid)) sellerSubtotal += p.price * cart[i].quantity;
+        }
+        var disc = calcDiscount(v, sellerSubtotal);
+        if (disc > 0) {
+          totalDiscount += disc;
+          var shopName = sellerMap[sid] ? sellerMap[sid].shop_name : "Shop";
+          discountRowsHTML += '<div class="summary-discount-row">' +
+            '<span class="discount-label">' + shopName + ' <span class="discount-code-chip">' + v.promo_code + '</span></span>' +
+            '<span class="discount-amount">−$' + disc.toFixed(2) + '</span>' +
+          '</div>';
+        }
+      });
+
+      /* Platform voucher: applies to subtotal after shop discounts */
+      if (appliedPlatformVoucher) {
+        var platformBase = subtotal - totalDiscount;
+        var platformDisc = calcDiscount(appliedPlatformVoucher, platformBase);
+        if (platformDisc > 0) {
+          totalDiscount += platformDisc;
+          discountRowsHTML += '<div class="summary-discount-row">' +
+            '<span class="discount-label">Platform <span class="discount-code-chip">' + appliedPlatformVoucher.promo_code + '</span></span>' +
+            '<span class="discount-amount">−$' + platformDisc.toFixed(2) + '</span>' +
+          '</div>';
+        }
+      }
+
+      var discEl = document.getElementById("summary-discounts");
+      if (discEl) discEl.innerHTML = discountRowsHTML;
+
+      var discountedSubtotal = Math.max(0, subtotal - totalDiscount);
+      var tax   = discountedSubtotal * TAX_RATE;
+      var total = discountedSubtotal + shipping + tax;
+
       var set = function(id, val) { var el = document.getElementById(id); if (el) el.textContent = val; };
       set("summary-subtotal", "$" + subtotal.toFixed(2));
       set("summary-shipping", shipping === 0 ? "Free" : "$" + shipping.toFixed(2));
-      set("summary-tax", "$" + tax.toFixed(2));
-      set("summary-total", "$" + total.toFixed(2));
+      set("summary-tax",      "$" + tax.toFixed(2));
+      set("summary-total",    "$" + total.toFixed(2));
     }
 
     renderCart();
@@ -180,21 +252,277 @@
       });
     });
 
+    /* ── Voucher helpers ── */
+    function currentSubtotal() {
+      var cart = getCart(), sub = 0;
+      for (var i = 0; i < cart.length; i++) {
+        var p = productMap[cart[i].product_id];
+        if (p) sub += p.price * cart[i].quantity;
+      }
+      return sub;
+    }
+
+    function voucherSearchValue() {
+      var el = document.getElementById("voucher-search");
+      return el ? el.value : "";
+    }
+
+    /* Build HTML for one group section (platform or one shop) */
+    function renderVoucherGroupHTML(title, type, sellerId, vouchers) {
+      var iconPlatform = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="22" height="14" rx="2"/><path d="M1 9h22"/></svg>';
+      var iconShop     = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>';
+      var icon = type === "platform" ? iconPlatform : iconShop;
+      var selectedV = type === "platform" ? appliedPlatformVoucher : appliedShopVouchers[sellerId];
+
+      var html = '<div class="voucher-group">' +
+        '<div class="voucher-group-header">' +
+          '<span class="vgroup-icon ' + type + '">' + icon + '</span>' +
+          '<span class="vgroup-title">' + title + '</span>' +
+        '</div>';
+
+      if (!vouchers.length) {
+        html += '<p class="voucher-none">No vouchers available.</p>';
+      } else {
+        html += '<div class="voucher-cards">';
+        for (var vi = 0; vi < vouchers.length; vi++) {
+          var v = vouchers[vi];
+          var expired = isExpired(v);
+          var isSelected = !!(selectedV && selectedV.promo_code === v.promo_code);
+
+          var discLabel = v.discount_type === "Percentage"
+            ? v.discount_value + "% OFF"
+            : "SAVE " + formatDiscount(v);
+
+          var scopeDesc = type === "platform" ? "Applies to entire order" : "This shop only";
+
+          var expStr = "";
+          if (v.end_date) {
+            var dp = v.end_date.split(" ")[0].split("-");
+            var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+            expStr = dp[2] + " " + months[parseInt(dp[1], 10) - 1] + " " + dp[0];
+          }
+
+          var cardClass = "voucher-card" + (isSelected ? " selected" : "") + (expired ? " expired" : "");
+          var dataStr = 'data-code="' + v.promo_code + '" data-type="' + type + '" data-seller="' + (sellerId !== null ? sellerId : "") + '"';
+
+          html += '<div class="' + cardClass + '" ' + dataStr + (expired ? '' : ' tabindex="0"') + '>' +
+            '<div class="vc-body">' +
+              '<span class="vc-discount">' + discLabel + '</span>' +
+              '<span class="vc-code">' + v.promo_code + '</span>' +
+              '<span class="vc-desc">' + scopeDesc + (expStr ? ' · Exp ' + expStr : '') + '</span>' +
+            '</div>' +
+            '<div class="vc-check-col">' +
+              (expired
+                ? '<span class="vc-expired-badge">Expired</span>'
+                : '<span class="vc-radio' + (isSelected ? ' checked' : '') + '">' +
+                    (isSelected ? '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 12 9 17 20 7"/></svg>' : '') +
+                  '</span>') +
+            '</div>' +
+          '</div>';
+        }
+        html += '</div>';
+      }
+
+      html += '</div>';
+      return html;
+    }
+
+    /* Main render: builds platform group + one group per cart seller */
+    function renderVouchers() {
+      var voucherList = document.getElementById("voucher-list");
+      if (!voucherList) return;
+
+      var filter = (voucherSearchValue() || "").trim().toUpperCase();
+
+      /* Collect all promos as array */
+      var allPromos = [];
+      var promoKeys = Object.keys(promoMap);
+      for (var pk = 0; pk < promoKeys.length; pk++) { allPromos.push(promoMap[promoKeys[pk]]); }
+
+      /* Sellers in cart */
+      var cart = getCart();
+      var cartSellerIds = [], seenSid = {};
+      for (var ci = 0; ci < cart.length; ci++) {
+        var cp = productMap[cart[ci].product_id];
+        if (cp && !seenSid[cp.seller_id]) { seenSid[cp.seller_id] = true; cartSellerIds.push(cp.seller_id); }
+      }
+
+      function matchFilter(v) {
+        return !filter || v.promo_code.toUpperCase().indexOf(filter) !== -1;
+      }
+
+      var html = "";
+
+      /* Platform group */
+      var platformList = [];
+      for (var pi = 0; pi < allPromos.length; pi++) {
+        if (allPromos[pi].seller_id === null && matchFilter(allPromos[pi])) platformList.push(allPromos[pi]);
+      }
+      html += renderVoucherGroupHTML("Platform Vouchers", "platform", null, platformList);
+
+      /* Shop groups */
+      for (var si = 0; si < cartSellerIds.length; si++) {
+        var sid = cartSellerIds[si];
+        var shopList = [];
+        for (var svi = 0; svi < allPromos.length; svi++) {
+          if (allPromos[svi].seller_id === sid && matchFilter(allPromos[svi])) shopList.push(allPromos[svi]);
+        }
+        var shopName = sellerMap[sid] ? sellerMap[sid].shop_name : "Shop #" + sid;
+        html += renderVoucherGroupHTML(shopName, "shop", sid, shopList);
+      }
+
+      if (!cartSellerIds.length && !platformList.length) {
+        html = '<p class="voucher-none" style="padding:0.5rem 0;">Add items to cart to see available vouchers.</p>';
+      }
+
+      voucherList.innerHTML = html;
+    }
+
+    /* Toggle selection via event delegation */
+    var voucherListEl = document.getElementById("voucher-list");
+    if (voucherListEl) {
+      voucherListEl.addEventListener("click", function(e) {
+        var card = e.target.closest && e.target.closest(".voucher-card:not(.expired)");
+        if (!card) return;
+        var code = card.getAttribute("data-code");
+        var type = card.getAttribute("data-type");
+        var sellerStr = card.getAttribute("data-seller");
+        var sid = sellerStr !== "" ? parseInt(sellerStr, 10) : null;
+
+        if (type === "platform") {
+          appliedPlatformVoucher = (appliedPlatformVoucher && appliedPlatformVoucher.promo_code === code) ? null : promoMap[code];
+        } else {
+          if (appliedShopVouchers[sid] && appliedShopVouchers[sid].promo_code === code) {
+            delete appliedShopVouchers[sid];
+          } else {
+            appliedShopVouchers[sid] = promoMap[code];
+          }
+        }
+        renderVouchers();
+        updateSummary(currentSubtotal());
+      });
+    }
+
+    /* Search filter */
+    var voucherSearchEl = document.getElementById("voucher-search");
+    if (voucherSearchEl) {
+      voucherSearchEl.addEventListener("input", function() { renderVouchers(); });
+    }
+
+    /* Re-render vouchers whenever cart changes */
+    var _origRenderCart = renderCart;
+    renderCart = function() {
+      _origRenderCart();
+      renderVouchers();
+    };
+    renderVouchers();
+
+    // Payment method toggle
+    document.querySelectorAll(".payment-opt-card").forEach(function(card) {
+      card.addEventListener("click", function() {
+        document.querySelectorAll(".payment-opt-card").forEach(function(c) { c.classList.remove("selected"); });
+        card.classList.add("selected");
+        var radio = card.querySelector("input[type=radio]");
+        if (radio) { radio.checked = true; selectedPayment = radio.value; }
+        // Toggle secure note visibility: only show for card
+        var note = document.getElementById("payment-secure-note");
+        if (note) note.style.display = selectedPayment === "card" ? "" : "none";
+      });
+    });
+
     // Checkout button
     var checkoutBtn = document.getElementById("checkout-btn");
     if (checkoutBtn) {
       checkoutBtn.addEventListener("click", function() {
         var cart = getCart();
         if (!cart.length) { alert("Your cart is empty."); return; }
-        checkoutBtn.textContent = "Order Placed! ✓";
-        checkoutBtn.disabled = true;
-        // In a real app: submit to backend. Here: clear cart and show confirmation.
-        setTimeout(function() {
-          localStorage.removeItem("rv_cart");
-          window.dispatchEvent(new Event("rv:cart-updated"));
-          window.location.href = "account.html";
-        }, 1500);
+
+        // Build order items + calculate totals
+        var orderItems = [];
+        var subtotal = 0;
+        for (var i = 0; i < cart.length; i++) {
+          var p = productMap[cart[i].product_id];
+          if (p) {
+            subtotal += p.price * cart[i].quantity;
+            orderItems.push({ product_id: cart[i].product_id, quantity: cart[i].quantity, unit_price: p.price });
+          }
+        }
+        var shipping = selectedShipping === "express" ? SHIP_EXPRESS : 0;
+        var tax = subtotal * TAX_RATE;
+        var total = subtotal + shipping + tax;
+
+        // Generate order ID and timestamp
+        var counter = parseInt(localStorage.getItem("rv_order_counter") || "0", 10) + 1;
+        localStorage.setItem("rv_order_counter", String(counter));
+        var orderId = 9000 + counter;
+        var now = new Date();
+        var pad = function(n) { return String(n).padStart(2, "0"); };
+        var nowStr = now.getFullYear() + "-" + pad(now.getMonth() + 1) + "-" + pad(now.getDate()) +
+          " " + pad(now.getHours()) + ":" + pad(now.getMinutes()) + ":" + pad(now.getSeconds());
+
+        // Save new order to localStorage
+        var newOrder = {
+          order_id: orderId,
+          buyer_id: session ? session.user_id : 0,
+          order_status: selectedPayment === "cash" ? "Confirmed" : "Pending",
+          total_amount: total,
+          payment_method: selectedPayment,
+          shipping_method: selectedShipping,
+          created_at: nowStr,
+          items: orderItems
+        };
+        var existingOrders = [];
+        try { existingOrders = JSON.parse(localStorage.getItem("rv_new_orders") || "[]"); } catch(e) {}
+        existingOrders.unshift(newOrder);
+        localStorage.setItem("rv_new_orders", JSON.stringify(existingOrders));
+
+        // Clear cart
+        localStorage.removeItem("rv_cart");
+        window.dispatchEvent(new Event("rv:cart-updated"));
+
+        // Show confirmation modal
+        showConfirmModal(orderId, orderItems, total);
       });
+    }
+
+    function showConfirmModal(orderId, items, total) {
+      var overlay = document.getElementById("order-confirm-overlay");
+      if (!overlay) { window.location.href = "account.html?view=tracking"; return; }
+
+      var numEl = document.getElementById("confirm-order-num");
+      if (numEl) numEl.textContent = "Order #VC-" + String(orderId).padStart(4, "0");
+
+      var summaryEl = document.getElementById("confirm-summary");
+      if (summaryEl) {
+        var html = "";
+        var shown = 0;
+        for (var i = 0; i < items.length; i++) {
+          var prod = productMap[items[i].product_id];
+          if (prod && shown < 2) {
+            html += '<div class="confirm-item-row">' +
+              '<span class="confirm-item-name">' + prod.title + ' &times; ' + items[i].quantity + '</span>' +
+              '<span class="confirm-item-price">$' + (items[i].unit_price * items[i].quantity).toFixed(2) + '</span>' +
+              '</div>';
+            shown++;
+          }
+        }
+        if (items.length > 2) {
+          html += '<p class="confirm-more">+ ' + (items.length - 2) + ' more item(s)</p>';
+        }
+        html += '<div class="confirm-total-row"><span>Total Paid</span><strong>$' + total.toFixed(2) + '</strong></div>';
+        summaryEl.innerHTML = html;
+      }
+
+      overlay.removeAttribute("aria-hidden");
+      overlay.classList.add("visible");
+      document.body.style.overflow = "hidden";
+
+      var trackBtn = document.getElementById("confirm-track-btn");
+      if (trackBtn) {
+        trackBtn.addEventListener("click", function() {
+          window.location.href = "account.html?view=tracking";
+        });
+      }
     }
 
   }).catch(function(err) {

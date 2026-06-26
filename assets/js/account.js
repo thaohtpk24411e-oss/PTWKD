@@ -23,7 +23,7 @@
   var STATUS_LABEL = {
     Pending:   "Pending Payment",
     Confirmed: "Processing",
-    Shipped:   "In Transit",
+    Shipped:   "Shipping",
     Delivered: "Delivered",
     Cancelled: "Cancelled"
   };
@@ -42,11 +42,11 @@
   };
 
   var FALLBACK_DETAIL = {
-    Pending:   "Awaiting payment confirmation",
-    Confirmed: "Order confirmed, preparing for shipment",
-    Shipped:   "Package is on its way",
-    Delivered: "Package delivered successfully",
-    Cancelled: "Order has been cancelled"
+    Pending:   "Awaiting payment confirmation from your bank.",
+    Confirmed: "Order confirmed by seller — being prepared for dispatch.",
+    Shipped:   "Package has been picked up and is on its way.",
+    Delivered: "Package delivered successfully.",
+    Cancelled: "This order has been cancelled."
   };
 
   /* ── Helpers ── */
@@ -184,13 +184,27 @@
       return (b.created_at || "").localeCompare(a.created_at || "");
     });
 
-    /* ── Badge count ── */
+    /* ── Inject new orders placed from cart (stored in localStorage) ── */
+    try {
+      var storedNewOrders = JSON.parse(localStorage.getItem("rv_new_orders") || "[]");
+      for (var sni = 0; sni < storedNewOrders.length; sni++) {
+        var sno = storedNewOrders[sni];
+        if (sno.buyer_id !== session.user_id) continue;
+        myOrders.unshift(sno);
+        if (sno.items && sno.items.length) {
+          firstItemMap[sno.order_id] = { order_id: sno.order_id, product_id: sno.items[0].product_id };
+          itemCountMap[sno.order_id] = sno.items.length;
+        }
+      }
+    } catch (e) {}
+
+    /* ── Badge count: orders being processed by seller ── */
     var confirmedCount = 0;
     for (var oc = 0; oc < myOrders.length; oc++) {
       if (myOrders[oc].order_status === "Confirmed") confirmedCount++;
     }
     var tabBadge = document.getElementById("tab-badge-confirmed");
-    if (tabBadge && confirmedCount > 0) tabBadge.textContent = confirmedCount;
+    if (tabBadge) tabBadge.textContent = confirmedCount > 0 ? confirmedCount : "";
 
     /* ── Build one order card HTML ── */
     function orderCardHTML(ord) {
@@ -235,7 +249,7 @@
         '</div>' +
         '<div class="order-card-footer">' +
           '<button class="order-btn-outline">Contact Seller</button>' +
-          '<button class="order-btn-solid">Track Details</button>' +
+          '<button class="order-btn-solid" data-order-id="' + ord.order_id + '">Track Details</button>' +
         '</div>' +
       '</div>';
     }
@@ -293,6 +307,172 @@
 
     renderOrders();
     renderRecent();
+
+    /* ── Track Details Modal ── */
+    /* Card: Pending → Confirmed → Shipped → Delivered
+       Cash: Confirmed → Shipped → Delivered (no Pending step) */
+    var TRACK_STEPS_CARD = ["Pending", "Confirmed", "Shipped", "Delivered"];
+    var TRACK_STEPS_CASH = ["Confirmed", "Shipped", "Delivered"];
+
+    function getOrderItems(ord) {
+      /* For localStorage orders, items array is embedded */
+      if (ord.items && ord.items.length) return ord.items;
+      /* For JSON orders, filter from orderItems array */
+      var result = [];
+      for (var i = 0; i < orderItems.length; i++) {
+        if (orderItems[i].order_id === ord.order_id) result.push(orderItems[i]);
+      }
+      return result;
+    }
+
+    function showTrackModal(orderId) {
+      var ord = null;
+      for (var i = 0; i < myOrders.length; i++) {
+        if (myOrders[i].order_id === orderId) { ord = myOrders[i]; break; }
+      }
+      if (!ord) return;
+
+      var ship    = shipmentMap[ord.order_id];
+      var items   = getOrderItems(ord);
+      var status  = ord.order_status;
+      var icon    = STATUS_ICON[status] || "";
+      var label   = STATUS_LABEL[status] || status;
+      var orderNum = "Order #VC-" + String(ord.order_id).padStart(4, "0");
+      var isCash  = ord.payment_method === "cash";
+
+      /* ── Status timeline ── */
+      var stepHTML = "";
+      var STEPS = isCash ? TRACK_STEPS_CASH : TRACK_STEPS_CARD;
+      var currentIdx = STEPS.indexOf(status);
+      if (status === "Cancelled") {
+        stepHTML = '<div class="track-cancelled-note">' + (STATUS_ICON.Cancelled || "") + ' This order has been cancelled.</div>';
+      } else {
+        /* If status not in this step set (e.g. Delivered for cash), pin to last */
+        if (currentIdx === -1) currentIdx = STEPS.length - 1;
+        for (var s = 0; s < STEPS.length; s++) {
+          var done    = s < currentIdx;
+          var active  = s === currentIdx;
+          var cls     = done ? "done" : (active ? "active" : "");
+          var stepLabel = STATUS_LABEL[STEPS[s]] || STEPS[s];
+          stepHTML += '<div class="track-step ' + cls + '">' +
+            '<div class="track-step-dot"></div>' +
+            (s < STEPS.length - 1 ? '<div class="track-step-line"></div>' : '') +
+            '<span class="track-step-label">' + stepLabel + '</span>' +
+          '</div>';
+        }
+      }
+
+      /* ── Items list ── */
+      var itemsHTML = "";
+      for (var j = 0; j < items.length; j++) {
+        var it   = items[j];
+        var prod = productMap[it.product_id];
+        if (!prod) continue;
+        var photo    = photoMap[prod.product_id];
+        var photoUrl = normalizeImagePath(photo ? photo.photo_url : "");
+        var thumbClass = "track-item-thumb" + (photoUrl ? "" : " grad-" + (prod.product_id % 6));
+        var thumbStyle = photoUrl ? 'style="background-image:url(' + photoUrl + ')"' : "";
+        var lineTotal = ((it.unit_price || prod.price) * it.quantity).toFixed(2);
+        itemsHTML += '<div class="track-item-row">' +
+          '<div class="' + thumbClass + '" ' + thumbStyle + '></div>' +
+          '<div class="track-item-info">' +
+            '<p class="track-item-name">' + prod.title + '</p>' +
+            '<p class="track-item-meta">Qty: ' + it.quantity + '</p>' +
+          '</div>' +
+          '<span class="track-item-price">$' + lineTotal + '</span>' +
+        '</div>';
+      }
+
+      /* ── Tracking info ── */
+      var trackHTML = "";
+      if (ship) {
+        trackHTML =
+          '<div class="track-info-row"><span>Carrier</span><strong>' + ship.shipping_partner + '</strong></div>' +
+          '<div class="track-info-row"><span>Tracking No.</span><strong class="track-number">' + ship.tracking_number + '</strong></div>' +
+          '<div class="track-info-row"><span>Last Update</span><strong>' + formatDate(ship.updated_at) + '</strong></div>' +
+          '<div class="track-info-row"><span>Status Detail</span><strong>' + ship.status_details + '</strong></div>';
+      } else {
+        var fallbackMsg = isCash && status === "Confirmed"
+          ? "Seller is reviewing your cash-on-delivery order and will prepare it for dispatch."
+          : (FALLBACK_DETAIL[status] || "Tracking details will appear once your order ships.");
+        trackHTML =
+          '<div class="track-info-row"><span>Status</span><strong>' + fallbackMsg + '</strong></div>' +
+          '<div class="track-info-row"><span>Order Date</span><strong>' + formatDate(ord.created_at) + '</strong></div>' +
+          (isCash ? '<div class="track-info-row"><span>Payment</span><strong>Cash on Delivery — pay upon receipt</strong></div>' : '');
+      }
+
+      /* ── Payment / delivery info ── */
+      var payMethod = ord.payment_method === "cash" ? "Cash on Delivery" : "Credit Card (•••• 4242)";
+      var shippingAddr = ord.shipping_address || (buyerProfile ? buyerProfile.shipping_address : "") || "—";
+
+      /* ── Assemble body ── */
+      var html =
+        '<div class="track-modal-header">' +
+          '<div>' +
+            '<p class="track-modal-order-num">' + orderNum + '</p>' +
+            '<h2 class="track-modal-title">' + icon + ' ' + label + '</h2>' +
+            '<p class="track-modal-date">' + formatDateShort(ord.created_at) + '</p>' +
+          '</div>' +
+          '<div class="track-total-badge">$' + Number(ord.total_amount).toFixed(2) + '</div>' +
+        '</div>' +
+
+        '<div class="track-section-label">Delivery Progress</div>' +
+        '<div class="track-timeline">' + stepHTML + '</div>' +
+
+        '<div class="track-section-label">Items</div>' +
+        '<div class="track-items">' + itemsHTML + '</div>' +
+
+        '<div class="track-two-col">' +
+          '<div>' +
+            '<div class="track-section-label">Tracking Info</div>' +
+            '<div class="track-info-block">' + trackHTML + '</div>' +
+          '</div>' +
+          '<div>' +
+            '<div class="track-section-label">Delivery & Payment</div>' +
+            '<div class="track-info-block">' +
+              '<div class="track-info-row"><span>Ship To</span><strong>' + shippingAddr + '</strong></div>' +
+              '<div class="track-info-row"><span>Payment</span><strong>' + payMethod + '</strong></div>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+
+      document.getElementById("track-modal-body").innerHTML = html;
+      var overlay = document.getElementById("track-modal-overlay");
+      overlay.removeAttribute("aria-hidden");
+      overlay.classList.add("visible");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeTrackModal() {
+      var overlay = document.getElementById("track-modal-overlay");
+      overlay.setAttribute("aria-hidden", "true");
+      overlay.classList.remove("visible");
+      document.body.style.overflow = "";
+    }
+
+    /* Event delegation: Track Details button */
+    var ordersListEl = document.getElementById("acct-orders-list");
+    if (ordersListEl) {
+      ordersListEl.addEventListener("click", function(e) {
+        var btn = e.target.closest(".order-btn-solid[data-order-id]");
+        if (!btn) return;
+        showTrackModal(parseInt(btn.getAttribute("data-order-id"), 10));
+      });
+    }
+
+    var closeBtn = document.getElementById("track-modal-close");
+    if (closeBtn) closeBtn.addEventListener("click", closeTrackModal);
+
+    var trackOverlay = document.getElementById("track-modal-overlay");
+    if (trackOverlay) {
+      trackOverlay.addEventListener("click", function(e) {
+        if (e.target === trackOverlay) closeTrackModal();
+      });
+    }
+
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") closeTrackModal();
+    });
 
     /* ── My Profile info card (read / edit mode) ── */
     function renderProfileView() {
@@ -697,6 +877,15 @@
       document.querySelector('[data-view="orders"]').click();
     });
   }
+
+  /* ── Auto-switch to Order Tracking if URL has ?view=tracking ── */
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get("view") === "tracking") {
+      var ordersNav = document.querySelector('[data-view="orders"]');
+      if (ordersNav) ordersNav.click();
+    }
+  })();
 
   /* ── Logout ── */
   var logoutBtn = document.getElementById("sidebar-logout");

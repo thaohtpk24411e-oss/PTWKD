@@ -97,20 +97,53 @@
         <!-- Payment Method -->
         <h2>Payment Method</h2>
 
-        <div class="payment-card">
-          <span class="visa-badge">VISA</span>
-          <div class="payment-card-info">
-            <p class="payment-number">•••• •••• •••• 4242</p>
-            <p class="payment-expiry">EXPIRES 12/26</p>
-          </div>
+        <div class="payment-options">
+          <!-- Card -->
+          <label class="payment-opt-card selected" for="pay-card">
+            <input type="radio" id="pay-card" name="payment_method" value="card" checked />
+            <span class="visa-badge">VISA</span>
+            <div class="payment-card-info">
+              <p class="payment-number">•••• •••• •••• 4242</p>
+              <p class="payment-expiry">EXPIRES 12/26</p>
+            </div>
+          </label>
+
+          <!-- Cash on Delivery -->
+          <label class="payment-opt-card" for="pay-cash">
+            <input type="radio" id="pay-cash" name="payment_method" value="cash" />
+            <span class="cash-icon-wrap">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="2" y="6" width="20" height="12" rx="2"/>
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M6 12h.01M18 12h.01"/>
+              </svg>
+            </span>
+            <div class="payment-card-info">
+              <p class="payment-number">Cash on Delivery</p>
+              <p class="payment-expiry">PAY WHEN YOU RECEIVE</p>
+            </div>
+          </label>
         </div>
 
-        <div class="payment-secure-note">
+        <div class="payment-secure-note" id="payment-secure-note">
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8">
             <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
             <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
           </svg>
           Payments are encrypted and processed securely. We never store your card details.
+        </div>
+
+        <!-- Vouchers -->
+        <h2>Vouchers</h2>
+
+        <div id="voucher-area">
+          <div class="voucher-search-row">
+            <svg class="voucher-search-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input type="text" id="voucher-search" class="voucher-search-input" placeholder="Enter code to search…" autocomplete="off" />
+          </div>
+          <div id="voucher-list"><p class="voucher-loading">Loading vouchers…</p></div>
         </div>
 
       </div><!-- /cart-main -->
@@ -123,6 +156,7 @@
           <span>Subtotal</span>
           <span id="summary-subtotal">$0.00</span>
         </div>
+        <div id="summary-discounts"></div>
         <div class="summary-row">
           <span>Shipping</span>
           <span id="summary-shipping">Free</span>
@@ -169,6 +203,23 @@
   </main>
 
   <div data-include="../components/footer/footer"></div>
+
+  <!-- Order Confirmation Modal -->
+  <div class="order-confirm-overlay" id="order-confirm-overlay" aria-hidden="true">
+    <div class="order-confirm-modal" role="dialog" aria-modal="true" aria-labelledby="confirm-modal-title">
+      <div class="confirm-check-wrap">
+        <svg viewBox="0 0 24 24" width="52" height="52" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="7 12 10.5 15.5 17 8.5"/>
+        </svg>
+      </div>
+      <h2 class="confirm-modal-heading" id="confirm-modal-title">Order Confirmed!</h2>
+      <p class="confirm-order-num" id="confirm-order-num">Order #VC-0000</p>
+      <p class="confirm-modal-desc">Thank you for your purchase. We'll notify you when your order is on its way.</p>
+      <div class="confirm-summary" id="confirm-summary"></div>
+      <button class="confirm-track-btn" id="confirm-track-btn">View Order Tracking →</button>
+    </div>
+  </div>
 
   <script src="../assets/js/include.js"></script>
   <script src="../assets/js/cart.js"></script>

@@ -139,18 +139,14 @@
     var info = document.getElementById("pd-info");
     info.innerHTML = html;
 
-    var add = info.querySelector(".pd-add");
-    add.addEventListener("click", function () {
-      // Require logged-in user before adding to cart
+    function addCurrentProductToCart(options) {
       var session = null;
       try { session = JSON.parse(sessionStorage.getItem("rv_session") || "null"); } catch (e) { session = null; }
       if (!session || !session.user_id) {
-        // Not logged in — redirect to login page (do not create a temp cart)
         window.location.href = "login.html";
         return;
       }
 
-      /* Save to localStorage cart */
       var cart = [];
       try { cart = JSON.parse(localStorage.getItem("rv_cart") || "[]"); } catch (e) {}
       var found = false;
@@ -160,10 +156,31 @@
       if (!found) cart.push({ product_id: p.product_id, quantity: 1, added_at: Date.now() });
       localStorage.setItem("rv_cart", JSON.stringify(cart));
       window.dispatchEvent(new Event("rv:cart-updated"));
-      add.textContent = "Added to Cart ✓";
-      add.disabled = true;
-      setTimeout(function () { add.textContent = "Add to Cart"; add.disabled = false; }, 1800);
+
+      if (options && options.redirectToCart) {
+        window.location.href = "cart.html";
+        return;
+      }
+
+      var button = options && options.button ? options.button : null;
+      if (button) {
+        button.textContent = "Added to Cart ✓";
+        button.disabled = true;
+        setTimeout(function () { button.textContent = "Add to Cart"; button.disabled = false; }, 1800);
+      }
+    }
+
+    var add = info.querySelector(".pd-add");
+    add.addEventListener("click", function () {
+      addCurrentProductToCart({ button: add });
     });
+
+    var buyNow = info.querySelector(".pd-buynow");
+    if (buyNow) {
+      buyNow.addEventListener("click", function () {
+        addCurrentProductToCart({ redirectToCart: true });
+      });
+    }
 
     /* Wishlist / Favourites button */
     var wishBtn = info.querySelector(".pd-wish-btn");

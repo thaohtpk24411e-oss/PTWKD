@@ -76,10 +76,10 @@
           <div class="order-tabs">
             <button class="order-tab active" data-filter="All">All</button>
             <button class="order-tab" data-filter="Pending">Pending Payment</button>
-            <button class="order-tab" data-filter="Shipped">Shipping</button>
             <button class="order-tab" data-filter="Confirmed">
-              To Receive <span class="order-tab-badge" id="tab-badge-confirmed"></span>
+              Processing <span class="order-tab-badge" id="tab-badge-confirmed"></span>
             </button>
+            <button class="order-tab" data-filter="Shipped">Shipping</button>
             <button class="order-tab" data-filter="Delivered">Completed</button>
             <button class="order-tab" data-filter="Cancelled">Cancelled</button>
           </div>
@@ -110,6 +110,18 @@
   </main>
 
   <div data-include="../components/footer/footer"></div>
+  <!-- Track Details Modal -->
+  <div class="track-modal-overlay" id="track-modal-overlay" aria-hidden="true">
+    <div class="track-modal" role="dialog" aria-modal="true">
+      <button class="track-modal-close" id="track-modal-close" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <div id="track-modal-body"></div>
+    </div>
+  </div>
+
   <script src="../assets/js/include.js"></script>
   <script src="../assets/js/account.js"></script>
 </body>

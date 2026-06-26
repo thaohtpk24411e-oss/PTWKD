@@ -109,6 +109,27 @@
 .account-wrap { display: flex; align-items: center; gap: .5rem; flex-shrink: 0; }
 .hdr-drop-wrap { position: relative; flex-shrink: 0; }
 
+/* Initials avatar (shown when logged in) */
+.hdr-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #6b4f2d;
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  font-family: var(--sans);
+  line-height: 1;
+  pointer-events: none;
+  flex-shrink: 0;
+  transition: background 0.18s;
+}
+#account-link:hover .hdr-avatar { background: #8c6d45; }
+
 .header-user { font-family: "Jost", sans-serif; font-size: .85rem; color: var(--ink); font-weight: 500; white-space: nowrap; }
 .header-logout {
   font-family: "Jost", sans-serif;
