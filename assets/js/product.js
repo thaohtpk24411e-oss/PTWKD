@@ -7,9 +7,11 @@
 
 (function () {
   var PER_PAGE = 12;
-  var DATA = "/assets/json/";
+  var DATA = "../assets/json/";
   var urlParams = new URLSearchParams(window.location.search);
   var requestedCategoryId = parseInt(urlParams.get("cat"), 10);
+  var requestedSort = urlParams.get("sort") || "";
+  function normalizeImagePath(url) { return url && url.indexOf("/assets/") === 0 ? "../assets/" + url.slice(8) : url || ""; }
 
   var state = {
     products: [], sellers: {}, categories: [], tags: [], tagsByProduct: {}, photosByProduct: {},
@@ -43,6 +45,9 @@
       var pid = photos[k].product_id;
       if (!state.photosByProduct[pid]) state.photosByProduct[pid] = [];
       state.photosByProduct[pid].push(photos[k]);
+    }
+    if (requestedSort === "newest" || requestedSort === "price-asc" || requestedSort === "price-desc") {
+      state.sort = requestedSort;
     }
     for (var key in state.photosByProduct) {
       state.photosByProduct[key].sort(function(a,b) { return a.display_order - b.display_order; });
@@ -144,6 +149,8 @@
 
   function wireSort() {
     var sort = document.getElementById("sort");
+    if (!sort) return;
+    sort.value = state.sort;
     sort.addEventListener("change", function () { state.sort = sort.value; state.page = 1; render(); });
   }
 
@@ -184,10 +191,10 @@
     var sustain = pt.indexOf(1) !== -1 ? '<span class="p-badge">Sustainable Badge</span>' : "";
 
     var photos = state.photosByProduct[p.product_id] || [];
-    var photoUrl = photos.length ? photos[0].photo_url : "";
+    var photoUrl = normalizeImagePath(photos.length ? photos[0].photo_url : "");
     var styleStr = photoUrl ? 'style="background-image: url(' + photoUrl + ')"' : "";
     var classes = photoUrl ? "p-thumb" : "p-thumb grad-" + (p.product_id % 6);
-    var detailUrl = "/html/product_detail.html?id=" + p.product_id;
+    var detailUrl = "product_detail.html?id=" + p.product_id;
 
     return '<article class="p-card">' +
       '<a class="' + classes + '" href="' + detailUrl + '" ' + styleStr + '>' + imgBadge +

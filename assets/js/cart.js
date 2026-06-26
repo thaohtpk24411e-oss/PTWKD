@@ -1,6 +1,7 @@
 (function() {
-  var DATA = "/assets/json/";
+  var DATA = "../assets/json/";
   function getJSON(name) { return fetch(DATA + name).then(function(r) { return r.json(); }); }
+  function normalizeImagePath(url) { return url && url.indexOf("/assets/") === 0 ? "../assets/" + url.slice(8) : url || ""; }
 
   // Read cart from localStorage
   function getCart() {
@@ -65,7 +66,7 @@
       if (!list) return;
 
       if (!cart.length) {
-        list.innerHTML = '<p style="color:var(--muted);padding:40px 0;text-align:center;">Your cart is empty. <a href="/html/product_page.html" style="color:var(--ink);text-decoration:underline;">Browse the shop →</a></p>';
+        list.innerHTML = '<p style="color:var(--muted);padding:40px 0;text-align:center;">Your cart is empty. <a href="product_page.html" style="color:var(--ink);text-decoration:underline;">Browse the shop →</a></p>';
         updateSummary(0);
         return;
       }
@@ -76,7 +77,7 @@
         var prod = productMap[ci.product_id];
         if (!prod) continue;
         var photo = photoMap[ci.product_id];
-        var photoUrl = photo ? photo.photo_url : "";
+        var photoUrl = normalizeImagePath(photo ? photo.photo_url : "");
         var thumbClass = "cart-thumb" + (photoUrl ? "" : " grad-" + (ci.product_id % 6));
         var thumbStyle = photoUrl ? 'style="background-image:url(' + photoUrl + ')"' : "";
         var seller = sellerMap[prod.seller_id];
@@ -85,7 +86,7 @@
         var lineTotal = (prod.price * ci.quantity).toFixed(2);
 
         html += '<div class="cart-item" data-product-id="' + ci.product_id + '">' +
-          '<a href="/html/product_detail.html?id=' + ci.product_id + '" class="' + thumbClass + '" ' + thumbStyle + '></a>' +
+          '<a href="product_detail.html?id=' + ci.product_id + '" class="' + thumbClass + '" ' + thumbStyle + '></a>' +
           '<div class="cart-item-info">' +
             '<p class="cart-item-name">' + prod.title + '</p>' +
             '<p class="cart-item-meta">' + sellerName + ' · ' + craftType + '</p>' +
@@ -187,7 +188,7 @@
         // In a real app: submit to backend. Here: clear cart and show confirmation.
         setTimeout(function() {
           localStorage.removeItem("rv_cart");
-          window.location.href = "/html/account.html";
+          window.location.href = "account.html";
         }, 1500);
       });
     }

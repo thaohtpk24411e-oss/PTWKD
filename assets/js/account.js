@@ -5,8 +5,9 @@
    ============================================================ */
 
 (function () {
-  var DATA = "/assets/json/";
+  var DATA = "../assets/json/";
   function getJSON(name) { return fetch(DATA + name).then(function (r) { return r.json(); }); }
+  function normalizeImagePath(url) { return url && url.indexOf("/assets/") === 0 ? "../assets/" + url.slice(8) : url || ""; }
 
   /* ── Guard: must be logged in ── */
   var session = null;
@@ -196,7 +197,7 @@
       var item    = firstItemMap[ord.order_id];
       var prod    = item ? productMap[item.product_id] : null;
       var photo   = prod ? photoMap[prod.product_id] : null;
-      var photoUrl = photo ? photo.photo_url : "";
+      var photoUrl = normalizeImagePath(photo ? photo.photo_url : "");
       var ship    = shipmentMap[ord.order_id];
 
       var thumbClass = "order-thumb" + (photoUrl ? "" : " grad-" + ((prod ? prod.product_id : ord.order_id) % 6));
@@ -270,7 +271,7 @@
         var item = firstItemMap[ord.order_id];
         var prod = item ? productMap[item.product_id] : null;
         var photo = prod ? photoMap[prod.product_id] : null;
-        var photoUrl = photo ? photo.photo_url : "";
+        var photoUrl = normalizeImagePath(photo ? photo.photo_url : "");
         var thumbClass = "acct-recent-thumb" + (photoUrl ? "" : " grad-" + ((prod ? prod.product_id : i) % 6));
         var thumbStyle = photoUrl ? 'style="background-image:url(' + photoUrl + ')"' : "";
         var name = prod ? prod.title : "Order #" + ord.order_id;
@@ -596,13 +597,12 @@
         var prod = productMap[f.product_id];
         if (!prod) continue;
         var photo = photoMap[f.product_id];
-        var photoUrl = photo ? photo.photo_url : "";
+        var photoUrl = normalizeImagePath(photo ? photo.photo_url : "");
         var tClass = "fav-thumb" + (photoUrl ? "" : " grad-" + (f.product_id % 6));
         var tStyle = photoUrl ? 'style="background-image:url(' + photoUrl + ')"' : "";
         html +=
           '<div class="fav-card">' +
-            '<a href="/html/product_detail.html?id=' + prod.product_id + '" class="' + tClass + '" ' + tStyle + '></a>' +
-            '<div class="fav-card-body">' +
+            '<a href="product_detail.html?id=' + prod.product_id + '" class="' + tClass + '" ' + tStyle + '></a>' +            '<div class="fav-card-body">' +
               '<p class="fav-card-name">' + prod.title + '</p>' +
               '<p class="fav-card-price">$' + Number(prod.price).toFixed(2) + '</p>' +
             '</div>' +
@@ -617,6 +617,14 @@
       /* Wire buttons */
       grid.querySelectorAll(".fav-add-cart").forEach(function (btn) {
         btn.addEventListener("click", function () {
+          // Require logged-in user — account page should already enforce this, but double-check
+          var session = null;
+          try { session = JSON.parse(sessionStorage.getItem("rv_session") || "null"); } catch (e) { session = null; }
+          if (!session || !session.user_id) {
+            window.location.href = "../html/login.html".replace("../html/", "login.html");
+            return;
+          }
+
           var pid = parseInt(btn.getAttribute("data-pid"), 10);
           var cart = [];
           try { cart = JSON.parse(localStorage.getItem("rv_cart") || "[]"); } catch (e) {}

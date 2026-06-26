@@ -100,7 +100,7 @@
 
       /* then check against the seed users.json */
       showMsg(regMsg, "Checking…", false);
-      fetch("/assets/json/users.json")
+      fetch("../assets/json/users.json")
         .then(function (r) { return r.json(); })
         .then(function (seedUsers) {
           for (var j = 0; j < seedUsers.length; j++) {
@@ -186,9 +186,9 @@
             verified client-side; this is demo-only behaviour) */
       showMsg(loginMsg, "Verifying…", false);
       Promise.all([
-        fetch("/assets/json/users.json").then(function (r) { return r.json(); }),
-        fetch("/assets/json/buyers.json").then(function (r) { return r.json(); }),
-        fetch("/assets/json/sellers.json").then(function (r) { return r.json(); })
+        fetch("../assets/json/users.json").then(function (r) { return r.json(); }),
+        fetch("../assets/json/buyers.json").then(function (r) { return r.json(); }),
+        fetch("../assets/json/sellers.json").then(function (r) { return r.json(); })
       ]).then(function (res) {
         var users = res[0], buyers = res[1], sellers = res[2];
 

@@ -34,7 +34,7 @@
   try { session = JSON.parse(sessionStorage.getItem("rv_session") || "null"); } catch (e) {}
   var accountLink = document.getElementById("account-link");
   if (accountLink && session && session.user_id) {
-    accountLink.setAttribute("href", "/html/account.html");
+    accountLink.setAttribute("href", "account.html");
     accountLink.setAttribute("aria-label", "My Account");
   }
 
@@ -170,13 +170,13 @@
     if (!session || !session.user_id) {
       if (list) list.innerHTML =
         '<p style="padding:20px 18px;color:var(--muted);font-size:.85rem;text-align:center;">' +
-        '<a href="/html/login.html" style="color:var(--ink)">Log in</a> to see notifications.</p>';
+        '<a href="login.html" style="color:var(--ink)">Log in</a> to see notifications.</p>';
       var sm = document.getElementById("notif-see-more");
       if (sm) sm.style.display = "none";
       return;
     }
 
-    fetch("/assets/json/notifications.json")
+    fetch("../assets/json/notifications.json")
       .then(function (r) { return r.json(); })
       .then(function (data) {
         notifAll = data.filter(function (n) { return n.buyer_id === session.user_id; });
@@ -243,8 +243,8 @@
     if (previewList) previewList.innerHTML = '<div class="cart-preview-empty" style="font-size:.8rem">Loading…</div>';
 
     Promise.all([
-      fetch("/assets/json/products.json").then(function (r) { return r.json(); }),
-      fetch("/assets/json/product_photos.json").then(function (r) { return r.json(); })
+      fetch("../assets/json/products.json").then(function (r) { return r.json(); }),
+      fetch("../assets/json/product_photos.json").then(function (r) { return r.json(); })
     ]).then(function (res) {
       var products = res[0], photos = res[1];
       var prodMap = {}, photoMap = {};
@@ -319,8 +319,8 @@
           doSearch(q);
         } else {
           Promise.all([
-            fetch("/assets/json/products.json").then(function (r) { return r.json(); }),
-            fetch("/assets/json/product_photos.json").then(function (r) { return r.json(); })
+            fetch("../assets/json/products.json").then(function (r) { return r.json(); }),
+            fetch("../assets/json/product_photos.json").then(function (r) { return r.json(); })
           ]).then(function (res) {
             searchProducts = res[0];
             searchPhotos   = res[1];
@@ -372,8 +372,7 @@
         var tClass = "sr-thumb" + (photoUrl ? "" : " grad-" + (pr.product_id % 6));
         var tStyle = photoUrl ? 'style="background-image:url(' + photoUrl + ')"' : "";
         html +=
-          '<a class="search-result-item" href="/html/product_detail.html?id=' + pr.product_id + '">' +
-            '<span class="' + tClass + '" ' + tStyle + '></span>' +
+          '<a class="search-result-item" href="product_detail.html?id=' + pr.product_id + '">' +            '<span class="' + tClass + '" ' + tStyle + '></span>' +
             '<span class="sr-info">' +
               '<span class="sr-name">' + pr.title + '</span>' +
               '<span class="sr-meta">' + (pr.materials || "") + '</span>' +

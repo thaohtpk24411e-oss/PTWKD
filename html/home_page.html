@@ -6,21 +6,21 @@
   <meta name="description" content="ReViet — premium Vietnamese handcrafted goods. Crafted by nature, made by heart." />
   <title>ReViet — Crafted by Nature, Made by Heart</title>
 
-  <link rel="icon" href="/assets/icons/favicon.ico" sizes="any" />
+  <link rel="icon" href="../assets/icons/favicon.ico" sizes="any" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/base.css" />
 </head>
 <body>
-  <div data-include="/components/header/header"></div>
+  <div data-include="../components/header/header"></div>
 
   <main>
     <section class="hero">
       <video autoplay loop muted playsinline class="hero-media-video">
-        <source src="/assets/video/ReViet_intro.mp4" type="video/mp4" />
+        <source src="../assets/video/ReViet_intro.mp4" type="video/mp4" />
       </video>
       <div class="hero-media"></div>
       
@@ -41,13 +41,13 @@
           <span class="divider"></span>
         </div>
         <div class="collections-grid">
-          <a class="collection-card large m-home" href="#">
+          <a class="collection-card large m-home" href="product_page.html?cat=2">
             <div class="collection-label"><h3>Home Decor</h3><span class="link-underline">Explore Gallery</span></div>
           </a>
-          <a class="collection-card m-fashion" href="#">
+          <a class="collection-card m-fashion" href="product_page.html?cat=3">
             <div class="collection-label"><h3>Fashion</h3><span class="link-underline">Shop Wearables</span></div>
           </a>
-          <a class="collection-card m-lifestyle" href="#">
+          <a class="collection-card m-lifestyle" href="product_page.html?cat=4">
             <div class="collection-label"><h3>Lifestyle</h3><span class="link-underline">Discover Slow Living</span></div>
           </a>
         </div>
@@ -57,7 +57,7 @@
    <section class="maker">
       <div class="container maker-inner">
         <video autoplay loop muted playsinline class="maker-media">
-          <source src="/assets/video/ReViet_seller.mp4" type="video/mp4" />
+          <source src="../assets/video/ReViet_seller.mp4" type="video/mp4" />
           Trình duyệt của bạn không hỗ trợ thẻ video.
         </video>
         
@@ -108,32 +108,18 @@
       <div class="container">
         <div class="arrivals-head">
           <div><p class="eyebrow">Curated</p><h2>New Arrivals</h2></div>
-          <a class="link-underline" href="#">View All</a>
+          <a class="link-underline" href="product_page.html?sort=newest">View All</a>
         </div>
         <div class="product-grid">
-          <article class="product-card">
-            <a class="product-media p-1" href="#"><span class="tag">Hand-Carved</span></a>
-            <h3 class="product-name">Lotus Root Celadon Jar</h3><p class="price">$185.00</p>
-          </article>
-          <article class="product-card">
-            <a class="product-media p-2" href="#"></a>
-            <h3 class="product-name">Woven Solstice Vessel</h3><p class="price">$120.00</p>
-          </article>
-          <article class="product-card">
-            <a class="product-media p-3" href="#"><span class="tag">Limited Edition</span></a>
-            <h3 class="product-name">Recycled cotton tassels, brass clasp</h3><p class="price">$240.00</p>
-          </article>
-          <article class="product-card">
-            <a class="product-media p-4" href="#"></a>
-            <h3 class="product-name">Embroidered Crane Silk</h3><p class="price">$310.00</p>
-          </article>
+          <p class="empty">Loading new arrivals…</p>
         </div>
       </div>
     </section>
   </main>
 
-  <div data-include="/components/footer/footer"></div>
+  <div data-include="../components/footer/footer"></div>
 
-  <script src="/assets/js/include.js"></script>
+  <script src="../assets/js/include.js"></script>
+  <script src="../assets/js/home.js"></script>
 </body>
 </html>

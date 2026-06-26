@@ -6,8 +6,9 @@
    ============================================================ */
 
 (function () {
-  var DATA = "/assets/json/";
+  var DATA = "../assets/json/";
   function getJSON(name) { return fetch(DATA + name).then(function (r) { return r.json(); }); }
+  function normalizeImagePath(url) { return url && url.indexOf("/assets/") === 0 ? "../assets/" + url.slice(8) : url || ""; }
 
   function currentId() {
     var m = location.search.match(/[?&]id=(\d+)/);
@@ -73,7 +74,7 @@
     var stage = document.getElementById("pd-stage");
     var thumbsContainer = document.getElementById("pd-thumbs");
 
-    var mainPhotoUrl = photos[0].photo_url;
+    var mainPhotoUrl = normalizeImagePath(photos[0].photo_url);
     if (mainPhotoUrl) {
       stage.style.backgroundImage = 'url(' + mainPhotoUrl + ')';
       stage.className = "pd-stage";
@@ -84,7 +85,7 @@
     var thumbs = "";
     var numThumbs = Math.max(photos.length, 3);
     for (var i = 0; i < Math.min(3, numThumbs); i++) {
-      var photoUrl = photos[i] ? photos[i].photo_url : "";
+      var photoUrl = normalizeImagePath(photos[i] ? photos[i].photo_url : "");
       var styleStr = photoUrl ? 'style="background-image: url(' + photoUrl + ')"' : "";
       var classes = photoUrl ? "" : " " + gradFor((p.product_id + i) % 6);
       var isActive = (i === 0) ? " active" : "";
@@ -140,6 +141,15 @@
 
     var add = info.querySelector(".pd-add");
     add.addEventListener("click", function () {
+      // Require logged-in user before adding to cart
+      var session = null;
+      try { session = JSON.parse(sessionStorage.getItem("rv_session") || "null"); } catch (e) { session = null; }
+      if (!session || !session.user_id) {
+        // Not logged in — redirect to login page (do not create a temp cart)
+        window.location.href = "login.html";
+        return;
+      }
+
       /* Save to localStorage cart */
       var cart = [];
       try { cart = JSON.parse(localStorage.getItem("rv_cart") || "[]"); } catch (e) {}
@@ -258,12 +268,12 @@
     for (var i = 0; i < related.length; i++) {
       var p = related[i];
       var pPhotos = photosData.filter(function (photo) { return photo.product_id === p.product_id; }).sort(function (a, b) { return a.display_order - b.display_order; });
-      var photoUrl = pPhotos.length ? pPhotos[0].photo_url : "";
+      var photoUrl = normalizeImagePath(pPhotos.length ? pPhotos[0].photo_url : "");
 
       var styleStr = photoUrl ? 'style="background-image: url(' + photoUrl + ')"' : "";
       var classes = photoUrl ? "pd-rel-thumb" : "pd-rel-thumb " + gradFor(p.product_id);
 
-      html += '<a class="pd-rel-card" href="/html/product_detail.html?id=' + p.product_id + '">' +
+      html += '<a class="pd-rel-card" href="product_detail.html?id=' + p.product_id + '">' +
         '<span class="' + classes + '" ' + styleStr + '></span>' +
         '<span class="pd-rel-name">' + p.title + "</span>" +
         '<span class="pd-rel-price">' + money(p.price) + "</span>" +

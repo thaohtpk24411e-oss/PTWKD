@@ -1,6 +1,7 @@
 (function () {
-  var DATA = "/assets/json/";
+  var DATA = "../assets/json/";
   function getJSON(name) { return fetch(DATA + name).then(function (r) { return r.json(); }); }
+  function normalizeImagePath(url) { return url && url.indexOf("/assets/") === 0 ? "../assets/" + url.slice(8) : url || ""; }
 
   Promise.all([
     getJSON("products.json"), getJSON("product_photos.json")
@@ -25,7 +26,7 @@
       for (var j = 0; j < items.length; j++) {
         var p = items[j];
         var photosForProduct = photosByProduct[p.product_id] || [];
-        var photoUrl = photosForProduct.length ? photosForProduct[0].photo_url : "";
+        var photoUrl = normalizeImagePath(photosForProduct.length ? photosForProduct[0].photo_url : "");
         var styleStr = "";
         if (photoUrl) {
           styleStr = 'style="background-image: url(' + photoUrl + ');"';
@@ -35,8 +36,8 @@
         }
 
         html += '<article class="product-card">';
-        html += '<a class="product-media" href="/html/product_detail.html?id=' + p.product_id + '" ' + styleStr + '></a>';
-        html += '<h3 class="product-name"><a href="/html/product_detail.html?id=' + p.product_id + '" style="color:inherit;text-decoration:none;">' + p.title + '</a></h3>';
+        html += '<a class="product-media" href="product_detail.html?id=' + p.product_id + '" ' + styleStr + '></a>';
+        html += '<h3 class="product-name"><a href="product_detail.html?id=' + p.product_id + '" style="color:inherit;text-decoration:none;">' + p.title + '</a></h3>';
         html += '<p class="price">$' + p.price.toFixed(2) + '</p>';
         html += '</article>';
       }
