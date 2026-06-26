@@ -8,6 +8,8 @@
 (function () {
   var PER_PAGE = 12;
   var DATA = "/assets/json/";
+  var urlParams = new URLSearchParams(window.location.search);
+  var requestedCategoryId = parseInt(urlParams.get("cat"), 10);
 
   var state = {
     products: [], sellers: {}, categories: [], tags: [], tagsByProduct: {}, photosByProduct: {},
@@ -26,6 +28,10 @@
     state.products = products.filter(function (p) { return p.approval_status === "Active"; });
     for (var i = 0; i < sellers.length; i++) state.sellers[sellers[i].seller_id] = sellers[i];
     state.categories = res[2];
+    if (!isNaN(requestedCategoryId) && requestedCategoryId > 0 &&
+        state.categories.some(function (c) { return c.category_id === requestedCategoryId; })) {
+      state.category = requestedCategoryId;
+    }
     state.tags = res[3];
     for (var j = 0; j < productTags.length; j++) {
       var id = productTags[j].product_id;
