@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seller Profile — ReViet</title>
+  <link rel="icon" href="../assets/icons/favicon.ico" sizes="any" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/seller-profile.css" />
+</head>
+<body>
+  <div data-include="../components/header/header"></div>
+
+  <main class="sp-page">
+
+    <!-- Banner -->
+    <div class="sp-banner" id="sp-banner"></div>
+
+    <!-- Profile card -->
+    <div class="container">
+      <div class="sp-profile-card" id="sp-profile-card">
+        <p class="sp-loading">Loading…</p>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="sp-tabs-wrap">
+      <div class="container">
+        <nav class="sp-tabs" id="sp-tabs" role="tablist">
+          <button class="sp-tab active" data-tab="shop" role="tab">Shop</button>
+          <button class="sp-tab" data-tab="products" role="tab">All Products</button>
+          <button class="sp-tab" data-tab="story" role="tab">Artisan Story &amp; Skills</button>
+          <button class="sp-tab" data-tab="reviews" role="tab">Reviews</button>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="container sp-content">
+
+      <!-- TAB: Shop -->
+      <div class="sp-panel active" id="panel-shop">
+        <div id="sp-voucher"></div>
+        <div class="sp-section-head">
+          <div>
+            <h2 class="sp-section-title">Handpicked for You</h2>
+            <p class="sp-section-sub" id="sp-featured-sub"></p>
+          </div>
+          <a class="sp-view-all" id="sp-view-all-link" href="#">View All →</a>
+        </div>
+        <div class="sp-product-grid" id="sp-featured-grid">
+          <p class="sp-loading">Loading products…</p>
+        </div>
+        <!-- Story preview on Shop tab -->
+        <div class="sp-story-layout sp-shop-story" id="sp-shop-story"></div>
+      </div>
+
+      <!-- TAB: All Products -->
+      <div class="sp-panel" id="panel-products">
+        <div class="sp-all-filters">
+          <input type="search" id="sp-prod-search" class="sp-prod-search" placeholder="Search products…" autocomplete="off" />
+        </div>
+        <div class="sp-product-grid sp-product-grid--all" id="sp-all-grid">
+          <p class="sp-loading">Loading products…</p>
+        </div>
+        <div class="sp-prod-pagination" id="sp-prod-pagination"></div>
+      </div>
+
+      <!-- TAB: Artisan Story & Skills -->
+      <div class="sp-panel" id="panel-story">
+        <div class="sp-story-layout" id="sp-story">
+          <p class="sp-loading">Loading…</p>
+        </div>
+      </div>
+
+      <!-- TAB: Reviews -->
+      <div class="sp-panel" id="panel-reviews">
+        <div class="sp-reviews-summary" id="sp-reviews-summary"></div>
+        <div class="sp-reviews-grid" id="sp-reviews-grid">
+          <p class="sp-loading">Loading reviews…</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div data-include="../components/footer/footer"></div>
+
+  <script src="../assets/js/include.js"></script>
+  <script src="../assets/js/seller-profile.js"></script>
+</body>
+</html>

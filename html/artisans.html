@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Artisan Guild — ReViet</title>
+  <link rel="icon" href="../assets/icons/favicon.ico" sizes="any" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/artisans.css" />
+</head>
+<body>
+  <div data-include="../components/header/header"></div>
+
+  <main class="ag-page">
+
+    <!-- Hero -->
+    <div class="ag-hero">
+      <h1 class="ag-hero-title">The Artisan Guild</h1>
+      <p class="ag-hero-sub">Discover the makers behind every piece — skilled artisans preserving Vietnam's living craft traditions.</p>
+
+      <!-- Search -->
+      <div class="ag-search-wrap">
+        <svg class="ag-search-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" id="ag-search" class="ag-search-input" placeholder="Search for an artisan, skill, or region (e.g., 'bamboo weaving')" autocomplete="off" />
+      </div>
+
+      <!-- Filters -->
+      <div class="ag-filters">
+        <!-- Region dropdown -->
+        <div class="ag-dropdown" id="ag-region-dd">
+          <button class="ag-dd-trigger" id="ag-region-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10H7M21 6H3M21 14H11M21 18H15"/></svg>
+            <span class="ag-dd-label" id="ag-region-label">Region</span>
+            <svg class="ag-dd-caret" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="ag-dd-panel" id="ag-region-panel" role="listbox" hidden></div>
+        </div>
+
+        <!-- Sort dropdown -->
+        <div class="ag-dropdown" id="ag-sort-dd">
+          <button class="ag-dd-trigger" id="ag-sort-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span class="ag-dd-label" id="ag-sort-label">Top Rated</span>
+            <svg class="ag-dd-caret" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="ag-dd-panel" id="ag-sort-panel" role="listbox" hidden>
+            <button class="ag-dd-option selected" data-val="rating" role="option">Top Rated</button>
+            <button class="ag-dd-option" data-val="response" role="option">Response Rate</button>
+            <button class="ag-dd-option" data-val="name" role="option">A – Z</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="container">
+      <div class="ag-results-meta" id="ag-results-meta"></div>
+      <div class="ag-list" id="ag-list">
+        <p class="ag-loading">Loading artisans…</p>
+      </div>
+      <div class="ag-pagination" id="ag-pagination"></div>
+    </div>
+
+  </main>
+
+  <div data-include="../components/footer/footer"></div>
+
+  <script src="../assets/js/include.js"></script>
+  <script src="../assets/js/artisans.js"></script>
+</body>
+</html>

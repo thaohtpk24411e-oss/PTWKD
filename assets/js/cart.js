@@ -451,65 +451,126 @@
         var tax = subtotal * TAX_RATE;
         var total = subtotal + shipping + tax;
 
-        // Generate order ID and timestamp
-        var counter = parseInt(localStorage.getItem("rv_order_counter") || "0", 10) + 1;
-        localStorage.setItem("rv_order_counter", String(counter));
-        var orderId = 9000 + counter;
+        // ── Split order by seller ──────────────────────────────
+        var itemsBySeller = {}, sellerOrderArr = [];
+        for (var gi = 0; gi < orderItems.length; gi++) {
+          var gProd = productMap[orderItems[gi].product_id];
+          var gSid  = gProd ? gProd.seller_id : 0;
+          if (!itemsBySeller[gSid]) { itemsBySeller[gSid] = []; sellerOrderArr.push(gSid); }
+          itemsBySeller[gSid].push(orderItems[gi]);
+        }
+
+        /* Per-seller subtotals */
+        var sellerSubs = {};
+        for (var ssi = 0; ssi < sellerOrderArr.length; ssi++) {
+          var ssSid = sellerOrderArr[ssi], ssSub = 0;
+          for (var ssk = 0; ssk < itemsBySeller[ssSid].length; ssk++) {
+            ssSub += itemsBySeller[ssSid][ssk].unit_price * itemsBySeller[ssSid][ssk].quantity;
+          }
+          sellerSubs[ssSid] = ssSub;
+        }
+
+        /* Total shop discount (for platform proportional calc) */
+        var totalShopDisc = 0;
+        for (var tsd = 0; tsd < sellerOrderArr.length; tsd++) {
+          var tsdSid = sellerOrderArr[tsd];
+          if (appliedShopVouchers[tsdSid]) totalShopDisc += calcDiscount(appliedShopVouchers[tsdSid], sellerSubs[tsdSid]);
+        }
+        var platformBase = Math.max(0, subtotal - totalShopDisc);
+        var platformDiscTotal = calcDiscount(appliedPlatformVoucher, platformBase);
+
         var now = new Date();
         var pad = function(n) { return String(n).padStart(2, "0"); };
         var nowStr = now.getFullYear() + "-" + pad(now.getMonth() + 1) + "-" + pad(now.getDate()) +
           " " + pad(now.getHours()) + ":" + pad(now.getMinutes()) + ":" + pad(now.getSeconds());
 
-        // Save new order to localStorage
-        var newOrder = {
-          order_id: orderId,
-          buyer_id: session ? session.user_id : 0,
-          order_status: selectedPayment === "cash" ? "Confirmed" : "Pending",
-          total_amount: total,
-          payment_method: selectedPayment,
-          shipping_method: selectedShipping,
-          created_at: nowStr,
-          items: orderItems
-        };
         var existingOrders = [];
         try { existingOrders = JSON.parse(localStorage.getItem("rv_new_orders") || "[]"); } catch(e) {}
-        existingOrders.unshift(newOrder);
-        localStorage.setItem("rv_new_orders", JSON.stringify(existingOrders));
 
-        // Clear cart
+        var createdOrders = [];
+        var grandTotal = 0;
+
+        for (var coi = 0; coi < sellerOrderArr.length; coi++) {
+          var coSid      = sellerOrderArr[coi];
+          var coItems    = itemsBySeller[coSid];
+          var coSub      = sellerSubs[coSid];
+          var coShopDisc = calcDiscount(appliedShopVouchers[coSid] || null, coSub);
+          /* Platform discount: proportional share by subtotal */
+          var coPlatDisc = subtotal > 0 ? platformDiscTotal * (coSub / subtotal) : 0;
+          /* Shipping only on first sub-order */
+          var coShip     = coi === 0 ? shipping : 0;
+          var coDiscSub  = Math.max(0, coSub - coShopDisc - coPlatDisc);
+          var coTax      = coDiscSub * TAX_RATE;
+          var coTotal    = coDiscSub + coShip + coTax;
+          grandTotal    += coTotal;
+
+          var counter = parseInt(localStorage.getItem("rv_order_counter") || "0", 10) + 1;
+          localStorage.setItem("rv_order_counter", String(counter));
+
+          var coOrder = {
+            order_id:       9000 + counter,
+            buyer_id:       session ? session.user_id : 0,
+            seller_id:      coSid,
+            order_status:   selectedPayment === "cash" ? "Confirmed" : "Pending",
+            total_amount:   coTotal,
+            payment_method: selectedPayment,
+            shipping_method: selectedShipping,
+            created_at:     nowStr,
+            items:          coItems
+          };
+          existingOrders.unshift(coOrder);
+          createdOrders.push(coOrder);
+        }
+
+        localStorage.setItem("rv_new_orders", JSON.stringify(existingOrders));
         localStorage.removeItem("rv_cart");
         window.dispatchEvent(new Event("rv:cart-updated"));
 
-        // Show confirmation modal
-        showConfirmModal(orderId, orderItems, total);
+        showConfirmModal(createdOrders, grandTotal);
       });
     }
 
-    function showConfirmModal(orderId, items, total) {
+    function showConfirmModal(orders, grandTotal) {
       var overlay = document.getElementById("order-confirm-overlay");
       if (!overlay) { window.location.href = "account.html?view=tracking"; return; }
 
-      var numEl = document.getElementById("confirm-order-num");
-      if (numEl) numEl.textContent = "Order #VC-" + String(orderId).padStart(4, "0");
+      var isMulti = orders.length > 1;
+      var numEl   = document.getElementById("confirm-order-num");
+      if (numEl) {
+        numEl.textContent = isMulti
+          ? orders.length + " orders placed"
+          : "Order #VC-" + String(orders[0].order_id).padStart(4, "0");
+      }
 
       var summaryEl = document.getElementById("confirm-summary");
       if (summaryEl) {
         var html = "";
-        var shown = 0;
-        for (var i = 0; i < items.length; i++) {
-          var prod = productMap[items[i].product_id];
-          if (prod && shown < 2) {
+        if (isMulti) {
+          /* Multi-order: one row per sub-order */
+          for (var oi = 0; oi < orders.length; oi++) {
+            var ord   = orders[oi];
+            var sname = sellerMap[ord.seller_id] ? sellerMap[ord.seller_id].shop_name : "Shop";
             html += '<div class="confirm-item-row">' +
-              '<span class="confirm-item-name">' + prod.title + ' &times; ' + items[i].quantity + '</span>' +
-              '<span class="confirm-item-price">$' + (items[i].unit_price * items[i].quantity).toFixed(2) + '</span>' +
-              '</div>';
-            shown++;
+              '<span class="confirm-item-name">' + sname + ' · ' + ord.items.length + ' item(s)</span>' +
+              '<span class="confirm-item-price">#VC-' + String(ord.order_id).padStart(4, "0") + '</span>' +
+            '</div>';
           }
+        } else {
+          /* Single order: show up to 2 item lines */
+          var items = orders[0].items, shown = 0;
+          for (var ii = 0; ii < items.length; ii++) {
+            var iprod = productMap[items[ii].product_id];
+            if (iprod && shown < 2) {
+              html += '<div class="confirm-item-row">' +
+                '<span class="confirm-item-name">' + iprod.title + ' &times; ' + items[ii].quantity + '</span>' +
+                '<span class="confirm-item-price">$' + (items[ii].unit_price * items[ii].quantity).toFixed(2) + '</span>' +
+              '</div>';
+              shown++;
+            }
+          }
+          if (items.length > 2) html += '<p class="confirm-more">+ ' + (items.length - 2) + ' more item(s)</p>';
         }
-        if (items.length > 2) {
-          html += '<p class="confirm-more">+ ' + (items.length - 2) + ' more item(s)</p>';
-        }
-        html += '<div class="confirm-total-row"><span>Total Paid</span><strong>$' + total.toFixed(2) + '</strong></div>';
+        html += '<div class="confirm-total-row"><span>Total Paid</span><strong>$' + grandTotal.toFixed(2) + '</strong></div>';
         summaryEl.innerHTML = html;
       }
 
@@ -519,9 +580,7 @@
 
       var trackBtn = document.getElementById("confirm-track-btn");
       if (trackBtn) {
-        trackBtn.addEventListener("click", function() {
-          window.location.href = "account.html?view=tracking";
-        });
+        trackBtn.onclick = function() { window.location.href = "account.html?view=tracking"; };
       }
     }
 

@@ -21,7 +21,7 @@
     "review_id": 3,
     "order_item_id": 3,
     "buyer_id": 46,
-    "rating": 4,
+    "rating": 5,
     "review_text": "Lovely piece, arrived well packaged. Will buy again.",
     "seller_reply_text": "We truly appreciate your feedback — happy crafting!",
     "created_at": "2025-06-05 18:00:56"
@@ -30,7 +30,7 @@
     "review_id": 4,
     "order_item_id": 4,
     "buyer_id": 36,
-    "rating": 4,
+    "rating": 5,
     "review_text": "Solid quality for the price. Happy customer.",
     "seller_reply_text": "Grateful for your review, hope to serve you again soon.",
     "created_at": "2025-04-27 19:36:15"
@@ -39,7 +39,7 @@
     "review_id": 5,
     "order_item_id": 5,
     "buyer_id": 36,
-    "rating": 4,
+    "rating": 5,
     "review_text": "Exactly as described. Wonderful artisan work.",
     "seller_reply_text": "We truly appreciate your feedback — happy crafting!",
     "created_at": "2025-04-22 12:46:30"
@@ -48,7 +48,7 @@
     "review_id": 6,
     "order_item_id": 6,
     "buyer_id": 36,
-    "rating": 4,
+    "rating": 5,
     "review_text": "Good product but shipping took a little long.",
     "seller_reply_text": "Thank you so much for your kind words and support!",
     "created_at": "2025-06-07 18:15:42"
@@ -57,7 +57,7 @@
     "review_id": 7,
     "order_item_id": 16,
     "buyer_id": 43,
-    "rating": 3,
+    "rating": 5,
     "review_text": "Good product but shipping took a little long.",
     "seller_reply_text": null,
     "created_at": "2025-06-13 16:10:17"
@@ -93,7 +93,7 @@
     "review_id": 11,
     "order_item_id": 28,
     "buyer_id": 50,
-    "rating": 4,
+    "rating": 5,
     "review_text": "The colours are even richer in person.",
     "seller_reply_text": "We truly appreciate your feedback — happy crafting!",
     "created_at": "2025-06-06 07:10:40"
@@ -120,7 +120,7 @@
     "review_id": 14,
     "order_item_id": 31,
     "buyer_id": 35,
-    "rating": 5,
+    "rating": 4,
     "review_text": "Lovely piece, arrived well packaged. Will buy again.",
     "seller_reply_text": null,
     "created_at": "2025-04-04 14:34:36"
@@ -138,7 +138,7 @@
     "review_id": 16,
     "order_item_id": 33,
     "buyer_id": 34,
-    "rating": 4,
+    "rating": 5,
     "review_text": "Great quality and truly sustainable. Highly recommend.",
     "seller_reply_text": "Thank you so much for your kind words and support!",
     "created_at": "2025-02-23 11:55:44"
@@ -165,7 +165,7 @@
     "review_id": 19,
     "order_item_id": 45,
     "buyer_id": 29,
-    "rating": 4,
+    "rating": 5,
     "review_text": "A meaningful, eco-friendly gift. Loved it.",
     "seller_reply_text": "We truly appreciate your feedback — happy crafting!",
     "created_at": "2025-05-04 16:10:57"
@@ -183,7 +183,7 @@
     "review_id": 21,
     "order_item_id": 47,
     "buyer_id": 46,
-    "rating": 5,
+    "rating": 4,
     "review_text": "Perfect addition to my home. Five stars!",
     "seller_reply_text": null,
     "created_at": "2025-04-01 15:03:05"
@@ -192,7 +192,7 @@
     "review_id": 22,
     "order_item_id": 48,
     "buyer_id": 46,
-    "rating": 3,
+    "rating": 5,
     "review_text": "Good product but shipping took a little long.",
     "seller_reply_text": null,
     "created_at": "2025-04-27 03:57:01"
@@ -205,5 +205,887 @@
     "review_text": "Absolutely beautiful craftsmanship, exceeded my expectations!",
     "seller_reply_text": "Thank you so much for your kind words and support!",
     "created_at": "2025-05-14 10:03:18"
+  },
+  {
+    "review_id": 24,
+    "order_item_id": 39,
+    "buyer_id": 46,
+    "rating": 5,
+    "review_text": "Nice product, well made. One small imperfection but that just adds to the handmade charm.",
+    "seller_reply_text": "Thank you so much for your kind words! It means the world to us.",
+    "created_at": "2025-03-04 07:08:00"
+  },
+  {
+    "review_id": 25,
+    "order_item_id": 56,
+    "buyer_id": 49,
+    "rating": 5,
+    "review_text": "Generally impressed. The size is a little smaller than expected but the quality is great.",
+    "seller_reply_text": "We're thrilled you love it! Hope to see you again soon.",
+    "created_at": "2025-04-19 01:01:00"
+  },
+  {
+    "review_id": 26,
+    "order_item_id": 57,
+    "buyer_id": 28,
+    "rating": 5,
+    "review_text": "Nice work, good value. I'll be ordering again for holiday gifts.",
+    "seller_reply_text": "So grateful for this lovely review. We pour our hearts into every piece.",
+    "created_at": "2025-06-04 00:35:00"
+  },
+  {
+    "review_id": 27,
+    "order_item_id": 35,
+    "buyer_id": 32,
+    "rating": 5,
+    "review_text": "It's okay. The craftsmanship is fine but the item didn't quite match the photos online.",
+    "seller_reply_text": null,
+    "created_at": "2025-04-25 18:17:00"
+  },
+  {
+    "review_id": 28,
+    "order_item_id": 58,
+    "buyer_id": 26,
+    "rating": 4,
+    "review_text": "Solid craftsmanship. Packaging could be a bit more protective but the item arrived safely.",
+    "seller_reply_text": null,
+    "created_at": "2025-03-13 04:13:00"
+  },
+  {
+    "review_id": 29,
+    "order_item_id": 59,
+    "buyer_id": 50,
+    "rating": 5,
+    "review_text": "This piece exceeded my expectations. The quality is outstanding and truly one-of-a-kind.",
+    "seller_reply_text": "We're thrilled you love it! Hope to see you again soon.",
+    "created_at": "2025-04-08 03:22:00"
+  },
+  {
+    "review_id": 30,
+    "order_item_id": 60,
+    "buyer_id": 37,
+    "rating": 5,
+    "review_text": "Absolutely stunning craftsmanship. Every detail is perfect and it arrived beautifully packaged.",
+    "seller_reply_text": "Thank you for choosing us! Your feedback inspires us to keep crafting.",
+    "created_at": "2025-04-28 17:07:00"
+  },
+  {
+    "review_id": 31,
+    "order_item_id": 61,
+    "buyer_id": 38,
+    "rating": 5,
+    "review_text": "Generally impressed. The size is a little smaller than expected but the quality is great.",
+    "seller_reply_text": "Thank you for choosing us! Your feedback inspires us to keep crafting.",
+    "created_at": "2025-04-03 18:12:00"
+  },
+  {
+    "review_id": 32,
+    "order_item_id": 62,
+    "buyer_id": 48,
+    "rating": 5,
+    "review_text": "Good quality and fair pricing. The artisan even included a handwritten thank-you note!",
+    "seller_reply_text": "Thank you so much for your kind words! It means the world to us.",
+    "created_at": "2025-03-16 02:54:00"
+  },
+  {
+    "review_id": 33,
+    "order_item_id": 63,
+    "buyer_id": 33,
+    "rating": 5,
+    "review_text": "Nice product, well made. One small imperfection but that just adds to the handmade charm.",
+    "seller_reply_text": null,
+    "created_at": "2025-04-27 20:53:00"
+  },
+  {
+    "review_id": 34,
+    "order_item_id": 64,
+    "buyer_id": 37,
+    "rating": 5,
+    "review_text": "Solid craftsmanship. Packaging could be a bit more protective but the item arrived safely.",
+    "seller_reply_text": null,
+    "created_at": "2025-02-23 21:17:00"
+  },
+  {
+    "review_id": 35,
+    "order_item_id": 11,
+    "buyer_id": 48,
+    "rating": 5,
+    "review_text": "Nice work, good value. I'll be ordering again for holiday gifts.",
+    "seller_reply_text": "Your support means everything to our small workshop. Thank you!",
+    "created_at": "2025-03-04 05:29:00"
+  },
+  {
+    "review_id": 36,
+    "order_item_id": 65,
+    "buyer_id": 38,
+    "rating": 5,
+    "review_text": "Beautifully made with such care. You can feel the love that went into creating it.",
+    "seller_reply_text": "So grateful for this lovely review. We pour our hearts into every piece.",
+    "created_at": "2025-01-15 07:52:00"
+  },
+  {
+    "review_id": 37,
+    "order_item_id": 66,
+    "buyer_id": 27,
+    "rating": 5,
+    "review_text": "I've ordered three times now and the quality never disappoints. This is what handmade should look like.",
+    "seller_reply_text": null,
+    "created_at": "2025-01-17 06:58:00"
+  },
+  {
+    "review_id": 38,
+    "order_item_id": 67,
+    "buyer_id": 44,
+    "rating": 5,
+    "review_text": "It's okay. The craftsmanship is fine but the item didn't quite match the photos online.",
+    "seller_reply_text": null,
+    "created_at": "2025-06-17 15:25:00"
+  },
+  {
+    "review_id": 39,
+    "order_item_id": 68,
+    "buyer_id": 46,
+    "rating": 5,
+    "review_text": "I've ordered three times now and the quality never disappoints. This is what handmade should look like.",
+    "seller_reply_text": "Your support means everything to our small workshop. Thank you!",
+    "created_at": "2025-02-05 07:47:00"
+  },
+  {
+    "review_id": 40,
+    "order_item_id": 69,
+    "buyer_id": 43,
+    "rating": 5,
+    "review_text": "I can't believe how beautiful this is. Definitely my favorite purchase this year.",
+    "seller_reply_text": "Thank you for choosing us! Your feedback inspires us to keep crafting.",
+    "created_at": "2025-04-20 18:25:00"
+  },
+  {
+    "review_id": 41,
+    "order_item_id": 25,
+    "buyer_id": 37,
+    "rating": 5,
+    "review_text": "Nice work, good value. I'll be ordering again for holiday gifts.",
+    "seller_reply_text": "Your support means everything to our small workshop. Thank you!",
+    "created_at": "2025-05-07 02:48:00"
+  },
+  {
+    "review_id": 42,
+    "order_item_id": 70,
+    "buyer_id": 27,
+    "rating": 5,
+    "review_text": "Really lovely piece. Took about two weeks to arrive but it was well worth the wait.",
+    "seller_reply_text": "Your support means everything to our small workshop. Thank you!",
+    "created_at": "2025-06-24 13:38:00"
+  },
+  {
+    "review_id": 43,
+    "order_item_id": 71,
+    "buyer_id": 28,
+    "rating": 5,
+    "review_text": "I can't believe how beautiful this is. Definitely my favorite purchase this year.",
+    "seller_reply_text": null,
+    "created_at": "2025-04-30 16:16:00"
+  },
+  {
+    "review_id": 44,
+    "order_item_id": 38,
+    "buyer_id": 43,
+    "rating": 5,
+    "review_text": "Nice work, good value. I'll be ordering again for holiday gifts.",
+    "seller_reply_text": "We're thrilled you love it! Hope to see you again soon.",
+    "created_at": "2025-03-10 20:21:00"
+  },
+  {
+    "review_id": 45,
+    "order_item_id": 40,
+    "buyer_id": 29,
+    "rating": 5,
+    "review_text": "I gifted this to my mother and she cried tears of joy. The artisan's skill is remarkable.",
+    "seller_reply_text": null,
+    "created_at": "2025-04-27 00:46:00"
+  },
+  {
+    "review_id": 46,
+    "order_item_id": 7,
+    "buyer_id": 49,
+    "rating": 5,
+    "review_text": "The attention to detail is extraordinary. Shipping was fast and packaging was perfect.",
+    "seller_reply_text": "Your support means everything to our small workshop. Thank you!",
+    "created_at": "2025-01-28 20:19:00"
+  },
+  {
+    "review_id": 47,
+    "order_item_id": 15,
+    "buyer_id": 46,
+    "rating": 5,
+    "review_text": "It's okay. The craftsmanship is fine but the item didn't quite match the photos online.",
+    "seller_reply_text": "So grateful for this lovely review. We pour our hearts into every piece.",
+    "created_at": "2025-04-06 05:34:00"
+  },
+  {
+    "review_id": 48,
+    "order_item_id": 72,
+    "buyer_id": 50,
+    "rating": 4,
+    "review_text": "I can't believe how beautiful this is. Definitely my favorite purchase this year.",
+    "seller_reply_text": "Thank you so much for your kind words! It means the world to us.",
+    "created_at": "2025-03-24 15:01:00"
+  },
+  {
+    "review_id": 49,
+    "order_item_id": 73,
+    "buyer_id": 29,
+    "rating": 5,
+    "review_text": "Worth every penny. The materials feel premium and the finish is immaculate.",
+    "seller_reply_text": "Thank you for choosing us! Your feedback inspires us to keep crafting.",
+    "created_at": "2025-01-15 07:56:00"
+  },
+  {
+    "review_id": 50,
+    "order_item_id": 51,
+    "buyer_id": 44,
+    "rating": 5,
+    "review_text": "Pretty good overall. Would appreciate a bit more detail in the product description next time.",
+    "seller_reply_text": "We're thrilled you love it! Hope to see you again soon.",
+    "created_at": "2025-01-18 17:49:00"
+  },
+  {
+    "review_id": 51,
+    "order_item_id": 54,
+    "buyer_id": 30,
+    "rating": 4,
+    "review_text": "Nice work, good value. I'll be ordering again for holiday gifts.",
+    "seller_reply_text": null,
+    "created_at": "2025-02-12 08:33:00"
+  },
+  {
+    "review_id": 52,
+    "order_item_id": 74,
+    "buyer_id": 45,
+    "rating": 5,
+    "review_text": "The attention to detail is extraordinary. Shipping was fast and packaging was perfect.",
+    "seller_reply_text": "So grateful for this lovely review. We pour our hearts into every piece.",
+    "created_at": "2025-06-26 06:45:00"
+  },
+  {
+    "review_id": 53,
+    "order_item_id": 75,
+    "buyer_id": 35,
+    "rating": 5,
+    "review_text": "Truly a masterpiece. I've received so many compliments since displaying this at home.",
+    "seller_reply_text": null,
+    "created_at": "2025-05-13 14:07:00"
+  },
+  {
+    "review_id": 54,
+    "order_item_id": 76,
+    "buyer_id": 33,
+    "rating": 5,
+    "review_text": "Solid craftsmanship. Packaging could be a bit more protective but the item arrived safely.",
+    "seller_reply_text": "We're thrilled you love it! Hope to see you again soon.",
+    "created_at": "2025-01-06 18:35:00"
+  },
+  {
+    "review_id": 55,
+    "order_item_id": 77,
+    "buyer_id": 33,
+    "rating": 5,
+    "review_text": "Absolutely stunning craftsmanship. Every detail is perfect and it arrived beautifully packaged.",
+    "seller_reply_text": "So grateful for this lovely review. We pour our hearts into every piece.",
+    "created_at": "2025-01-19 22:40:00"
+  },
+  {
+    "review_id": 56,
+    "order_item_id": 24,
+    "buyer_id": 27,
+    "rating": 5,
+    "review_text": "Very nice quality overall. Slightly different shade than pictured but still gorgeous.",
+    "seller_reply_text": "We're thrilled you love it! Hope to see you again soon.",
+    "created_at": "2025-03-26 02:32:00"
+  },
+  {
+    "review_id": 57,
+    "order_item_id": 41,
+    "buyer_id": 33,
+    "rating": 5,
+    "review_text": "Worth every penny. The materials feel premium and the finish is immaculate.",
+    "seller_reply_text": null,
+    "created_at": "2025-05-19 04:46:00"
+  },
+  {
+    "review_id": 58,
+    "order_item_id": 78,
+    "buyer_id": 44,
+    "rating": 5,
+    "review_text": "Worth every penny. The materials feel premium and the finish is immaculate.",
+    "seller_reply_text": null,
+    "created_at": "2025-05-02 13:12:00"
+  },
+  {
+    "review_id": 59,
+    "order_item_id": 27,
+    "buyer_id": 29,
+    "rating": 5,
+    "review_text": "Solid craftsmanship. Packaging could be a bit more protective but the item arrived safely.",
+    "seller_reply_text": null,
+    "created_at": "2025-04-19 13:29:00"
+  },
+  {
+    "review_id": 60,
+    "order_item_id": 79,
+    "buyer_id": 49,
+    "rating": 5,
+    "review_text": "Very nice quality overall. Slightly different shade than pictured but still gorgeous.",
+    "seller_reply_text": "We're thrilled you love it! Hope to see you again soon.",
+    "created_at": "2025-04-14 23:21:00"
+  },
+  {
+    "review_id": 61,
+    "order_item_id": 14,
+    "buyer_id": 29,
+    "rating": 4,
+    "review_text": "Good quality and fair pricing. The artisan even included a handwritten thank-you note!",
+    "seller_reply_text": "So grateful for this lovely review. We pour our hearts into every piece.",
+    "created_at": "2025-05-18 14:08:00"
+  },
+  {
+    "review_id": 62,
+    "order_item_id": 80,
+    "buyer_id": 39,
+    "rating": 5,
+    "review_text": "Pretty good overall. Would appreciate a bit more detail in the product description next time.",
+    "seller_reply_text": "Thank you for choosing us! Your feedback inspires us to keep crafting.",
+    "created_at": "2025-03-05 02:28:00"
+  },
+  {
+    "review_id": 63,
+    "order_item_id": 81,
+    "buyer_id": 43,
+    "rating": 5,
+    "review_text": "Nice work, good value. I'll be ordering again for holiday gifts.",
+    "seller_reply_text": "Thank you so much for your kind words! It means the world to us.",
+    "created_at": "2025-01-04 02:59:00"
+  },
+  {
+    "review_id": 64,
+    "order_item_id": 37,
+    "buyer_id": 50,
+    "rating": 5,
+    "review_text": "Happy with my purchase. The item looks authentic and the materials feel durable.",
+    "seller_reply_text": "Your support means everything to our small workshop. Thank you!",
+    "created_at": "2025-05-05 15:13:00"
+  },
+  {
+    "review_id": 65,
+    "order_item_id": 82,
+    "buyer_id": 38,
+    "rating": 5,
+    "review_text": "Happy with my purchase. The item looks authentic and the materials feel durable.",
+    "seller_reply_text": "Your support means everything to our small workshop. Thank you!",
+    "created_at": "2025-01-01 12:16:00"
+  },
+  {
+    "review_id": 66,
+    "order_item_id": 83,
+    "buyer_id": 40,
+    "rating": 5,
+    "review_text": "The attention to detail is extraordinary. Shipping was fast and packaging was perfect.",
+    "seller_reply_text": null,
+    "created_at": "2025-06-19 22:31:00"
+  },
+  {
+    "review_id": 67,
+    "order_item_id": 84,
+    "buyer_id": 30,
+    "rating": 4,
+    "review_text": "Good quality and fair pricing. The artisan even included a handwritten thank-you note!",
+    "seller_reply_text": "Thank you for choosing us! Your feedback inspires us to keep crafting.",
+    "created_at": "2025-01-15 18:47:00"
+  },
+  {
+    "review_id": 68,
+    "order_item_id": 85,
+    "buyer_id": 43,
+    "rating": 4,
+    "review_text": "Very nice quality overall. Slightly different shade than pictured but still gorgeous.",
+    "seller_reply_text": null,
+    "created_at": "2025-01-13 18:30:00"
+  },
+  {
+    "review_id": 69,
+    "order_item_id": 86,
+    "buyer_id": 42,
+    "rating": 5,
+    "review_text": "Absolutely stunning craftsmanship. Every detail is perfect and it arrived beautifully packaged.",
+    "seller_reply_text": "Your support means everything to our small workshop. Thank you!",
+    "created_at": "2025-05-11 02:54:00"
+  },
+  {
+    "review_id": 70,
+    "order_item_id": 42,
+    "buyer_id": 31,
+    "rating": 5,
+    "review_text": "Good quality and fair pricing. The artisan even included a handwritten thank-you note!",
+    "seller_reply_text": "We're thrilled you love it! Hope to see you again soon.",
+    "created_at": "2025-04-14 03:56:00"
+  },
+  {
+    "review_id": 71,
+    "order_item_id": 87,
+    "buyer_id": 44,
+    "rating": 5,
+    "review_text": "Generally impressed. The size is a little smaller than expected but the quality is great.",
+    "seller_reply_text": "Thank you so much for your kind words! It means the world to us.",
+    "created_at": "2025-01-21 13:42:00"
+  },
+  {
+    "review_id": 72,
+    "order_item_id": 88,
+    "buyer_id": 44,
+    "rating": 5,
+    "review_text": "I've ordered three times now and the quality never disappoints. This is what handmade should look like.",
+    "seller_reply_text": null,
+    "created_at": "2025-02-22 21:45:00"
+  },
+  {
+    "review_id": 73,
+    "order_item_id": 21,
+    "buyer_id": 36,
+    "rating": 5,
+    "review_text": "Happy with my purchase. The item looks authentic and the materials feel durable.",
+    "seller_reply_text": "Thank you for choosing us! Your feedback inspires us to keep crafting.",
+    "created_at": "2025-02-03 21:41:00"
+  },
+  {
+    "review_id": 74,
+    "order_item_id": 89,
+    "buyer_id": 35,
+    "rating": 4,
+    "review_text": "This piece exceeded my expectations. The quality is outstanding and truly one-of-a-kind.",
+    "seller_reply_text": null,
+    "created_at": "2025-01-03 14:39:00"
+  },
+  {
+    "review_id": 75,
+    "order_item_id": 90,
+    "buyer_id": 44,
+    "rating": 4,
+    "review_text": "Nice work, good value. I'll be ordering again for holiday gifts.",
+    "seller_reply_text": "We're thrilled you love it! Hope to see you again soon.",
+    "created_at": "2025-02-24 16:16:00"
+  },
+  {
+    "review_id": 76,
+    "order_item_id": 23,
+    "buyer_id": 30,
+    "rating": 5,
+    "review_text": "Worth every penny. The materials feel premium and the finish is immaculate.",
+    "seller_reply_text": "We're thrilled you love it! Hope to see you again soon.",
+    "created_at": "2025-04-05 09:10:00"
+  },
+  {
+    "review_id": 77,
+    "order_item_id": 43,
+    "buyer_id": 40,
+    "rating": 5,
+    "review_text": "Not bad, just not quite what I imagined. The color is a bit off and the edges are rough.",
+    "seller_reply_text": "Thank you for choosing us! Your feedback inspires us to keep crafting.",
+    "created_at": "2025-06-17 16:00:00"
+  },
+  {
+    "review_id": 78,
+    "order_item_id": 91,
+    "buyer_id": 47,
+    "rating": 5,
+    "review_text": "This piece exceeded my expectations. The quality is outstanding and truly one-of-a-kind.",
+    "seller_reply_text": "Thank you for choosing us! Your feedback inspires us to keep crafting.",
+    "created_at": "2025-02-04 08:07:00"
+  },
+  {
+    "review_id": 79,
+    "order_item_id": 92,
+    "buyer_id": 29,
+    "rating": 5,
+    "review_text": "Average for the price. The material feels a bit thin but it still looks nice displayed.",
+    "seller_reply_text": "Your support means everything to our small workshop. Thank you!",
+    "created_at": "2025-03-14 19:13:00"
+  },
+  {
+    "review_id": 80,
+    "order_item_id": 93,
+    "buyer_id": 48,
+    "rating": 5,
+    "review_text": "I've ordered three times now and the quality never disappoints. This is what handmade should look like.",
+    "seller_reply_text": "So grateful for this lovely review. We pour our hearts into every piece.",
+    "created_at": "2025-05-10 15:16:00"
+  },
+  {
+    "review_id": 81,
+    "order_item_id": 94,
+    "buyer_id": 27,
+    "rating": 5,
+    "review_text": "Nice product, well made. One small imperfection but that just adds to the handmade charm.",
+    "seller_reply_text": null,
+    "created_at": "2025-01-12 00:21:00"
+  },
+  {
+    "review_id": 82,
+    "order_item_id": 95,
+    "buyer_id": 50,
+    "rating": 5,
+    "review_text": "Really lovely piece. Took about two weeks to arrive but it was well worth the wait.",
+    "seller_reply_text": "Thank you for choosing us! Your feedback inspires us to keep crafting.",
+    "created_at": "2025-04-24 17:45:00"
+  },
+  {
+    "review_id": 83,
+    "order_item_id": 50,
+    "buyer_id": 39,
+    "rating": 5,
+    "review_text": "Decent quality but took longer than expected to arrive. The finished product is acceptable.",
+    "seller_reply_text": "Thank you so much for your kind words! It means the world to us.",
+    "created_at": "2025-01-20 22:57:00"
+  },
+  {
+    "review_id": 84,
+    "order_item_id": 96,
+    "buyer_id": 30,
+    "rating": 5,
+    "review_text": "Beautifully made with such care. You can feel the love that went into creating it.",
+    "seller_reply_text": "Thank you so much for your kind words! It means the world to us.",
+    "created_at": "2025-05-30 17:09:00"
+  },
+  {
+    "review_id": 85,
+    "order_item_id": 97,
+    "buyer_id": 39,
+    "rating": 5,
+    "review_text": "Nice product, well made. One small imperfection but that just adds to the handmade charm.",
+    "seller_reply_text": "Thank you so much for your kind words! It means the world to us.",
+    "created_at": "2025-04-04 01:57:00"
+  },
+  {
+    "review_id": 86,
+    "order_item_id": 98,
+    "buyer_id": 37,
+    "rating": 5,
+    "review_text": "Great craftsmanship and fast shipping. Would love to see more color options in the future.",
+    "seller_reply_text": "So grateful for this lovely review. We pour our hearts into every piece.",
+    "created_at": "2025-04-01 17:56:00"
+  },
+  {
+    "review_id": 87,
+    "order_item_id": 20,
+    "buyer_id": 39,
+    "rating": 5,
+    "review_text": "It's okay. The craftsmanship is fine but the item didn't quite match the photos online.",
+    "seller_reply_text": "Your support means everything to our small workshop. Thank you!",
+    "created_at": "2025-02-11 05:56:00"
+  },
+  {
+    "review_id": 88,
+    "order_item_id": 99,
+    "buyer_id": 39,
+    "rating": 4,
+    "review_text": "Solid craftsmanship. Packaging could be a bit more protective but the item arrived safely.",
+    "seller_reply_text": "Your support means everything to our small workshop. Thank you!",
+    "created_at": "2025-04-16 21:55:00"
+  },
+  {
+    "review_id": 89,
+    "order_item_id": 100,
+    "buyer_id": 49,
+    "rating": 5,
+    "review_text": "Really lovely piece. Took about two weeks to arrive but it was well worth the wait.",
+    "seller_reply_text": "Thank you for choosing us! Your feedback inspires us to keep crafting.",
+    "created_at": "2025-06-29 03:24:00"
+  },
+  {
+    "review_id": 90,
+    "order_item_id": 101,
+    "buyer_id": 27,
+    "rating": 5,
+    "review_text": "Worth every penny. The materials feel premium and the finish is immaculate.",
+    "seller_reply_text": "So grateful for this lovely review. We pour our hearts into every piece.",
+    "created_at": "2025-04-28 11:19:00"
+  },
+  {
+    "review_id": 91,
+    "order_item_id": 13,
+    "buyer_id": 33,
+    "rating": 5,
+    "review_text": "Good quality and fair pricing. The artisan even included a handwritten thank-you note!",
+    "seller_reply_text": "Thank you so much for your kind words! It means the world to us.",
+    "created_at": "2025-04-13 10:17:00"
+  },
+  {
+    "review_id": 92,
+    "order_item_id": 102,
+    "buyer_id": 28,
+    "rating": 4,
+    "review_text": "The attention to detail is extraordinary. Shipping was fast and packaging was perfect.",
+    "seller_reply_text": null,
+    "created_at": "2025-04-13 21:53:00"
+  },
+  {
+    "review_id": 93,
+    "order_item_id": 9,
+    "buyer_id": 43,
+    "rating": 4,
+    "review_text": "This piece exceeded my expectations. The quality is outstanding and truly one-of-a-kind.",
+    "seller_reply_text": "Thank you so much for your kind words! It means the world to us.",
+    "created_at": "2025-03-08 05:37:00"
+  },
+  {
+    "review_id": 94,
+    "order_item_id": 103,
+    "buyer_id": 34,
+    "rating": 4,
+    "review_text": "Generally impressed. The size is a little smaller than expected but the quality is great.",
+    "seller_reply_text": "We're thrilled you love it! Hope to see you again soon.",
+    "created_at": "2025-04-22 11:46:00"
+  },
+  {
+    "review_id": 95,
+    "order_item_id": 104,
+    "buyer_id": 36,
+    "rating": 5,
+    "review_text": "Exceptional product. The colors are vibrant and the texture is even better in person.",
+    "seller_reply_text": "We're thrilled you love it! Hope to see you again soon.",
+    "created_at": "2025-05-28 06:16:00"
+  },
+  {
+    "review_id": 96,
+    "order_item_id": 105,
+    "buyer_id": 27,
+    "rating": 5,
+    "review_text": "Decent quality but took longer than expected to arrive. The finished product is acceptable.",
+    "seller_reply_text": null,
+    "created_at": "2025-05-14 17:43:00"
+  },
+  {
+    "review_id": 97,
+    "order_item_id": 55,
+    "buyer_id": 49,
+    "rating": 5,
+    "review_text": "Happy with my purchase. The item looks authentic and the materials feel durable.",
+    "seller_reply_text": null,
+    "created_at": "2025-01-18 21:58:00"
+  },
+  {
+    "review_id": 98,
+    "order_item_id": 106,
+    "buyer_id": 36,
+    "rating": 4,
+    "review_text": "This piece exceeded my expectations. The quality is outstanding and truly one-of-a-kind.",
+    "seller_reply_text": null,
+    "created_at": "2025-03-18 16:19:00"
+  },
+  {
+    "review_id": 99,
+    "order_item_id": 107,
+    "buyer_id": 47,
+    "rating": 4,
+    "review_text": "Exceptional product. The colors are vibrant and the texture is even better in person.",
+    "seller_reply_text": null,
+    "created_at": "2025-06-28 09:35:00"
+  },
+  {
+    "review_id": 100,
+    "order_item_id": 108,
+    "buyer_id": 30,
+    "rating": 5,
+    "review_text": "Happy with my purchase. The item looks authentic and the materials feel durable.",
+    "seller_reply_text": null,
+    "created_at": "2025-06-23 23:57:00"
+  },
+  {
+    "review_id": 101,
+    "order_item_id": 109,
+    "buyer_id": 31,
+    "rating": 5,
+    "review_text": "Exceptional product. The colors are vibrant and the texture is even better in person.",
+    "seller_reply_text": "Thank you for choosing us! Your feedback inspires us to keep crafting.",
+    "created_at": "2025-05-21 00:19:00"
+  },
+  {
+    "review_id": 102,
+    "order_item_id": 110,
+    "buyer_id": 35,
+    "rating": 5,
+    "review_text": "Generally impressed. The size is a little smaller than expected but the quality is great.",
+    "seller_reply_text": null,
+    "created_at": "2025-06-05 20:20:00"
+  },
+  {
+    "review_id": 103,
+    "order_item_id": 111,
+    "buyer_id": 40,
+    "rating": 5,
+    "review_text": "Worth every penny. The materials feel premium and the finish is immaculate.",
+    "seller_reply_text": null,
+    "created_at": "2025-05-11 15:50:00"
+  },
+  {
+    "review_id": 104,
+    "order_item_id": 112,
+    "buyer_id": 49,
+    "rating": 5,
+    "review_text": "Nice product, well made. One small imperfection but that just adds to the handmade charm.",
+    "seller_reply_text": "We're thrilled you love it! Hope to see you again soon.",
+    "created_at": "2025-05-12 21:40:00"
+  },
+  {
+    "review_id": 105,
+    "order_item_id": 113,
+    "buyer_id": 45,
+    "rating": 5,
+    "review_text": "Worth every penny. The materials feel premium and the finish is immaculate.",
+    "seller_reply_text": "We're thrilled you love it! Hope to see you again soon.",
+    "created_at": "2025-06-22 09:14:00"
+  },
+  {
+    "review_id": 106,
+    "order_item_id": 114,
+    "buyer_id": 32,
+    "rating": 5,
+    "review_text": "Very nice quality overall. Slightly different shade than pictured but still gorgeous.",
+    "seller_reply_text": "Thank you so much for your kind words! It means the world to us.",
+    "created_at": "2025-03-04 15:39:00"
+  },
+  {
+    "review_id": 107,
+    "order_item_id": 115,
+    "buyer_id": 50,
+    "rating": 5,
+    "review_text": "Happy with my purchase. The item looks authentic and the materials feel durable.",
+    "seller_reply_text": null,
+    "created_at": "2025-06-11 18:12:00"
+  },
+  {
+    "review_id": 108,
+    "order_item_id": 116,
+    "buyer_id": 48,
+    "rating": 5,
+    "review_text": "Fair quality. I expected a bit more given the description, but it's still a decent piece.",
+    "seller_reply_text": null,
+    "created_at": "2025-04-13 07:09:00"
+  },
+  {
+    "review_id": 109,
+    "order_item_id": 117,
+    "buyer_id": 46,
+    "rating": 5,
+    "review_text": "Decent quality but took longer than expected to arrive. The finished product is acceptable.",
+    "seller_reply_text": "Thank you so much for your kind words! It means the world to us.",
+    "created_at": "2025-04-19 07:11:00"
+  },
+  {
+    "review_id": 110,
+    "order_item_id": 118,
+    "buyer_id": 48,
+    "rating": 5,
+    "review_text": "Absolutely stunning craftsmanship. Every detail is perfect and it arrived beautifully packaged.",
+    "seller_reply_text": null,
+    "created_at": "2025-05-23 07:58:00"
+  },
+  {
+    "review_id": 111,
+    "order_item_id": 10,
+    "buyer_id": 29,
+    "rating": 4,
+    "review_text": "Truly a masterpiece. I've received so many compliments since displaying this at home.",
+    "seller_reply_text": "Your support means everything to our small workshop. Thank you!",
+    "created_at": "2025-06-20 16:35:00"
+  },
+  {
+    "review_id": 112,
+    "order_item_id": 119,
+    "buyer_id": 45,
+    "rating": 5,
+    "review_text": "I can't believe how beautiful this is. Definitely my favorite purchase this year.",
+    "seller_reply_text": null,
+    "created_at": "2025-05-10 13:53:00"
+  },
+  {
+    "review_id": 113,
+    "order_item_id": 120,
+    "buyer_id": 43,
+    "rating": 5,
+    "review_text": "Truly a masterpiece. I've received so many compliments since displaying this at home.",
+    "seller_reply_text": "Your support means everything to our small workshop. Thank you!",
+    "created_at": "2025-04-26 08:48:00"
+  },
+  {
+    "review_id": 114,
+    "order_item_id": 12,
+    "buyer_id": 33,
+    "rating": 5,
+    "review_text": "Worth every penny. The materials feel premium and the finish is immaculate.",
+    "seller_reply_text": null,
+    "created_at": "2025-03-12 14:04:00"
+  },
+  {
+    "review_id": 115,
+    "order_item_id": 36,
+    "buyer_id": 48,
+    "rating": 5,
+    "review_text": "I've ordered three times now and the quality never disappoints. This is what handmade should look like.",
+    "seller_reply_text": "So grateful for this lovely review. We pour our hearts into every piece.",
+    "created_at": "2025-03-27 10:57:00"
+  },
+  {
+    "review_id": 116,
+    "order_item_id": 53,
+    "buyer_id": 43,
+    "rating": 5,
+    "review_text": "Really lovely piece. Took about two weeks to arrive but it was well worth the wait.",
+    "seller_reply_text": "Your support means everything to our small workshop. Thank you!",
+    "created_at": "2025-03-01 12:44:00"
+  },
+  {
+    "review_id": 117,
+    "order_item_id": 121,
+    "buyer_id": 30,
+    "rating": 4,
+    "review_text": "Decent quality but took longer than expected to arrive. The finished product is acceptable.",
+    "seller_reply_text": "So grateful for this lovely review. We pour our hearts into every piece.",
+    "created_at": "2025-04-17 13:21:00"
+  },
+  {
+    "review_id": 118,
+    "order_item_id": 122,
+    "buyer_id": 43,
+    "rating": 5,
+    "review_text": "Absolutely stunning craftsmanship. Every detail is perfect and it arrived beautifully packaged.",
+    "seller_reply_text": null,
+    "created_at": "2025-02-22 13:24:00"
+  },
+  {
+    "review_id": 119,
+    "order_item_id": 22,
+    "buyer_id": 50,
+    "rating": 4,
+    "review_text": "Not bad, just not quite what I imagined. The color is a bit off and the edges are rough.",
+    "seller_reply_text": "Thank you so much for your kind words! It means the world to us.",
+    "created_at": "2025-04-08 15:00:00"
+  },
+  {
+    "review_id": 120,
+    "order_item_id": 26,
+    "buyer_id": 37,
+    "rating": 5,
+    "review_text": "Exceptional product. The colors are vibrant and the texture is even better in person.",
+    "seller_reply_text": null,
+    "created_at": "2025-05-18 23:47:00"
+  },
+  {
+    "review_id": 121,
+    "order_item_id": 52,
+    "buyer_id": 43,
+    "rating": 5,
+    "review_text": "Fair quality. I expected a bit more given the description, but it's still a decent piece.",
+    "seller_reply_text": "So grateful for this lovely review. We pour our hearts into every piece.",
+    "created_at": "2025-02-26 08:27:00"
   }
 ]

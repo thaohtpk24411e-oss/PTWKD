@@ -60,7 +60,6 @@
     document.title = "ReViet — " + product.title;
     renderGallery(product, productPhotos);
     renderInfo(product, tagObjs);
-    renderSustain(tagObjs);
     renderSeller(seller);
     renderReviews(productReviews);
     renderRelated(related, photosData);
@@ -118,7 +117,7 @@
     var html =
       '<p class="eyebrow">' + eyebrow + '</p>' +
       '<h1 class="pd-title">' + p.title + '</h1>' +
-      '<p class="pd-sub">“Handcrafted using ' + p.materials.toLowerCase() + '”</p>' +
+      '<p class="pd-sub">"Handcrafted using ' + p.materials.toLowerCase() + '"</p>' +
       '<div class="pd-price-row"><span class="pd-price">' + money(p.price) + '</span>' + stock + '</div>' +
       '<div class="pd-actions">' +
       '<div class="pd-buy-row">' +
@@ -244,41 +243,62 @@
     var story = seller.craft_story || seller.shop_bio || "";
     var banner = seller.shop_banner;
 
-    var avatarHtml = banner ?
-      '<div class="pd-seller-avatar" style="background-image: url(' + banner + '); background-size: cover; background-position: center;"></div>' :
-      '<div class="pd-seller-avatar">' + initials + "</div>";
+    var avatarEl = document.createElement("div");
+    avatarEl.className = "pd-seller-avatar";
+    if (banner) {
+      var avatarImg = document.createElement("img");
+      avatarImg.className = "pd-seller-avatar-img";
+      avatarImg.src = normalizeImagePath(banner);
+      avatarImg.alt = name + " avatar";
+      avatarImg.loading = "lazy";
+      avatarImg.onerror = function () {
+        avatarEl.removeChild(avatarImg);
+        avatarEl.textContent = initials;
+      };
+      avatarEl.appendChild(avatarImg);
+    } else {
+      avatarEl.textContent = initials;
+    }
 
+    var profileUrl = "seller_profile.html?id=" + seller.seller_id;
     host.innerHTML =
-      avatarHtml +
       '<div class="pd-seller-body">' +
       '<p class="pd-label">Shop</p>' +
-      '<h3 class="pd-seller-name">' + name + "</h3>" +
+      '<h3 class="pd-seller-name"><a href="' + profileUrl + '" style="color:inherit;text-decoration:none;">' + name + '</a></h3>' +
       '<p class="pd-seller-story">' + story + "</p>" +
-      '<a class="link-underline" href="#">Read the Full Story</a>' +
+      '<a class="link-underline" href="' + profileUrl + '">Visit Shop →</a>' +
       "</div>";
+    avatarEl.style.cursor = "pointer";
+    avatarEl.addEventListener("click", function () { window.location.href = profileUrl; });
+    host.insertBefore(avatarEl, host.firstChild);
   }
 
   function renderReviews(reviews) {
-    var grid = document.getElementById("pd-reviews");
+    var grid    = document.getElementById("pd-reviews");
     var allLink = document.getElementById("pd-reviews-all");
-    allLink.textContent = "View All " + reviews.length + " Reviews";
+
     if (!reviews.length) {
       grid.innerHTML = '<p class="pd-no-reviews">No reflections yet — be the first to share your story.</p>';
-      allLink.style.display = "none";
+      if (allLink) allLink.style.display = "none";
       return;
     }
-    var top = reviews.slice(0, 3);
+
+    var sorted = reviews.slice().sort(function (a, b) {
+      return new Date(b.created_at) - new Date(a.created_at);
+    });
+
     var html = "";
-    for (var i = 0; i < top.length; i++) {
-      // Mock some names based on index for variety
-      var name = ["Eleanor R., London", "Hiroshi K., Tokyo", "Sarah M., New York"][i % 3];
+    for (var i = 0; i < sorted.length; i++) {
+      var rv = sorted[i];
+      var dateStr = rv.created_at ? rv.created_at.slice(0, 7) : "";
       html += '<article class="pd-review">' +
-        '<div class="pd-review-stars">' + stars(top[i].rating) + "</div>" +
-        '<p class="pd-review-text">“' + (top[i].review_text || "") + '”</p>' +
-        '<p class="pd-review-by">— ' + name + '</p>' +
+        '<div class="pd-review-stars">' + stars(rv.rating) + "</div>" +
+        '<p class="pd-review-text">"' + (rv.review_text || "") + '"</p>' +
+        '<p class="pd-review-by">— Customer' + (dateStr ? " &middot; " + dateStr : "") + '</p>' +
         "</article>";
     }
     grid.innerHTML = html;
+    if (allLink) allLink.style.display = "none";
   }
 
   function renderRelated(related, photosData) {

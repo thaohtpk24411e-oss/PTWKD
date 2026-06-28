@@ -39,19 +39,11 @@
 .pd-meta-val { color: var(--ink); font-size: .95rem; font-weight: 500; }
 
 /* ---- Sustainability ---- */
-.pd-sustain { padding: 40px 0; }
-.pd-sustain-inner { background: #fbf9f6; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; padding: 60px 50px; border-radius: 24px; }
-.pd-sustain-text h2 { font-family: var(--serif); font-size: clamp(1.8rem, 2.6vw, 2.2rem); margin-bottom: 2rem; color: var(--ink); }
-.pd-sustain-list { list-style: none; margin: 0 0 2rem; padding: 0; }
-.pd-sustain-list li { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.2rem; color: var(--ink); font-weight: 600; font-size: 0.95rem; }
-.pd-sustain-ico { color: var(--ink); display: inline-flex; margin-top: 2px; }
-.pd-sustain-note { color: var(--body); font-size: .9rem; margin: 0; line-height: 1.6; font-weight: 400; }
-.pd-sustain-media { min-height: 340px; background-size: cover; background-position: center; border-radius: 16px; background-image: url("https://cdn.craftgreen.vn/products/28/handmade-indigo-tunic-3.jpg"), linear-gradient(160deg, #d8b9a6, #b98f76); }
-
 /* ---- Seller ---- */
 .pd-seller { padding: 50px 0; border-bottom: 1px solid var(--line); border-top: 1px solid var(--line); margin: 40px 0; }
 .pd-seller-inner { display: flex; gap: 3rem; align-items: center; }
-.pd-seller-avatar { width: 140px; height: 140px; border-radius: 50%; background: #f4edd9; border: 1px solid var(--line); color: var(--ink); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 2rem; flex-shrink: 0; }
+.pd-seller-avatar { width: 140px; height: 140px; border-radius: 50%; background: #f4edd9; border: 1px solid var(--line); color: var(--ink); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 2rem; flex-shrink: 0; overflow: hidden; }
+.pd-seller-avatar-img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .pd-seller-body .pd-label { margin-bottom: 0.5rem; color: var(--muted); }
 .pd-seller-name { font-family: var(--serif); font-size: 2rem; margin: 0 0 1rem; color: var(--ink); }
 .pd-seller-story { color: var(--body); max-width: 80ch; margin: 0 0 1.2rem; line-height: 1.6; }
@@ -66,6 +58,7 @@
 .pd-review-text { color: var(--body); margin: 0 0 1.5rem; line-height: 1.6; font-size: 0.95rem; }
 .pd-review-by { font-size: .85rem; color: var(--muted); margin: 0; }
 .pd-no-reviews { color: var(--muted); }
+
 
 /* ---- Related ---- */
 .pd-related { padding: 0 0 100px; }
@@ -88,8 +81,6 @@
 /* ---- Responsive ---- */
 @media (max-width: 900px) {
   .pd-top { grid-template-columns: 1fr; gap: 3rem; }
-  .pd-sustain-inner { grid-template-columns: 1fr; gap: 2.5rem; padding: 40px 30px; }
-  .pd-sustain-media { min-height: 250px; }
   .pd-reviews-grid { grid-template-columns: 1fr; }
   .pd-related-grid { grid-template-columns: repeat(2, 1fr); }
   .pd-seller-inner { flex-direction: column; align-items: flex-start; gap: 2rem; }

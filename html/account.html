@@ -32,6 +32,11 @@
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="7" width="22" height="13" rx="2"/><path d="M1 12h4m14 0h4"/></svg>
             Voucher Vault
           </button>
+          <button class="acct-nav-item" data-view="chat">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Chat
+            <span class="acct-nav-badge" id="chat-badge" style="display:none"></span>
+          </button>
           <button class="acct-nav-item" data-view="favourites">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
             Favourites
@@ -98,10 +103,36 @@
           </div>
         </section>
 
+        <!-- VIEW: Chat -->
+        <section class="acct-view" id="view-chat">
+          <div class="chat-layout">
+            <div class="chat-conv-list" id="chat-conv-list">
+              <p class="acct-empty">Loading conversations…</p>
+            </div>
+            <div class="chat-thread-panel" id="chat-thread-panel">
+              <div class="chat-thread-empty">
+                <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.4" style="opacity:.3"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <p>Select a conversation to start chatting</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <!-- VIEW: Favourites -->
         <section class="acct-view" id="view-favourites">
-          <div id="fav-grid" class="fav-grid">
-            <p class="acct-empty">Loading…</p>
+          <div class="fav-tabs">
+            <button class="fav-tab active" data-ftab="products">Favourite Products</button>
+            <button class="fav-tab" data-ftab="shops">Followed Shops</button>
+          </div>
+          <div id="fav-products-panel">
+            <div id="fav-grid" class="fav-grid">
+              <p class="acct-empty">Loading…</p>
+            </div>
+          </div>
+          <div id="fav-shops-panel" style="display:none">
+            <div id="following-grid" class="fav-grid">
+              <p class="acct-empty">Loading…</p>
+            </div>
           </div>
         </section>
 

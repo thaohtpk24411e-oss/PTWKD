@@ -228,6 +228,7 @@
       var icon     = STATUS_ICON[status] || "";
       var label    = STATUS_LABEL[status] || status;
 
+      var coSellerId = ord.seller_id || (prod ? prod.seller_id : "");
       return '<div class="order-card">' +
         '<div class="order-card-header">' +
           '<span class="order-card-status">' + icon + ' ' + label + '</span>' +
@@ -248,7 +249,7 @@
           '</div>' +
         '</div>' +
         '<div class="order-card-footer">' +
-          '<button class="order-btn-outline">Contact Seller</button>' +
+          '<button class="order-btn-outline" data-seller-id="' + coSellerId + '">Contact Seller</button>' +
           '<button class="order-btn-solid" data-order-id="' + ord.order_id + '">Track Details</button>' +
         '</div>' +
       '</div>';
@@ -454,9 +455,21 @@
     var ordersListEl = document.getElementById("acct-orders-list");
     if (ordersListEl) {
       ordersListEl.addEventListener("click", function(e) {
-        var btn = e.target.closest(".order-btn-solid[data-order-id]");
-        if (!btn) return;
-        showTrackModal(parseInt(btn.getAttribute("data-order-id"), 10));
+        var trackBtn = e.target.closest(".order-btn-solid[data-order-id]");
+        if (trackBtn) {
+          showTrackModal(parseInt(trackBtn.getAttribute("data-order-id"), 10));
+          return;
+        }
+        var contactBtn = e.target.closest(".order-btn-outline[data-seller-id]");
+        if (contactBtn) {
+          var cSellerId = parseInt(contactBtn.getAttribute("data-seller-id"), 10);
+          if (cSellerId) {
+            activeChatSellerId = cSellerId;
+            var chatNav = document.querySelector('[data-view="chat"]');
+            if (chatNav) chatNav.click();
+            renderChatView();
+          }
+        }
       });
     }
 
@@ -762,13 +775,24 @@
     renderVouchers();
 
     /* ── Favourites view ── */
+    function normaliseFavs(raw) {
+      /* Handles both [{product_id, added_at}] and [integer] formats */
+      var out = [];
+      for (var i = 0; i < raw.length; i++) {
+        if (typeof raw[i] === "number") out.push({ product_id: raw[i] });
+        else if (raw[i] && raw[i].product_id) out.push(raw[i]);
+      }
+      return out;
+    }
+
     function renderFavourites() {
-      var favs = [];
-      try { favs = JSON.parse(localStorage.getItem("rv_favourites") || "[]"); } catch (e) {}
+      var raw = [];
+      try { raw = JSON.parse(localStorage.getItem("rv_favourites") || "[]"); } catch (e) {}
+      var favs = normaliseFavs(raw);
       var grid = document.getElementById("fav-grid");
       if (!grid) return;
       if (!favs.length) {
-        grid.innerHTML = '<p class="acct-empty" style="grid-column:1/-1">No favourites yet. Browse the shop and click the ♡ icon on any product to save it here.</p>';
+        grid.innerHTML = '<p class="acct-empty" style="grid-column:1/-1">No favourites yet. Browse the shop and click the &#9825; icon on any product to save it here.</p>';
         return;
       }
       var html = "";
@@ -782,7 +806,8 @@
         var tStyle = photoUrl ? 'style="background-image:url(' + photoUrl + ')"' : "";
         html +=
           '<div class="fav-card">' +
-            '<a href="product_detail.html?id=' + prod.product_id + '" class="' + tClass + '" ' + tStyle + '></a>' +            '<div class="fav-card-body">' +
+            '<a href="product_detail.html?id=' + prod.product_id + '" class="' + tClass + '" ' + tStyle + '></a>' +
+            '<div class="fav-card-body">' +
               '<p class="fav-card-name">' + prod.title + '</p>' +
               '<p class="fav-card-price">$' + Number(prod.price).toFixed(2) + '</p>' +
             '</div>' +
@@ -794,17 +819,8 @@
       }
       grid.innerHTML = html || '<p class="acct-empty" style="grid-column:1/-1">No favourites found.</p>';
 
-      /* Wire buttons */
       grid.querySelectorAll(".fav-add-cart").forEach(function (btn) {
         btn.addEventListener("click", function () {
-          // Require logged-in user — account page should already enforce this, but double-check
-          var session = null;
-          try { session = JSON.parse(sessionStorage.getItem("rv_session") || "null"); } catch (e) { session = null; }
-          if (!session || !session.user_id) {
-            window.location.href = "../html/login.html".replace("../html/", "login.html");
-            return;
-          }
-
           var pid = parseInt(btn.getAttribute("data-pid"), 10);
           var cart = [];
           try { cart = JSON.parse(localStorage.getItem("rv_cart") || "[]"); } catch (e) {}
@@ -823,16 +839,249 @@
       grid.querySelectorAll(".fav-remove").forEach(function (btn) {
         btn.addEventListener("click", function () {
           var pid = parseInt(btn.getAttribute("data-pid"), 10);
-          var curFavs = [];
-          try { curFavs = JSON.parse(localStorage.getItem("rv_favourites") || "[]"); } catch (e) {}
-          var newFavs = [];
-          for (var i = 0; i < curFavs.length; i++) { if (curFavs[i].product_id !== pid) newFavs.push(curFavs[i]); }
+          var curRaw = [];
+          try { curRaw = JSON.parse(localStorage.getItem("rv_favourites") || "[]"); } catch (e) {}
+          /* Remove regardless of stored format (int or object) */
+          var newFavs = curRaw.filter(function (item) {
+            if (typeof item === "number") return item !== pid;
+            return item && item.product_id !== pid;
+          });
           localStorage.setItem("rv_favourites", JSON.stringify(newFavs));
           renderFavourites();
         });
       });
     }
+
+    /* ── Followed Shops view ── */
+    function renderFollowing() {
+      var followedIds = [];
+      try { followedIds = JSON.parse(localStorage.getItem("rv_following") || "[]"); } catch (e) {}
+      var grid = document.getElementById("following-grid");
+      if (!grid) return;
+      if (!followedIds.length) {
+        grid.innerHTML = '<p class="acct-empty">No followed shops yet. Visit an artisan\'s shop and click Follow to save them here.</p>';
+        return;
+      }
+      var html = '<div class="following-list">';
+      for (var fi = 0; fi < followedIds.length; fi++) {
+        var sid = followedIds[fi];
+        var seller = sellerMap[sid];
+        if (!seller) continue;
+        var banner = normalizeImagePath(seller.shop_banner || "");
+        var avatarStyle = banner ? 'style="background-image:url(' + banner + ')"' : "";
+        var avatarClass = "following-avatar" + (banner ? "" : " grad-" + (sid % 6));
+        var rating = seller.rating ? ('&#9733; ' + Number(seller.rating).toFixed(1)) : "";
+        var profileUrl = "seller_profile.html?id=" + sid;
+        html +=
+          '<div class="following-row">' +
+            '<a href="' + profileUrl + '" class="' + avatarClass + '" ' + avatarStyle + '></a>' +
+            '<div class="following-info">' +
+              '<p class="following-name">' + seller.shop_name + '</p>' +
+              '<p class="following-rating">' + rating + '</p>' +
+            '</div>' +
+            '<div class="following-actions">' +
+              '<a href="' + profileUrl + '" class="following-visit">Visit Shop</a>' +
+              '<button class="following-unfollow" data-sid="' + sid + '">Unfollow</button>' +
+            '</div>' +
+          '</div>';
+      }
+      html += '</div>';
+      grid.innerHTML = html;
+
+      grid.querySelectorAll(".following-unfollow").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var sid2 = parseInt(btn.getAttribute("data-sid"), 10);
+          var cur = [];
+          try { cur = JSON.parse(localStorage.getItem("rv_following") || "[]"); } catch (e) {}
+          localStorage.setItem("rv_following", JSON.stringify(cur.filter(function (id) { return id !== sid2; })));
+          renderFollowing();
+        });
+      });
+    }
+
     renderFavourites();
+    renderFollowing();
+
+    /* ── Favourites sub-tab wiring ── */
+    document.querySelectorAll(".fav-tab").forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        document.querySelectorAll(".fav-tab").forEach(function (t) { t.classList.remove("active"); });
+        tab.classList.add("active");
+        var which = tab.getAttribute("data-ftab");
+        document.getElementById("fav-products-panel").style.display = which === "products" ? "" : "none";
+        document.getElementById("fav-shops-panel").style.display    = which === "shops"    ? "" : "none";
+        if (which === "products") renderFavourites();
+        else renderFollowing();
+      });
+    });
+
+    /* Refresh when switching to Favourites nav */
+    var favNavBtn = document.querySelector('[data-view="favourites"]');
+    if (favNavBtn) {
+      favNavBtn.addEventListener("click", function () {
+        var activeTab = document.querySelector(".fav-tab.active");
+        if (activeTab && activeTab.getAttribute("data-ftab") === "shops") renderFollowing();
+        else renderFavourites();
+      });
+    }
+
+    /* ── Chat ── */
+    var activeChatSellerId = null;
+
+    function getChatData() {
+      try { return JSON.parse(localStorage.getItem("rv_chats_" + session.user_id) || "{}"); } catch (e) { return {}; }
+    }
+    function saveChatData(data) {
+      localStorage.setItem("rv_chats_" + session.user_id, JSON.stringify(data));
+    }
+
+    function getChatSellers() {
+      var seen = {};
+      var list = [];
+      for (var ci2 = 0; ci2 < myOrders.length; ci2++) {
+        var cord = myOrders[ci2];
+        var csid = cord.seller_id;
+        if (!csid) {
+          var cfi = firstItemMap[cord.order_id];
+          if (cfi && productMap[cfi.product_id]) csid = productMap[cfi.product_id].seller_id;
+        }
+        if (csid && !seen[csid]) { seen[csid] = true; list.push(csid); }
+      }
+      /* Also include any seller with chat history (e.g. messaged from artisans page) */
+      var chatHistory = getChatData();
+      var historyKeys = Object.keys(chatHistory);
+      for (var chi = 0; chi < historyKeys.length; chi++) {
+        var csid4 = parseInt(historyKeys[chi], 10);
+        if (csid4 && !seen[csid4]) { seen[csid4] = true; list.push(csid4); }
+      }
+      return list;
+    }
+
+    function renderChatView() {
+      var convList = document.getElementById("chat-conv-list");
+      if (!convList) return;
+      var sellerIds = getChatSellers();
+      var chats = getChatData();
+      if (!sellerIds.length) {
+        convList.innerHTML = '<p class="acct-empty">No sellers to chat with yet.<br>Place an order to start a conversation.</p>';
+        return;
+      }
+      var html = "";
+      for (var ci3 = 0; ci3 < sellerIds.length; ci3++) {
+        var csid2 = sellerIds[ci3];
+        var cSeller = sellerMap[csid2];
+        var shopName = cSeller ? cSeller.shop_name : "Seller #" + csid2;
+        var msgs = chats[csid2] || [];
+        var lastMsg = msgs.length ? msgs[msgs.length - 1] : null;
+        var preview = lastMsg ? lastMsg.text : "No messages yet";
+        if (preview.length > 40) preview = preview.slice(0, 40) + "…";
+        var initials = shopName.split(" ").slice(0, 2).map(function (w) { return w[0]; }).join("").toUpperCase();
+        var isActive = activeChatSellerId === csid2 ? " active" : "";
+        html +=
+          '<div class="chat-conv-item' + isActive + '" data-seller-id="' + csid2 + '">' +
+            '<div class="chat-conv-avatar">' + initials + '</div>' +
+            '<div class="chat-conv-info">' +
+              '<p class="chat-conv-name">' + shopName + '</p>' +
+              '<p class="chat-conv-preview">' + preview + '</p>' +
+            '</div>' +
+          '</div>';
+      }
+      convList.innerHTML = html;
+      convList.querySelectorAll(".chat-conv-item").forEach(function (convItem) {
+        convItem.addEventListener("click", function () {
+          openChat(parseInt(convItem.getAttribute("data-seller-id"), 10));
+        });
+      });
+      if (activeChatSellerId) openChat(activeChatSellerId);
+    }
+
+    function openChat(sellerId) {
+      activeChatSellerId = sellerId;
+      var cSeller2 = sellerMap[sellerId];
+      var shopName2 = cSeller2 ? cSeller2.shop_name : "Seller #" + sellerId;
+      var convList2 = document.getElementById("chat-conv-list");
+      if (convList2) {
+        convList2.querySelectorAll(".chat-conv-item").forEach(function (it) {
+          it.classList.toggle("active", parseInt(it.getAttribute("data-seller-id"), 10) === sellerId);
+        });
+      }
+      var panel = document.getElementById("chat-thread-panel");
+      if (!panel) return;
+      var chats2 = getChatData();
+      var msgs2 = chats2[sellerId] || [];
+      var msgsHTML = "";
+      if (!msgs2.length) {
+        msgsHTML = '<p class="chat-no-messages">No messages yet. Say hello!</p>';
+      } else {
+        for (var mi = 0; mi < msgs2.length; mi++) {
+          var msg = msgs2[mi];
+          var cls = msg.from === "buyer" ? "sent" : "received";
+          var timeStr = "";
+          if (msg.ts) {
+            var md = new Date(msg.ts);
+            timeStr = md.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
+          }
+          msgsHTML +=
+            '<div class="chat-bubble ' + cls + '">' +
+              '<span class="chat-bubble-text">' + msg.text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") + '</span>' +
+              (timeStr ? '<span class="chat-bubble-time">' + timeStr + '</span>' : '') +
+            '</div>';
+        }
+      }
+      var avatarInitials = shopName2.split(" ").slice(0, 2).map(function (w) { return w[0]; }).join("").toUpperCase();
+      panel.innerHTML =
+        '<div class="chat-thread-header">' +
+          '<div class="chat-thread-avatar">' + avatarInitials + '</div>' +
+          '<div class="chat-thread-info">' +
+            '<p class="chat-thread-name">' + shopName2 + '</p>' +
+            '<p class="chat-thread-sub">Artisan Seller · ReViet</p>' +
+          '</div>' +
+        '</div>' +
+        '<div class="chat-messages" id="chat-messages">' + msgsHTML + '</div>' +
+        '<div class="chat-input-row">' +
+          '<input type="text" class="chat-send-input" id="chat-send-input" placeholder="Type a message…" autocomplete="off" maxlength="500" />' +
+          '<button class="chat-send-btn" id="chat-send-btn">Send</button>' +
+        '</div>';
+      var messagesEl = document.getElementById("chat-messages");
+      if (messagesEl) messagesEl.scrollTop = messagesEl.scrollHeight;
+      var sendBtn = document.getElementById("chat-send-btn");
+      var sendInput = document.getElementById("chat-send-input");
+      function doSend() {
+        var text = sendInput.value.trim();
+        if (!text) return;
+        sendInput.value = "";
+        var chats3 = getChatData();
+        if (!chats3[sellerId]) chats3[sellerId] = [];
+        chats3[sellerId].push({ from: "buyer", text: text, ts: Date.now() });
+        saveChatData(chats3);
+        renderChatView();
+      }
+      if (sendBtn) sendBtn.addEventListener("click", doSend);
+      if (sendInput) {
+        sendInput.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); doSend(); }
+        });
+        sendInput.focus();
+      }
+    }
+
+    /* Wire chat nav button */
+    var chatNavBtn = document.querySelector('[data-view="chat"]');
+    if (chatNavBtn) {
+      chatNavBtn.addEventListener("click", function () { renderChatView(); });
+    }
+
+    /* Chat URL param (inside Promise so renderChatView is available) */
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get("view") === "chat") {
+        var chatNavP = document.querySelector('[data-view="chat"]');
+        if (chatNavP) chatNavP.click();
+        var sellerParam = params.get("seller");
+        if (sellerParam) activeChatSellerId = parseInt(sellerParam, 10);
+        renderChatView();
+      }
+    })();
 
     document.querySelectorAll(".voucher-tab").forEach(function (tab) {
       tab.addEventListener("click", function () {
